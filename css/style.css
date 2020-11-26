@@ -1,0 +1,21 @@
+/* ==========================================================================
+   General styles
+   ========================================================================== */
+
+body {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+#myheader nav a.navbar-brand {
+    font-family: 'Nothing You Could Do', cursive;
+}
+
+#myheader h2 {
+    font-family: 'Audiowide', cursive;
+}
+
+.text-14 {
+	font-size: 14px;
+}
