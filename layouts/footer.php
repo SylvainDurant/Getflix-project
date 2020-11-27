@@ -10,7 +10,7 @@
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="text-uppercase font-weight-bold">
-          <a href="https://github.com/SebastienFirouzfar">Sebastien Firouzfar</a>
+          <a href="https://github.com/SebastienFirouzfar">Sebastien</a>
         </h6>
       </div>
       <!-- Grid column -->
@@ -18,7 +18,7 @@
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="text-uppercase font-weight-bold">
-          <a href="https://github.com/Shticrina">Cristina Dinca</a>
+          <a href="https://github.com/Shticrina">Cristina </a>
         </h6>
       </div>
       <!-- Grid column -->
@@ -26,7 +26,7 @@
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="text-uppercase font-weight-bold">
-          <a href="https://github.com/ryadouelhadj">ryad ouelhadj</a>
+          <a href="https://github.com/ryadouelhadj">ryad </a>
         </h6>
       </div>
       <!-- Grid column -->
@@ -34,17 +34,17 @@
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="text-uppercase font-weight-bold">
-          <a href="https://github.com/SylvainDurant">Sylvain Durant </a> 
+          <a href="https://github.com/SylvainDurant">Sylvain  </a> 
         </h6>
       </div>
       <!-- Grid column -->
 
       <!-- Grid column -->
-      <div class="col-md-2 mb-3">
+      <!-- <div class="col-md-2 mb-3">
         <h6 class="text-uppercase font-weight-bold">
-          <a href="#!">Help</a>
+         <a href="#!">Help</a>
         </h6>
-      </div>
+      </div> -->
       <!-- Grid column -->
 
     </div>
@@ -56,7 +56,7 @@
 
     
       <!-- Grid column -->
-      <div class="col-md-8 col-12 mt-5">
+      <!-- <div class="col-md-8 col-12 mt-5">
         <p style="line-height: 1.7rem"> 
         <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-code" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M5.854 4.146a.5.5 0 0 1 0 .708L2.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm4.292 0a.5.5 0 0 0 0 .708L13.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"/>
@@ -68,7 +68,7 @@
                 <path fill-rule="evenodd" d="M4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0zm-.999-3.124a.5.5 0 0 1 .33.625l-4 13a.5.5 0 0 1-.955-.294l4-13a.5.5 0 0 1 .625-.33z"/>
             </svg></p>
 
-      </div>
+      </div> -->
       <!-- Grid column -->
 
     </div>
@@ -76,15 +76,40 @@
     <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
 
     <!-- Grid row-->
-    <div class="row pb-3">
+    <div class="row pb-2 text-center mt-5">
+
 
       <!-- Grid column -->
-      <div class="col-md-12">
+      <div class="col-lg-2 col-sm-2 ">
+         <a class="fb-ic"><i class="fa fa-github"></i></a>
+      </div>
 
-        <div class="mb-5 flex-center col-md- ">
+      <div class="col-lg-2 col-sm-2">
+          <a class="fb-ic"><i class="fab fa-css3"></i></a>
+      </div>
 
-          <!-- Facebook -->
-          <div class="gridIcon">
+      <div class="col-lg-2 col-sm-2">
+         <a class="fb-ic"><i class="fab fa-html5"></i></a>
+      </div>
+
+      <div class="col-lg-2 col-sm-2">
+         <a class="fb-ic"><i class="fab fa-js-square"></i></a>
+      </div>
+
+      <div class="col-lg-2 col-sm-2">
+         <a class="fb-ic"><i class="fab fa-php"></i></a>
+      </div>
+    
+      <div class="col-lg-2 col-sm-2">
+         <a class="fb-ic"><i class="fas fa-database"></i></a>
+      </div>
+
+      </div>
+    <!-- Grid row-->
+
+      <!--  <div class="mb-5 flex-center col-md- "
+
+          <div class="g">
             <a class="fb-ic"><i class="fa fa-github"></i></a>
             <a class="fb-ic"><i class="fab fa-css3"></i></a>
             <a class="fb-ic"><i class="fab fa-html5"></i></a>
@@ -94,6 +119,8 @@
           </div>
 
         </div>
+
+-->
 
       </div>
       <!-- Grid column -->
@@ -106,7 +133,7 @@
 
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://github.com/SylvainDurant"> Repositories manageur</a>
+    <a href="https://github.com/SylvainDurant/Getflix-project"> Moosic github</a>
   </div> 
   <!-- Copyright -->
 
