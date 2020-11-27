@@ -62,7 +62,7 @@
                 <path fill-rule="evenodd" d="M5.854 4.146a.5.5 0 0 1 0 .708L2.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm4.292 0a.5.5 0 0 0 0 .708L13.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"/>
         </svg>
         
-        Le site à été réaliser par 4 futures developpeurs web dans le but d'amélioré nos compétences. <br>
+        Le site à été réaliser par 4 futures developpeurs web dans le but d'amélioré nos compétences.
         Notre coach de Becode nous à donner ce challenge afin d'approfondir l'apprentissage des languages de programmation .
         <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-code-slash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0zm-.999-3.124a.5.5 0 0 1 .33.625l-4 13a.5.5 0 0 1-.955-.294l4-13a.5.5 0 0 1 .625-.33z"/>
@@ -81,12 +81,17 @@
       <!-- Grid column -->
       <div class="col-md-12">
 
-        <div class="mb-5 flex-center">
+        <div class="mb-5 flex-center col-md- ">
 
           <!-- Facebook -->
-          <a class="fb-ic">
-             <i class="fa fa-github" style="font-size:36px"></i>
-          </a>
+          <div class="gridIcon">
+            <a class="fb-ic"><i class="fa fa-github"></i></a>
+            <a class="fb-ic"><i class="fab fa-css3"></i></a>
+            <a class="fb-ic"><i class="fab fa-html5"></i></a>
+            <a class="fb-ic"><i class="fab fa-js-square"></i></a>
+            <a class="fb-ic"><i class="fab fa-php"></i></a>
+            <a class="fb-ic"><i class="fas fa-database"></i></a>
+          </div>
 
         </div>
 

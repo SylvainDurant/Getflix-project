@@ -19,3 +19,17 @@ body {
 .text-14 {
 	font-size: 14px;
 }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+   .gridIcon{
+       position: absolute;
+       left: 40%;
+       
+   }
+
+   div i{ /**Selects all <div> elements inside <i> elements**/
+    font-size:40px;
+   }
+
