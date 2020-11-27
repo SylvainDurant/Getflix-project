@@ -1,3 +1,8 @@
+<?php
+include('../database/db.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +22,7 @@
     <div class="container col-12">
         <div class="row justify-content-center">
             <div class="col-11 mt-3 shadow-lg mb-5">
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/_lK4cX5xGiQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="100%" height="600" src="https://www.youtube.com/embed/_lK4cX5xGiQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <div class="row">
                     <div class="col">
                         <h3>Tenacious D - Tribute (Video)</h3>
@@ -25,13 +30,23 @@
                     </div>
                     <div class="col-2 p-0">
                         <div class="row">
-                            <button type="button" class="btn btn-success"><i class="far fa-thumbs-up"> 3</i></button>
-                            <button type="button" class="btn btn-danger"><i class="far fa-thumbs-down"> -1</i></button>
+                            <div class="col text-right mr-3">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-success btn-block"><i class="far fa-thumbs-up"> 666 K</i></button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-danger btn-block"><i class="far fa-thumbs-down"> -1</i></button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
-                            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="col m-3">
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -56,7 +71,7 @@
                     <div class="col-3 shadow-lg">
                         lol
                     </div>
-                </div>
+                </div>  
             </div>
         </div>
     </div>
