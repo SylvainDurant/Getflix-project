@@ -31,15 +31,24 @@ body {
     font-family: 'Nothing You Could Do', cursive;
 }
 
-.text-14 {
-	font-size: 14px;
+::placeholder {
+  color: red;
+  opacity: 1; /* Firefox */
 }
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: red;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: red;
+}
+
 
 /* ==========================================================================
    Footer
    ========================================================================== */
 
-
-   div i{ /**Selects all <div> elements inside <i> elements**/
-    font-size:40px;
-   }
+div i { /**Selects all <div> elements inside <i> elements**/
+  font-size:40px;
+}
