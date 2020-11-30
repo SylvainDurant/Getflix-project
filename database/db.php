@@ -3,7 +3,7 @@
 $host = 'localhost';
 $user = 'root';
 $password = '';
-$database = 'becodedb';
+$database = 'moosic_db';
 
 $path = $_SERVER['REQUEST_URI'];
 $url = explode('/', $path);
