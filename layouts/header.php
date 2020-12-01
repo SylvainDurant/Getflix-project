@@ -2,7 +2,7 @@
     <!-- Navbar -->
 	<nav class="navbar navbar-expand-md navbar-dark">
         <div class="d-flex justify-content-center col-lg-1">
-            <a class="navbar-brand text-info p-0 m-0" href="<?php echo strpos($_SERVER['HTTP_HOST'], 'pages') == false ? '..' : '.'; ?>/index.php">
+            <a class="navbar-brand text-info p-0 m-0" href="<?php echo $url[3] == 'pages' ? '..' : '.'; ?>/index.php">
                 <img src="<?php echo $url[3] == 'pages' ? '..' : '.'; ?>/images/Moosic_T1.1.png" class="w-100"></a>
             </a>
         </div>
@@ -30,7 +30,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-info" href="<?php echo $url[3] == 'pages' ? '.' : './pages'; ?>/contact_us.php">Contact</a>
+                    <a class="nav-link text-info" href="<?php echo $url[3] == 'pages' ? '.' : './pages'; ?>/contact.php">Contact</a>
                 </li>
 
                 <li class="nav-item w-50">
@@ -50,11 +50,13 @@
             </form>
 
             <div class="mr-3 pt-1">
-                <a class="text-info text-14" href=""><i class="fa fa-user fa-1x" aria-hidden="true"></i>&nbsp; Sign in</a>
+                <!-- Trigger/Open The Login Modal -->
+                <a id="loginBtn" class="text-info text-14" href=""><i class="fa fa-user fa-1x" aria-hidden="true"></i>&nbsp; Sign in</a>
             </div>
 
             <div class="pt-1">
-                <a class="text-white-50 text-14" href=""><i class="fa fa-sign-in fa-1x" aria-hidden="true"></i>&nbsp; Sign up</a>
+                <!-- Trigger/Open The Registration Modal -->
+                <a id="registrationBtn" class="text-white-50 text-14" href=""><i class="fa fa-user-plus fa-1x" aria-hidden="true"></i>&nbsp; Sign up</a>
             </div>
 
             <!-- if connected -->
@@ -62,4 +64,24 @@
             <!-- <div class="disconnection"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp; Sign out</div> -->
         </div>
     </nav>
+
+    <!-- Registration form Modal window -->
+    <div id="registrationFormModal" class="my-modal">
+        <div class="my-modal-content">
+            <div class="my-modal-header d-flex p-0">
+                <h4 class="text-secondary flex-fill pt-3">Please enter your nickname</h4>
+                <span class="close-btn text-secondary flex-fill col-1">&times;</span>
+            </div>
+
+            <div class="my-modal-body">
+                <form action="" method="post" id="nicknameForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="nickname" placeholder="Enter nickname">
+                    </div>
+
+                    <button type="button" id="submitNickname" class="btn btn-info" onclick="setNickname(document.getElementById('nickname').value)">Okay, got it!</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </header>
