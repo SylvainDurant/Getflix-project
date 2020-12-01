@@ -4,19 +4,19 @@ include('./database/functions.php');
 
 session_start(); // Start a session
 
-$users = fetchAllUsers($conn);
-$user2 = fetchUserById($conn);
-$songs = fetchAllSongs($conn);
+//$users = fetchAllUsers($conn);
+//$user2 = fetchUserById($conn);
+//$songs = fetchAllSongs($conn);
 // var_dump($user2);
 // var_dump($songs);
 ?>
 
 <!-- HTML content -->
-<?php include('layouts/master.php'); ?>
-<? //php include('../layouts/header.php'); ?>
+<?php include('./layouts/master.php'); ?>
+<?php include('./layouts/header.php'); ?>
 
 <section id="content" class="border border-info p-5">
-    <h3>Carousel </h3>
+    <h3>The movies</h3>
 
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -26,13 +26,13 @@ $songs = fetchAllSongs($conn);
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="..." class="d-block w-100" alt="...">
+                <img class="d-block w-100" src="images/3758413.jpg" alt="First slide">
             </div>
             <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
+                <img class="d-block w-100" src="images/guitar.jpg" alt="Second slide">
             </div>
             <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
+                <img class="d-block w-100" src="images/Moosic_T1.1.png" alt="Third slide">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -47,7 +47,7 @@ $songs = fetchAllSongs($conn);
 
 </section>
 
-<?php// include('layouts/footer.php'); ?>
+<?php include('layouts/footer.php'); ?>
 <!-- end HTML content -->
 
 <?php session_unset(); // Close the session ?>
