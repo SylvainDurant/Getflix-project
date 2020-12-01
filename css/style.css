@@ -13,7 +13,11 @@ body {
 }
 
 .form-control-sm {
-    border-radius: 0.8rem;
+    border-radius: 0.8rem !important;
+}
+
+.btn, .btn-lg, .btn-sm {
+    border-radius: 2.3rem !important;
 }
 
 .text-orange {
@@ -21,6 +25,9 @@ body {
 }
 
 /* Style Header */
+#myheader {
+    background-color: #1b1b1b;
+}
 
 #myheader nav a.navbar-brand {
     font-family: 'Nothing You Could Do', cursive;
@@ -44,6 +51,40 @@ body {
  color: red;
 }
 
+/* Style About Page */
+#header-about {
+    background-image: url("../images/guitar.jpg");
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 500px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+#header-about .bg-opacity {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  /*background: rgba(255, 255, 255, 0.3);*/
+}
+
+#header-about h3 span {
+  font-family: 'Nothing You Could Do', cursive;
+  font-size: 70px;
+}
+
+.text-nothing-you-can-do {
+  font-family: 'Nothing You Could Do', cursive;
+}
+
+#team .profile-img img {
+  /*box-shadow: 0 0.1rem 0.4rem rgba(23, 162, 184, .5) !important;*/
+}
+
+#team .profile-img img:hover {
+  box-shadow: 0 0.1rem 0.6rem rgba(23, 162, 184, .5) !important;
+  /*box-shadow: 0 0.1rem 1rem rgba(255, 0, 0, .5) !important;*/
+}
 
 /* ==========================================================================
    Footer.php

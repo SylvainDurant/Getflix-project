@@ -4,13 +4,6 @@ include('../database/functions.php');
 
 session_start(); // Start a session
 
-$video = $user["source"];
-$title = $user["title"];
-$artist = $user["artist_name"];
-$album = $user["album_name"];
-$album_image = $user["album_image"];
-$description = $user["description"];
-var_dump($description);
 ?>
 
 <!-- HTML content -->
@@ -20,12 +13,12 @@ var_dump($description);
 <div class="container col-12">
     <div class="row justify-content-center">
         <div class="col-11 mt-3 shadow-lg mb-5">
-            <iframe width="100%" height="600" src="<?php echo $video?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="100%" height="600" src="<?php //echo $video?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <div class="row">
                 <div class="col">
-                    <h3><?php echo "$artist: $title"?></h3>
-                    <img src="<?php echo $album_image?>" alt="<?php echo $artist?>" style="height:100px; width:100px; float:left;">
-                    <p><?php echo $description?></p>
+                    <h3><?php //echo "$artist: $title"?></h3>
+                    <img src="<?php //echo $album_image?>" alt="<?php //echo $artist?>" style="height:100px; width:100px; float:left;">
+                    <p><?php //echo $description?></p>
                 </div>
                 <div class="col-2 p-0">
                     <div class="row">
