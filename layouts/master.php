@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moosic</title>
+    <title><?php echo $url[3] == 'pages' || $url[4] != '' ? substr($url[4], 0, strpos($url[4], '.')) : 'Moosic'; ?></title>
 
     <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/2d566fa444.js" crossorigin="anonymous"></script>

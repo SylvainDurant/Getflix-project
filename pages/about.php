@@ -1,9 +1,5 @@
 <?php
 include('../database/db.php');
-
-session_start(); // Start a session
-
-// var_dump($url);
 ?>
 
 <!-- HTML content -->
@@ -74,5 +70,3 @@ session_start(); // Start a session
 
 <?php include('../layouts/footer.php'); ?>
 <!-- end HTML content -->
-
-<?php session_unset(); // Close the session ?>
