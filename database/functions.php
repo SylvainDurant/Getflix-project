@@ -19,6 +19,40 @@ function fetchAllSongs($conn) {
 	return $rows;
 }
 
+function fetchOneSong($conn,$id) {
+	$request = "SELECT * FROM songs
+				LEFT JOIN users
+				ON users.id = songs.user_id
+				LEFT JOIN categories
+				ON categories.id = songs.category_id
+				WHERE songs.id = $id"; 
+
+	$stmt = $conn->prepare($request); // prepare the request in a statement
+	$stmt->execute(); // execute the statement
+
+	// set the resulting array to associative & fetch all
+	$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+	$rows = $result ? $stmt->fetch() : null;
+
+	return $rows;
+}
+
+function fetchAllCommentsByVideo($conn,$id) {
+	$request = "SELECT * FROM comments
+				LEFT JOIN users
+				ON users.id = comments.user_id
+				WHERE comments.song_id = $id"; 
+
+	$stmt = $conn->prepare($request); // prepare the request in a statement
+	$stmt->execute(); // execute the statement
+
+	// set the resulting array to associative & fetch all
+	$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+	$rows = $result ? $stmt->fetchAll() : null;
+
+	return $rows;
+}
+
 // Backend
 function fetchAllUsers($conn) {
 	$request = "SELECT * FROM users
