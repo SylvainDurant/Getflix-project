@@ -53,6 +53,22 @@ function fetchAllCommentsByVideo($conn,$id) {
 	return $rows;
 }
 
+
+function fetchLast4Songs($conn){
+	$request = "SELECT * FROM songs LIMIT 4";  
+	
+	$stmt = $conn->prepare($request); // prepare the request in a statement
+	$stmt->execute(); // execute the statement
+
+	// set the resulting array to associative & fetch all
+	$result = $stmt->setFetchMode(PDO::FETCH_ASSOC); //renvoie un tab associative
+	
+	//si result passe avec succès alors on envoie fetchAll()
+	$songs = $result ? $stmt->fetchAll() : null; // va nous données des tabs qui contient une ligne de la tab 
+
+	return $songs; //avoir tt les musiques
+}
+
 // Backend
 function fetchAllUsers($conn) {
 	$request = "SELECT * FROM users
