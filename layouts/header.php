@@ -6,7 +6,7 @@
                 <img src="<?php echo $url[3] == 'pages' ? '..' : '.'; ?>/images/Moosic_T1.1.png" class="w-25"></a>
             </a>
             <a class="navbar-brand text-info" href="<?php echo strpos($_SERVER['HTTP_HOST'], 'pages') == false ? '..' : '.'; ?>/index.php">
-                <img src="<?php echo $url[3] == 'pages' ? '..' : '.'; ?>/images/Moosic_T1.1.png" class="w-25"></a>
+                <img src="<?php echo $url[3] == 'pages' ? '..' : '.'; ?>/images/Moosic_T2.1.png" class="w-25"></a>
             </a>
         </div>
 
