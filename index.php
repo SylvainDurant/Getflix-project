@@ -9,14 +9,17 @@ session_start(); // Start a session
 //$songs = fetchAllSongs($conn);
 // var_dump($user2);
 $musicCarousel = fetchLast4Songs($conn);
+
 //var_dump($musicCarousel); 
+
+
 ?>
 
 <!-- HTML content -->
 <?php include('./layouts/master.php'); ?>
 <?php include('./layouts/header.php'); ?>
 
-<section id="content" class="border border-info p-5">
+<section id="content" class="bg-dark p-5">
     <h3>The movies</h3>
 
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -24,6 +27,7 @@ $musicCarousel = fetchLast4Songs($conn);
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
         </ol>
         
         <div class="carousel-inner">
@@ -44,7 +48,6 @@ $musicCarousel = fetchLast4Songs($conn);
             <span class="sr-only">Next</span>
         </a>
     </div>
-
 </section>
 
 <?php include('layouts/footer.php'); ?>
