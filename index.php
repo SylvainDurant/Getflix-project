@@ -9,7 +9,10 @@ session_start(); // Start a session
 //$songs = fetchAllSongs($conn);
 // var_dump($user2);
 $musicCarousel = fetchLast4Songs($conn);
-// var_dump($musicCarousel); 
+
+//var_dump($musicCarousel); 
+
+
 ?>
 
 <!-- HTML content -->
