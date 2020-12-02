@@ -1,5 +1,6 @@
 <?php
 include('../database/db.php');
+session_start(); // Start a session
 ?>
 
 <!-- HTML content -->
@@ -70,3 +71,5 @@ include('../database/db.php');
 
 <?php include('../layouts/footer.php'); ?>
 <!-- end HTML content -->
+
+<?php session_unset(); // Close the session ?>
