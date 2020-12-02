@@ -33,7 +33,7 @@ $musicCarousel = fetchLast4Songs($conn);
         <div class="carousel-inner">
             <?php foreach($musicCarousel as $key => $song){ ?>
                 <div class="carousel-item <?php echo $key == 0 ? 'active' : ''; ?>">
-                    <iframe class="embed-responsive-item w-100 " style="max-height:500px"
+                    <iframe class="embed-responsive-item w-100 " style="height:500px"
                         src= "<?php echo $song['source'] ?>" ></iframe>
                 </div>
             <?php  } ?>
