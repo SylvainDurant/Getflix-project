@@ -1,13 +1,8 @@
 <?php
-include('./database/db.php');
 include('./database/functions.php');
-
 session_start(); // Start a session
 
-//$users = fetchAllUsers($conn);
-//$user2 = fetchUserById($conn);
-//$songs = fetchAllSongs($conn);
-// var_dump($user2);
+$songs = fetchAllSongs($conn);
 $musicCarousel = fetchLast4Songs($conn);
 // var_dump($musicCarousel); 
 ?>
@@ -15,6 +10,7 @@ $musicCarousel = fetchLast4Songs($conn);
 <!-- HTML content -->
 <?php include('./layouts/master.php'); ?>
 <?php include('./layouts/header.php'); ?>
+<?php include('./layouts/notifications.php'); ?>
 
 <section id="content" class="bg-dark p-5">
     <h3>The movies</h3>
@@ -49,5 +45,3 @@ $musicCarousel = fetchLast4Songs($conn);
 
 <?php include('layouts/footer.php'); ?>
 <!-- end HTML content -->
-
-<?php session_unset(); // Close the session ?>

@@ -1,5 +1,4 @@
 
-
 function setNickname(name) {
 	/*document.getElementById("username").innerHTML = name;
 	document.querySelector("header h4.hello").classList.remove("d-none");
