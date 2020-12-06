@@ -30,7 +30,7 @@ function fetchOneSong($conn,$id) {
 	$stmt = $conn->prepare($request); // prepare the request in a statement
 	$stmt->execute(); // execute the statement
 
-	// set the resulting array to associative & fetch all
+	// set the resulting array to associative & fetch
 	$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 	$rows = $result ? $stmt->fetch() : null;
 
@@ -52,7 +52,6 @@ function fetchAllCommentsByVideo($conn,$id) {
 
 	return $rows;
 }
-
 
 function fetchLast4Songs($conn){
 	$request = "SELECT * FROM songs LIMIT 4";  
@@ -87,6 +86,42 @@ function fetchAllUsers($conn) {
 	return $rows;
 }
 
+function getUserByEmail($conn, $email) {
+	$request = "SELECT * FROM users WHERE email = '$email'";
+
+	$stmt = $conn->prepare($request); // prepare the request in a statement
+	$stmt->execute(); // execute the statement
+
+	$result = $stmt->setFetchMode(PDO::FETCH_ASSOC); // set the resulting array to associative & fetch
+	$user = $result ? $stmt->fetch() : null;
+
+	return $user;
+}
+
+function createUser($conn, $data) {
+	$first_name = $data["first_name"];
+	$last_name = $data["last_name"];
+	$pseudo = $data["pseudo"];
+	$email = $data["email"];
+	$password = $data["password"];
+
+	$request = "INSERT INTO users (first_name, last_name, pseudo, email, password, is_connected) 
+				VALUES ('$first_name', '$last_name', '$pseudo', '$email', '$password', true)";
+
+	$stmt = $conn->prepare($request); // prepare the request in a statement
+	$stmt->execute();
+}
+
+function updateUserByConnection($conn, $id, $is_connected) {
+	// var_dump($id, $is_connected);
+	$request = "UPDATE users SET `is_connected` = $is_connected WHERE `id` = $id";
+
+	$stmt = $conn->prepare($request); // prepare the request in a statement
+	$stmt->execute(); // execute the statement
+
+	return $stmt->rowCount() > 0 ? true : false;
+}
+
 function fetchUserById($conn, $id = 2) {
 	$request = "SELECT * FROM users
 				LEFT JOIN songs
@@ -102,7 +137,6 @@ function fetchUserById($conn, $id = 2) {
 	$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 	$rows = $result ? $stmt->fetchAll() : null;
 	$data = [];
-	// var_dump($rows);
 
 	if ($rows) {
 		$data['id'] = $rows[0]['id'];

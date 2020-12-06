@@ -6,6 +6,7 @@ session_start(); // Start a session
 <!-- HTML content -->
 <?php include('../layouts/master.php'); ?>
 <?php include('../layouts/header.php'); ?>
+<?php include('../layouts/notifications.php'); ?>
 
 <section id="about" class="container-fluid p-0">
 	<div id="header-about" class="">
@@ -71,5 +72,3 @@ session_start(); // Start a session
 
 <?php include('../layouts/footer.php'); ?>
 <!-- end HTML content -->
-
-<?php session_unset(); // Close the session ?>
