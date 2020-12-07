@@ -1,5 +1,7 @@
 <?php
+include('../database/db.php');
 include('../database/functions.php');
+
 session_start(); // Start a session
 
 $page = 1;
@@ -20,7 +22,6 @@ $recommendations = fetchAllSongs($conn);
 <!-- HTML content -->
 <?php include('../layouts/master.php'); ?>
 <?php include('../layouts/header.php'); ?>
-<?php include('../layouts/notifications.php'); ?>
 
 <div class="container col-12">
     <div class="row justify-content-center">
@@ -36,7 +37,7 @@ $recommendations = fetchAllSongs($conn);
                         </div>
                         <div class="row">
                             <div class="container p-0">
-                                <img src="<?php echo $video['album_image']?>" alt="<?php echo $video['artist_name']?>" class="p-1 float-left" style="height:100px; width:100px;">
+                                <img src="<?php echo $video['album_image']?>" alt="<?php echo $video['artist_name']?>" class="p-1 float-left" style="max-height:100px; width:auto;">
                                 <div class="row">
                                     <p><?php echo $video['description']?></p>
                                 </div>
@@ -122,3 +123,5 @@ $recommendations = fetchAllSongs($conn);
 
 <?php include('../layouts/footer.php'); ?>
 <!-- end HTML content -->
+
+<?php session_unset(); // Close the session ?>
