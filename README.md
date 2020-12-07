@@ -53,6 +53,9 @@ In order to have a good overview and to manage all these functionalities, we wer
 
 - While coding, we tried to add comments in order that everybody understands the meaning of that code 
 
+### Mockup used
+
+
 ### See Project
 
 *[www.moosic.com](https://github.com/SylvainDurant/Getflix-project)*
