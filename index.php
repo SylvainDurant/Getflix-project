@@ -1,23 +1,17 @@
 <?php
-include('./database/db.php');
 include('./database/functions.php');
-
 session_start(); // Start a session
 
-//$users = fetchAllUsers($conn);
-//$user2 = fetchUserById($conn);
-//$songs = fetchAllSongs($conn);
-// var_dump($user2);
+$categories = fetchAllCategory($conn);
+$songs = fetchAllSongs($conn);
 $musicCarousel = fetchLast4Songs($conn);
-
-//var_dump($musicCarousel); 
-
 
 ?>
 
 <!-- HTML content -->
 <?php include('./layouts/master.php'); ?>
 <?php include('./layouts/header.php'); ?>
+<?php include('./layouts/notifications.php'); ?>
 
 <section id="content" class="bg-dark p-5">
     <h3>The movies</h3>
@@ -50,7 +44,55 @@ $musicCarousel = fetchLast4Songs($conn);
     </div>
 </section>
 
-<?php include('layouts/footer.php'); ?>
+
+<section id="categories">
+    <div class="text-center">
+        <h3><u>Categories</u></h3>
+        <div id="accordion">
+            <div class="card-header">
+                <h5 class="mb-0">
+                        <a class="btn btn-link" data-toggle="collapse" data-target="#navAll" aria-expanded="true" aria-controls="navAll">All</a>
+                        <a class="disabled">|</a>
+                    <?php foreach ($categories as $key => $category) { ?>
+                        <a class="btn btn-link" data-toggle="collapse" data-target="#nav<?php echo $category["name"]?>" aria-expanded="true" aria-controls="nav<?php echo $category["name"]?>"><?php echo $category["name"]?></a>
+                        <?php if ($key != count($categories)-1){ ?>
+                        <a class="disabled">|</a>
+                    <?php }} ?>
+                </h5>
+            </div>
+            <div id="navAll" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="row p-2 justify-content-center">
+                    <?php foreach ($songs as $song) { ?>
+                        <div class="card col-12 col-sm-4 col-lg-2 m-1 shadow">
+                            <div class="text-truncate">
+                                <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <p><?php echo $song['artist_name'].": ". $song['title']?></p>
+                            </div>
+                            <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>)"></div>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>   
+            <?php foreach ($categories as $category) { ?>
+                <div id="nav<?php echo $category["name"]?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="row p-2 justify-content-center">
+                        <?php foreach ($songs as $song) { 
+                            if ($song["category_id"] === $category["id"]){ ?>
+                            <div class="card col-12 col-sm-4 col-lg-2 m-1 shadow ">
+                                <div class='text-truncate'>
+                                    <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <p><?php echo $song['artist_name'].": ". $song['title']?></p>
+                                </div>
+                                <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>)"></div>
+                            </div>
+                        <?php }} ?>
+                    </div>
+                </div>    
+            <?php } ?>
+        </div>
+    </div>
+</section>
+
+<?php include('./layouts/footer.php'); ?>
 <!-- end HTML content -->
 
-<?php session_unset(); // Close the session ?>

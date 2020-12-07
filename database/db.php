@@ -7,8 +7,13 @@ $database = 'moosic_db';
 
 $path = $_SERVER['REQUEST_URI'];
 $url = explode('/', $path);
-// var_dump($url);
- 
+$root = $url[3] == 'pages' ? '..' : '.';
+$pages_root = $url[3] == 'pages' ? '.' : './pages';
+$page_title = ($url[3] == 'pages' && isset($url[4])) ? substr($url[4], 0, strpos($url[4], '.')) : 'Moosic';
+// $current_page = substr($path, strpos($path, 'MoosicProject')+1);
+$current_page = ($url[3] == 'pages' && isset($url[4])) ? "../".$url[3]."/".$url[4] : '../index.php';
+// var_dump($current_page);
+
 //Custom PDO options
 $options = array (
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

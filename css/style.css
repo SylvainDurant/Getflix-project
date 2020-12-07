@@ -1,11 +1,16 @@
 /* ==========================================================================
    General styles
-   ========================================================================== */
+   ========================================================================== 
+*/
 
 body {
-    font-family: 'Montserrat Alternates', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.myLink:hover{
+  background:rgba(32, 32, 32, 0.3) !important;
 }
 
 .text-14 {
