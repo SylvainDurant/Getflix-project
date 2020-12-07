@@ -33,7 +33,7 @@ Get inspired by Netflix, Amazon Prime Video and other Popcorn Time, Stremio... T
 
 Infinity free
 
-### How we did it
+### *How we did it*
 
 Our project is about streaming music video clips.
 After analizing the project requirements and deadlines, we decided to make a list of all the functionalities.
@@ -49,7 +49,7 @@ In order to have a good overview and to manage all these functionalities, we wer
 
 - Then, we created the database in PhpMyAdmin platform
 
-(database capture in PhpMyAdmin)
+[![](https://github.com/SylvainDurant/Getflix-project/blob/main/images/DbCapture.png?raw=true)](https://github.com/SylvainDurant/Getflix-project/blob/main/images/DbCapture.png?raw=true)
 
 - While coding, we tried to add comments in order that everybody understands the meaning of that code 
 
