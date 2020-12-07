@@ -5,8 +5,8 @@ function setNickname(name) {
 	document.getElementById("startGame").classList.add("d-none");
 	document.getElementById("game").classList.remove("d-none");
 	document.getElementById("score").classList.remove("d-none");
-	modal.style.display = "none";
-}
+	modal.style.display = "none";*/
+} 
 
 ///////////////////////////////////////////////////
 // When the user clicks on the button, open the modal
@@ -28,6 +28,11 @@ window.onclick = function(event) {
 ///////////////////////////////////////////////////
 
 // load video pages
-function move(songId){
-	window.location.replace("./pages/video.php?id="+songId);
+function move(songId,index){
+	if (index){
+		window.location.replace("./pages/video.php?id="+songId);
+	}else{
+		window.location.replace("./video.php?id="+songId);
+	}
+	
 }

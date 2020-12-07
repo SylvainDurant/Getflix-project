@@ -68,7 +68,7 @@ $musicCarousel = fetchLast4Songs($conn);
                                 <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 <p><?php echo $song['artist_name'].": ". $song['title']?></p>
                             </div>
-                            <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>)"></div>
+                            <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
                         </div>
                     <?php } ?>
                 </div>
@@ -83,7 +83,7 @@ $musicCarousel = fetchLast4Songs($conn);
                                     <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                     <p><?php echo $song['artist_name'].": ". $song['title']?></p>
                                 </div>
-                                <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>)"></div>
+                                <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
                             </div>
                         <?php }} ?>
                     </div>
