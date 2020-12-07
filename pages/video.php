@@ -1,11 +1,17 @@
 <?php
+include('../database/db.php');
 include('../database/functions.php');
+
 session_start(); // Start a session
 
-$page = 2;
+$page = 1;
+if (isset($_GET["id"])){
+    $page = $_GET["id"];
+}
+
 $video = fetchOneSong($conn,$page);
 $comments = fetchAllCommentsByVideo($conn,$page);
-$recommendations = fetchAllSongs($conn);
+$recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
 // var_dump($video);
 // var_dump($comments);
 // var_dump($comments[0]);
@@ -16,7 +22,6 @@ $recommendations = fetchAllSongs($conn);
 <!-- HTML content -->
 <?php include('../layouts/master.php'); ?>
 <?php include('../layouts/header.php'); ?>
-<?php include('../layouts/notifications.php'); ?>
 
 <div class="container col-12">
     <div class="row justify-content-center">
@@ -32,7 +37,7 @@ $recommendations = fetchAllSongs($conn);
                         </div>
                         <div class="row">
                             <div class="container p-0">
-                                <img src="<?php echo $video['album_image']?>" alt="<?php echo $video['artist_name']?>" class="p-1 float-left" style="height:100px; width:100px;">
+                                <img src="<?php echo $video['album_image']?>" alt="<?php echo $video['artist_name']?>" class="p-1 float-left" style="max-height:100px; width:auto;">
                                 <div class="row">
                                     <p><?php echo $video['description']?></p>
                                 </div>
@@ -99,12 +104,17 @@ $recommendations = fetchAllSongs($conn);
                 
                 <div class="col-md-3 p-2">
                     <h5><u>recommendations:</u></h5>
-                    <?php foreach ($recommendations as $other){ ?>
-                        <div class='col-4 col-md-12 mb-3 shadow float-left text-truncate' style='width: 100%;'>
-                            <iframe width="100%" height="100" src="<?php echo $other['source']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            <p><?php echo $other['artist_name'].": ". $other['title']?></p>
+                    <?php foreach ($recommendations as $other) { 
+                        // !!!! it's user id not video id :'( !!!!!!!!!
+                        if ($other["id"] != $video["id"]){ ?>
+                        <div class="card col-4 col-md-12 mb-3 shadow float-left">
+                            <div class='text-truncate'>
+                                <iframe width="100%" height="100" src="<?php echo $other['source']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <p><?php echo $other['artist_name'].": ". $other['title']?></p>
+                            </div>
+                            <div class="card-img-overlay myLink" onclick="move(<?php echo $other['id']?>)"></div>
                         </div>
-                    <?php };?>
+                    <?php }} ?>
                 </div>
             </div>  
         </div>
@@ -113,3 +123,5 @@ $recommendations = fetchAllSongs($conn);
 
 <?php include('../layouts/footer.php'); ?>
 <!-- end HTML content -->
+
+<?php session_unset(); // Close the session ?>

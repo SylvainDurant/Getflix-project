@@ -4,10 +4,10 @@ include('db.php');
 // Frontend
 function fetchAllSongs($conn) {
 	$request = "SELECT * FROM songs
-				LEFT JOIN users
-				ON users.id = songs.user_id
-				LEFT JOIN categories
-				ON categories.id = songs.category_id"; 
+				-- LEFT JOIN users
+				-- ON users.id = songs.user_id
+				-- LEFT JOIN categories
+				-- ON categories.id = songs.category_id"; 
 
 	$stmt = $conn->prepare($request); // prepare the request in a statement
 	$stmt->execute(); // execute the statement
@@ -22,9 +22,7 @@ function fetchAllSongs($conn) {
 function fetchOneSong($conn,$id) {
 	$request = "SELECT * FROM songs
 				LEFT JOIN users
-				ON users.id = songs.user_id
-				LEFT JOIN categories
-				ON categories.id = songs.category_id
+				ON users.user_id = songs.user_id
 				WHERE songs.id = $id"; 
 
 	$stmt = $conn->prepare($request); // prepare the request in a statement
@@ -37,10 +35,37 @@ function fetchOneSong($conn,$id) {
 	return $rows;
 }
 
+function fetchAllCategory($conn) {
+	$request = "SELECT * FROM categories"; 
+
+	$stmt = $conn->prepare($request); // prepare the request in a statement
+	$stmt->execute(); // execute the statement
+
+	// set the resulting array to associative & fetch all
+	$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+	$rows = $result ? $stmt->fetchAll() : null;
+
+	return $rows;
+}
+
+function fetchAllSongsByCategory($conn,$id) {
+	$request = "SELECT * FROM songs
+				WHERE songs.category_id = $id"; 
+
+	$stmt = $conn->prepare($request); // prepare the request in a statement
+	$stmt->execute(); // execute the statement
+
+	// set the resulting array to associative & fetch all
+	$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+	$rows = $result ? $stmt->fetchAll() : null;
+
+	return $rows;
+}
+
 function fetchAllCommentsByVideo($conn,$id) {
 	$request = "SELECT * FROM comments
 				LEFT JOIN users
-				ON users.id = comments.user_id
+				ON users.user_id = comments.user_id
 				WHERE comments.song_id = $id"; 
 
 	$stmt = $conn->prepare($request); // prepare the request in a statement
@@ -72,7 +97,7 @@ function fetchLast4Songs($conn){
 function fetchAllUsers($conn) {
 	$request = "SELECT * FROM users
 				LEFT JOIN songs
-				ON songs.id = users.id";
+				ON songs.id = users.user_id";
 				/*LEFT JOIN comments
 				ON comments.id = users.id"; */
 
@@ -125,10 +150,10 @@ function updateUserByConnection($conn, $id, $is_connected) {
 function fetchUserById($conn, $id = 2) {
 	$request = "SELECT * FROM users
 				LEFT JOIN songs
-				ON users.id = songs.user_id
+				ON users.user_id = songs.user_id
 				LEFT JOIN categories
 				ON songs.category_id = categories.id
-				WHERE users.id = $id";
+				WHERE users.user_id = $id";
 
 	$stmt = $conn->prepare($request); // prepare the request in a statement
 	$stmt->execute(); // execute the statement

@@ -190,6 +190,6 @@
     <!-- Toastr js -->
     <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script> -->
 
-    <script src="<?php echo $root; ?>/js/main.js"></script>
+    <script src="<?php echo $url[3] == 'pages' ? '..' : '.'; ?>/js/main.js"></script>
 </body>
 </html>
