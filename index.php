@@ -4,8 +4,10 @@ session_start(); // Start a session
 
 $categories = fetchAllCategory($conn);
 $songs = fetchAllSongs($conn);
-$musicCarousel = fetchLast4Songs($conn);
-//var_dump($songs); 
+
+// $musicCarousel = fetchLast4Songs($conn);
+$musicCarousel = array_slice($songs, -4); // get last 4 songs
+// var_dump($musicCarousel); 
 ?>
 
 <!-- HTML content -->
