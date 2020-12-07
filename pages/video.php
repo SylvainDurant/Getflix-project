@@ -1,7 +1,5 @@
 <?php
-include('../database/db.php');
 include('../database/functions.php');
-
 session_start(); // Start a session
 
 $page = 1;
@@ -12,11 +10,9 @@ if (isset($_GET["id"])){
 $video = fetchOneSong($conn,$page);
 $comments = fetchAllCommentsByVideo($conn,$page);
 $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
-// var_dump($video);
 // var_dump($comments);
 // var_dump($comments[0]);
 // var_dump($recommendations);
-
 ?>
 
 <!-- HTML content -->

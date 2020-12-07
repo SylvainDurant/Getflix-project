@@ -1,7 +1,6 @@
 <?php
 
 include('../database/functions.php');
-
 session_start(); // Start a session
 
 $_SESSION['errors'] = [];
