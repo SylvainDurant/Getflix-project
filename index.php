@@ -5,7 +5,8 @@ session_start(); // Start a session
 $categories = fetchAllCategory($conn);
 $songs = fetchAllSongs($conn);
 $musicCarousel = fetchLast4Songs($conn);
-var_dump($songs); 
+//var_dump($songs); 
+
 ?>
 
 <!-- HTML content -->
@@ -43,7 +44,6 @@ var_dump($songs);
         </a>
     </div>
 </section>
-
 
 <section id="categories">
     <div class="text-center">
@@ -100,6 +100,7 @@ var_dump($songs);
         </div>
     </div>
 </section>
+
 
 
 <section id="musicChoise">
