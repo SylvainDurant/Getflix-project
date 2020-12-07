@@ -35,7 +35,7 @@ Infinity free
 
 ### *How we did it*
 
-Our project is about streaming music video clips.
+Our project is about streaming music video.
 After analizing the project requirements and deadlines, we decided to make a list of all the functionalities.
 In order to have a good overview and to manage all these functionalities, we were agree that using Trello is the best choice. 
 
