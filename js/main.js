@@ -1,14 +1,6 @@
-// Get the modal
-var modal = document.getElementById("registrationFormModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("registrationBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close-btn")[0];
 
 function setNickname(name) {
-	document.getElementById("username").innerHTML = name;
+	/*document.getElementById("username").innerHTML = name;
 	document.querySelector("header h4.hello").classList.remove("d-none");
 	document.getElementById("startGame").classList.add("d-none");
 	document.getElementById("game").classList.remove("d-none");
@@ -16,6 +8,7 @@ function setNickname(name) {
 	modal.style.display = "none";
 }
 
+///////////////////////////////////////////////////
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
   	modal.style.display = "block";
@@ -32,6 +25,7 @@ window.onclick = function(event) {
 		modal.style.display = "none";
 	}
 }
+///////////////////////////////////////////////////
 
 // load video pages
 function move(songId){

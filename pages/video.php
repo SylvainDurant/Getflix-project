@@ -1,7 +1,5 @@
 <?php
-include('../database/db.php');
 include('../database/functions.php');
-
 session_start(); // Start a session
 
 $page = 1;
@@ -22,6 +20,7 @@ $recommendations = fetchAllSongs($conn);
 <!-- HTML content -->
 <?php include('../layouts/master.php'); ?>
 <?php include('../layouts/header.php'); ?>
+<?php include('../layouts/notifications.php'); ?>
 
 <div class="container col-12">
     <div class="row justify-content-center">
@@ -123,5 +122,3 @@ $recommendations = fetchAllSongs($conn);
 
 <?php include('../layouts/footer.php'); ?>
 <!-- end HTML content -->
-
-<?php session_unset(); // Close the session ?>

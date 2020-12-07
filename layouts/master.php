@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $url[3] == 'pages' || $url[4] != '' ? substr($url[4], 0, strpos($url[4], '.')) : 'Moosic'; ?></title>
+    <title><?php echo $page_title; ?></title>
 
     <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/2d566fa444.js" crossorigin="anonymous"></script>
@@ -17,9 +17,12 @@
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
+    <!-- Toastr css -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" /> -->
+    
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="https://yarnpkg.com/en/package/normalize.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo $url[3] == 'pages' ? '..' : '.'; ?>/css/style.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $root; ?>/css/style.css">
 </head>
 
 <body>
