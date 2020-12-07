@@ -11,7 +11,7 @@ if (isset($_GET["id"])){
 
 $video = fetchOneSong($conn,$page);
 $comments = fetchAllCommentsByVideo($conn,$page);
-$recommendations = fetchAllSongs($conn);
+$recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
 // var_dump($video);
 // var_dump($comments);
 // var_dump($comments[0]);
@@ -106,7 +106,7 @@ $recommendations = fetchAllSongs($conn);
                     <h5><u>recommendations:</u></h5>
                     <?php foreach ($recommendations as $other) { 
                         // !!!! it's user id not video id :'( !!!!!!!!!
-                        if (($other["category_id"] === $video["category_id"])&&($other["id"] != $video["id"])){ ?>
+                        if ($other["id"] != $video["id"]){ ?>
                         <div class="card col-4 col-md-12 mb-3 shadow float-left">
                             <div class='text-truncate'>
                                 <iframe width="100%" height="100" src="<?php echo $other['source']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
