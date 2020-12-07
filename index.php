@@ -5,7 +5,6 @@ session_start(); // Start a session
 $categories = fetchAllCategory($conn);
 $songs = fetchAllSongs($conn);
 $musicCarousel = fetchLast4Songs($conn);
-
 ?>
 
 <!-- HTML content -->
@@ -43,7 +42,6 @@ $musicCarousel = fetchLast4Songs($conn);
         </a>
     </div>
 </section>
-
 
 <section id="categories">
     <div class="text-center">
@@ -95,4 +93,3 @@ $musicCarousel = fetchLast4Songs($conn);
 
 <?php include('./layouts/footer.php'); ?>
 <!-- end HTML content -->
-
