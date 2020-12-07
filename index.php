@@ -86,7 +86,7 @@ $musicCarousel = fetchLast4Songs($conn);
                             if ($song["category_id"] === $category["id"]){ ?>
                     <div class="card col-12 col-sm-4 col-lg-2 m-1 shadow ">
                         <div class='text-truncate'>
-                            <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0"
+                            <iframe width="100%" height="100%" src="<?php echo $song['source']?>" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen></iframe>
                             <p><?php echo $song['artist_name'].": ". $song['title']?></p>
@@ -103,7 +103,7 @@ $musicCarousel = fetchLast4Songs($conn);
 
 
 
-<section id="musicChoise">
+<!-- <section id="musicChoise">
     <div class="text-center">
         <h3><u>Favorite music</u></h3>
         <div id="accordion">
@@ -117,7 +117,7 @@ $musicCarousel = fetchLast4Songs($conn);
                 </h5>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="contenaireBlock">
         <div class="item">
