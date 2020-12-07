@@ -14,7 +14,7 @@ if (isset($_POST['registerBtn'])) {
     }
 
     // Get input values & validate form
-    if (!empty($_POST['first_name'])) {
+    if (isset($_POST['first_name'])) {
 	  	$first_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING); // Sanitization
 	  	$_SESSION['first_name'] = $first_name;
 
@@ -22,8 +22,6 @@ if (isset($_POST['registerBtn'])) {
 	  	if (strlen($first_name) < 2 || strlen($first_name) > 60) {
 		 	$_SESSION['errors']['first_name'] = "This field must contain between 2 and 60 characters!";
 	  	}
-	} else {
-	 	$_SESSION['errors']['first_name'] = "This field is required!";
 	}
 
 	if (!empty($_POST['last_name'])) {
@@ -62,6 +60,8 @@ if (isset($_POST['registerBtn'])) {
 	  	if (strlen($pseudo) < 2 || strlen($pseudo) > 60) {
 		 	$_SESSION['errors']['pseudo'] = "This field must contain between 2 and 60 characters!";
 	  	}
+	} else {
+	 	$_SESSION['errors']['pseudo'] = "This field is required!";
 	}
 
 	if (!empty($_POST['password'])) {

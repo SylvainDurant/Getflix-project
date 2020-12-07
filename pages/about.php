@@ -14,7 +14,7 @@ session_start(); // Start a session
 		    <h3 class="display-4 text-light mt-5">About <span class="text-danger">Moosic</span></h3>
 
 		    <p class="lead text-light col-8 mx-auto">We are Moosic, an enthusiatic team with 4 web developers. We all started a couple of months ago to create websites and we have decided together to bring that knowledge to you.</p>
-		    <p class="lead text-light col-8 mx-auto">This website is a team project ....</p>
+		    <p class="lead text-light col-8 mx-auto">Our team project is a music video platform. We developed this website using tho following technologies: HTML, CSS, JavaScript, PHP and MySql.</p>
 
 		    <div class="mt-5">
 		    	<a class="" href="https://github.com/SylvainDurant/Getflix-project">
@@ -25,7 +25,7 @@ session_start(); // Start a session
 	</div>
 
     <div id="team" class="container-fluid bg-dark text-center">
-    	<div class="col-8 mx-auto p-5">
+    	<div class="col-6 mx-auto p-5">
 			<h2 class="mb-3 text-info">The Team</h2>
 	        <hr class="bg-info">
       	</div>
@@ -37,7 +37,7 @@ session_start(); // Start a session
 				</a>
 
 				<h3 class="text-danger text-nothing-you-can-do">Cristina D.</h3>
-				<p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
+				<p class="font-weight-light mb-0">"Be yourself. Everyone else is already taken..."</p>
 			</div>
 
 			<div class="col-lg-3 px-5 mb-5">
@@ -46,7 +46,7 @@ session_start(); // Start a session
 				</a>
 
 				<h3 class="text-danger text-nothing-you-can-do">Sébastien F.</h3>
-				<p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
+				<p class="font-weight-light mb-0">"A journey of a thousand miles begins with a single step..."</p>
 			</div>
 
 			<div class="col-lg-3 px-5 mb-5">
@@ -54,8 +54,8 @@ session_start(); // Start a session
 					<img class="img-fluid rounded-circle mb-3 border border-info" src="https://avatars2.githubusercontent.com/u/71309860?s=400&u=73fbae51d21fba10608550d3cc4f3b087b6abdbd&v=4" alt="Sylvain D">
 				</a>
 
-				<h3 class="text-info text-nothing-you-can-do">Sylvain D.</h3>
-				<p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
+				<h3 class="text-danger text-nothing-you-can-do">Sylvain D.</h3>
+				<p class="font-weight-light mb-0">"Every cloud has a silver lining..."</p>
 			</div>
 
 			<div class="col-lg-3 px-5 mb-5">
@@ -63,8 +63,8 @@ session_start(); // Start a session
 					<img class="img-fluid rounded-circle mb-3 border border-info" src="https://avatars3.githubusercontent.com/u/70713584?s=400&v=4" alt="Ryad O">
 				</a>
 
-				<h3 class="text-info text-nothing-you-can-do">Ryad O.</h3>
-				<p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
+				<h3 class="text-danger text-nothing-you-can-do">Ryad O.</h3>
+				<p class="font-weight-light mb-0">"It's no use being strong like an oak if it's to be stupid like an acorn..."</p>
 			</div>
 		</div>
     </div>

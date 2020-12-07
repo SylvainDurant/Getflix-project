@@ -209,5 +209,3 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
         </div>
     </div>
 </header>
-
-<?php //session_destroy(); ?>

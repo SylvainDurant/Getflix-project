@@ -1,13 +1,29 @@
 <?php
 include('db.php');
 
+function executeRequest($conn, $request, $fetchMode = 'all') { // $fetchMode = 'all', 'one' or ''
+	$stmt = $conn->prepare($request); // prepare the request in a statement
+	$stmt->execute(); // execute the statement
+	$rows = false;
+
+	if ($fetchMode = 'all') {
+		$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+		$rows = $result ? $stmt->fetchAll() : null;
+	} elseif ($fetchMode = 'one') {
+		$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+		$rows = $result ? $stmt->fetch() : null;
+	}
+
+	// ...
+
+	return $rows;
+}
+
 // Frontend
 function fetchAllSongs($conn) {
-	$request = "SELECT * FROM songs
-				-- LEFT JOIN users
-				-- ON users.id = songs.user_id
-				-- LEFT JOIN categories
-				-- ON categories.id = songs.category_id"; 
+	$request = "SELECT * FROM songs";
+
+	// return executeRequest($conn, $request);
 
 	$stmt = $conn->prepare($request); // prepare the request in a statement
 	$stmt->execute(); // execute the statement
@@ -19,11 +35,13 @@ function fetchAllSongs($conn) {
 	return $rows;
 }
 
-function fetchOneSong($conn,$id) {
+function fetchOneSong($conn, $id) {
 	$request = "SELECT * FROM songs
 				LEFT JOIN users
 				ON users.user_id = songs.user_id
 				WHERE songs.id = $id"; 
+
+	// return executeRequest($conn, $request, 'one');
 
 	$stmt = $conn->prepare($request); // prepare the request in a statement
 	$stmt->execute(); // execute the statement
@@ -98,8 +116,6 @@ function fetchAllUsers($conn) {
 	$request = "SELECT * FROM users
 				LEFT JOIN songs
 				ON songs.id = users.user_id";
-				/*LEFT JOIN comments
-				ON comments.id = users.id"; */
 
 	$stmt = $conn->prepare($request); // prepare the request in a statement
 	$stmt->execute(); // execute the statement
@@ -138,8 +154,7 @@ function createUser($conn, $data) {
 }
 
 function updateUserByConnection($conn, $id, $is_connected) {
-	// var_dump($id, $is_connected);
-	$request = "UPDATE users SET `is_connected` = $is_connected WHERE `id` = $id";
+	$request = "UPDATE users SET `is_connected` = $is_connected WHERE `user_id` = $id";
 
 	$stmt = $conn->prepare($request); // prepare the request in a statement
 	$stmt->execute(); // execute the statement
@@ -147,7 +162,7 @@ function updateUserByConnection($conn, $id, $is_connected) {
 	return $stmt->rowCount() > 0 ? true : false;
 }
 
-function fetchUserById($conn, $id = 2) {
+/*function fetchUserById($conn, $id = 2) {
 	$request = "SELECT * FROM users
 				LEFT JOIN songs
 				ON users.user_id = songs.user_id
@@ -158,7 +173,6 @@ function fetchUserById($conn, $id = 2) {
 	$stmt = $conn->prepare($request); // prepare the request in a statement
 	$stmt->execute(); // execute the statement
 
-	// set the resulting array to associative & fetch all
 	$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 	$rows = $result ? $stmt->fetchAll() : null;
 	$data = [];
@@ -187,7 +201,6 @@ function fetchUserById($conn, $id = 2) {
 	}
 
 	return $data;
-}
-
+}*/
 
 ?>
