@@ -32,3 +32,8 @@ window.onclick = function(event) {
 		modal.style.display = "none";
 	}
 }
+
+// load video pages
+function move(songId){
+	window.location.replace("./pages/video.php?id="+songId);
+}
