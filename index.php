@@ -94,6 +94,7 @@ $musicCarousel = array_slice($songs, -4); // get last 4 songs
     </div>
 </section>
 
+
 <section id="musicChoise">
     <div class="text-center">
         <h3><u>Favorite music</u></h3>
@@ -108,7 +109,7 @@ $musicCarousel = array_slice($songs, -4); // get last 4 songs
                 </h5>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="contenaireBlock">
         <div class="item">
