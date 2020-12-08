@@ -35,7 +35,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 	<nav class="navbar navbar-expand-md navbar-dark">
         <div class="d-flex justify-content-center col-lg-1">
             <a class="navbar-brand text-info p-0 m-0" href="<?php echo $root; ?>/index.php">
-                <img src="<?php echo $root; ?>/images/Moosic_T2.1.png" class="w-100"></a>
+                <img src="<?php echo $root; ?>/images/Moosic_T2.1.png" class="w-75"></a>
             </a>
         </div>
 

@@ -15,12 +15,16 @@ $songs = fetchAllSongs($conn);
 
     <?php if (isset($_GET['search'])){
         $search = $_GET['search'];
-        foreach ($songs as $value) {
-            $x = $value["artist_name"];
+        $result = [];
 
-            // if (str_contains($x, $search)){
-            //     echo "Mother Fucking Yeah!!!";
-            // }
+        foreach ($songs as $value) {
+            $artist_name = $value["artist_name"];
+
+            if (stripos($artist_name,$search) === false) {
+               echo "... not found ...";
+            } else {
+                array_push($result,$value);
+            }
         }
     } ?>
 

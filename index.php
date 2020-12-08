@@ -5,6 +5,7 @@ session_start(); // Start a session
 $categories = fetchAllCategory($conn);
 $songs = fetchAllSongs($conn);
 $musicCarousel = fetchLast4Songs($conn);
+//var_dump($songs); 
 
 ?>
 
@@ -23,16 +24,16 @@ $musicCarousel = fetchLast4Songs($conn);
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
         </ol>
-        
+
         <div class="carousel-inner">
             <?php foreach($musicCarousel as $key => $song){ ?>
-                <div class="carousel-item <?php echo $key == 0 ? 'active' : ''; ?>">
-                    <iframe class="embed-responsive-item w-100 " style="max-height:500px"
-                        src= "<?php echo $song['source'] ?>" ></iframe>
-                </div>
+            <div class="carousel-item <?php echo $key == 0 ? 'active' : ''; ?>">
+                <iframe class="embed-responsive-item w-100 " style="height:500px"
+                    src="<?php echo $song['source'] ?>"></iframe>
+            </div>
             <?php  } ?>
         </div>
-        
+
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -43,7 +44,6 @@ $musicCarousel = fetchLast4Songs($conn);
         </a>
     </div>
 </section>
-
 
 <section id="categories">
     <div class="text-center">
@@ -93,6 +93,46 @@ $musicCarousel = fetchLast4Songs($conn);
     </div>
 </section>
 
+
+
+<section id="musicChoise">
+    <div class="text-center">
+        <h3><u>Favorite music</u></h3>
+        <div id="accordion">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <div class="row p-2 justify-content-center">
+                        <?php foreach($songs as $songChoise){ ?>
+                        <iframe class="embed-responsive-item w-100 " src="<?php echo $songChoise['source'] ?>"></iframe>
+                        <?php } ?>
+                    </div>
+                </h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="contenaireBlock">
+        <div class="item">
+            <div class="card" style="width: 18rem;">
+                <p><?php foreach($songs as $songChoise){  ?>" </p>
+                    <p><?php echo $songChoise['artist_name']?></p>
+                <div class="card-body">
+                    <h5 class="card-title">Parcour de Sébastien</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                        the card's
+                        content.</p>
+                    <a href="https://www.instagram.com/aidin_firouzfar/" class="btn btn-primary" id="button1">Go
+                        somewhere</a>
+                </div>
+                <?php }?>
+            </div>
+        </div>
+        
+        
+
+
+    </div>
+</section>
+
 <?php include('./layouts/footer.php'); ?>
 <!-- end HTML content -->
-
