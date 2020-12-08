@@ -61,10 +61,9 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
         <div class="d-flex justify-content-end col-lg-5">
            <!-- Search form -->
-            <form class="form-inline form-sm active-cyan-2 mr-3">
-                <input class="form-control form-control-sm mr-2 w-75" type="text" placeholder="Search"
-                aria-label="Search">
-                <i class="fas fa-search text-danger fa-1x" aria-hidden="true"></i>
+            <form action="<?php echo $url[3] == 'pages' ? '..' : '.'; ?>/pages/search.php" method="GET" class="form-inline form-sm active-cyan-2 mr-3">
+                <input class="form-control form-control-sm mr-2 w-75" type="text" placeholder="Search" aria-label="Search" name="search" required>
+                <button type="submit" class="btn btn-outline-dark"><i class="fas fa-search text-danger fa-1x" aria-hidden="true"></i></button>
             </form>
 
             <?php if ($user && $user['is_connected']) { ?> <!-- if connected -->
