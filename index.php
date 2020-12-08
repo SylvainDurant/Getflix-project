@@ -5,8 +5,9 @@ session_start(); // Start a session
 $categories = fetchAllCategory($conn);
 $songs = fetchAllSongs($conn);
 
-// $musicCarousel = fetchLast4Songs($conn);
-$musicCarousel = array_slice($songs, -4); // get last 4 songs
+$musicCarousel = fetchLast4Songs($conn);
+$lastSongs = fetchLast4Songs($conn);
+//$musicCarousel = array_slice($songs, -4); // get last 4 songs
 // var_dump($musicCarousel); 
 ?>
 
@@ -94,8 +95,29 @@ $musicCarousel = array_slice($songs, -4); // get last 4 songs
     </div>
 </section>
 
+<section id="editorsChoice" class="border border-danger">
+    <div class="d-flex justify-content-center">
+        <h3><u>Editor's choice</u></h3>
+    </div>
+    <div class="row p-2  justify-content-center">
+        <?php foreach ($lastSongs as $song) { ?>
+        <div class="col-12 col-lg-3">
+            <div class="mx-2 card shadow px-3">
+                <div class="text-truncate">
+                    <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                    <p><?php echo $song['artist_name'].": ". $song['title']?></p>
+                </div>
+                <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
+            </div>
+        </div>
+        <?php } ?>
+    </div>
+</section>
 
-<section id="musicChoise">
+
+<!-- <section id="musicChoise">
     <div class="text-center">
         <h3><u>Favorite music</u></h3>
         <div id="accordion">
@@ -109,7 +131,7 @@ $musicCarousel = array_slice($songs, -4); // get last 4 songs
                 </h5>
             </div>
         </div>
-    </div> -->
+    </div> 
 
     <div class="contenaireBlock">
         <div class="item">
@@ -126,7 +148,7 @@ $musicCarousel = array_slice($songs, -4); // get last 4 songs
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <?php include('./layouts/footer.php'); ?>
 <!-- end HTML content -->
