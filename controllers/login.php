@@ -1,7 +1,6 @@
 <?php
 
 include('../database/functions.php');
-
 session_start(); // Start a session
 
 $_SESSION['loginErrors'] = [];
@@ -42,7 +41,8 @@ if (isset($_POST['loginBtn'])) {
                 $_SESSION['user'] = $currentUser;
 
                 // update user in the db: is_connected = true
-                $updateUser = updateUserByConnection($conn, $currentUser['id'], true); // true or false
+                $updateUser = updateUserByConnection($conn, $currentUser['user_id'], true); // true or false
+                // var_dump($updateUser); // false
 
                 if ($updateUser) {
                     $_SESSION['user']['is_connected'] = true;

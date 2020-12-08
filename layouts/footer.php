@@ -1,16 +1,16 @@
     <!-- Footer -->
-    <footer class="page-footer font-small indigo bg-warning">
+    <footer class="text-light bg-info">
 
       <!-- Footer Links -->
       <div class="container">
 
         <!-- Grid row-->
-        <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+        <div class="row text-center d-flex justify-content-center pt-5 mb-2">
 
           <!-- Grid column -->
           <div class="col-md-2 mb-3">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="https://github.com/SebastienFirouzfar">Sebastien</a>
+              <a class="text-light size-8" href="https://github.com/SebastienFirouzfar">Sebastien</a>
             </h6>
           </div>
           <!-- Grid column -->
@@ -18,7 +18,7 @@
           <!-- Grid column -->
           <div class="col-md-2 mb-3">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="https://github.com/Shticrina">Cristina </a>
+              <a class="text-light size-8" href="https://github.com/Shticrina">Cristina</a>
             </h6>
           </div>
           <!-- Grid column -->
@@ -26,7 +26,7 @@
           <!-- Grid column -->
           <div class="col-md-2 mb-3">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="https://github.com/ryadouelhadj">ryad </a>
+              <a class="text-light size-8" href="https://github.com/ryadouelhadj">Ryad</a>
             </h6>
           </div>
           <!-- Grid column -->
@@ -34,27 +34,18 @@
           <!-- Grid column -->
           <div class="col-md-2 mb-3">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="https://github.com/SylvainDurant">Sylvain  </a> 
+              <a class="text-light size-8" href="https://github.com/SylvainDurant">Sylvain</a> 
             </h6>
           </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <!-- <div class="col-md-2 mb-3">
-            <h6 class="text-uppercase font-weight-bold">
-             <a href="#!">Help</a>
-            </h6>
-          </div> -->
-          <!-- Grid column -->
 
         </div>
-        <!-- Grid row-->
-        <hr class="rgba-white-light" style="margin: 0 15%;">
 
         <!-- Grid row-->
-        <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+        <hr class="bg-secondary" style="margin: 0 15%;">
 
-        
+        <!-- Grid row-->
+        <!-- <div class="row d-flex text-center justify-content-center mb-md-0 mb-4"> -->
+
           <!-- Grid column -->
           <!-- <div class="col-md-8 col-12 mt-5">
             <p style="line-height: 1.7rem"> 
@@ -71,69 +62,46 @@
           </div> -->
           <!-- Grid column -->
 
-        </div>
-        <!-- Grid row-->
+        <!-- </div> -->
+
         <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
 
         <!-- Grid row-->
-        <div class="row pb-2 text-center mt-5">
-
+        <div class="row pb-2 text-center mt-4">
 
           <!-- Grid column -->
           <div class="col-lg-2 col-sm-2 ">
-             <a class="fb-ic"><i class="fa fa-github"></i></a>
+             <a class="text-dark"><i class="fa fa-github fa-2x"></i></a>
           </div>
 
           <div class="col-lg-2 col-sm-2">
-              <a class="fb-ic"><i class="fab fa-css3"></i></a>
+              <a class="text-dark"><i class="fab fa-css3 fa-2x"></i></a>
           </div>
 
           <div class="col-lg-2 col-sm-2">
-             <a class="fb-ic"><i class="fab fa-html5"></i></a>
+             <a class="text-dark"><i class="fab fa-html5 fa-2x"></i></a>
           </div>
 
           <div class="col-lg-2 col-sm-2">
-             <a class="fb-ic"><i class="fab fa-js-square"></i></a>
+             <a class="text-dark"><i class="fab fa-js-square fa-2x"></i></a>
           </div>
 
           <div class="col-lg-2 col-sm-2">
-             <a class="fb-ic"><i class="fab fa-php"></i></a>
+             <a class="text-dark"><i class="fab fa-php fa-2x"></i></a>
           </div>
         
           <div class="col-lg-2 col-sm-2">
-             <a class="fb-ic"><i class="fas fa-database"></i></a>
+             <a class="text-dark"><i class="fas fa-database fa-2x"></i></a>
           </div>
-
-          </div>
-        <!-- Grid row-->
-
-          <!--  <div class="mb-5 flex-center col-md- "
-
-              <div class="g">
-                <a class="fb-ic"><i class="fa fa-github"></i></a>
-                <a class="fb-ic"><i class="fab fa-css3"></i></a>
-                <a class="fb-ic"><i class="fab fa-html5"></i></a>
-                <a class="fb-ic"><i class="fab fa-js-square"></i></a>
-                <a class="fb-ic"><i class="fab fa-php"></i></a>
-                <a class="fb-ic"><i class="fas fa-database"></i></a>
-              </div>
-
-            </div>
-
-    -->
-
-          </div>
-          <!-- Grid column -->
 
         </div>
-        <!-- Grid row-->
-
+        
       </div>
       <!-- Footer Links -->
 
       <!-- Copyright -->
-      <div class="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="https://github.com/SylvainDurant/Getflix-project"> Moosic github</a>
+      <div class="text-14 text-center py-3">© 2020 Copyright:
+        <a href="https://github.com/SylvainDurant/Getflix-project" class="text-dark font-weight-bold"> Moosic github</a>
       </div> 
       <!-- Copyright -->
 
@@ -151,7 +119,7 @@
           <a href="#!" class="text-light text-uppercase font-weight-bold">Help</a>
       </div>
 
-      <hr class="rgba-white-light w-50">
+      <hr class="w-50">
 
       <div class="d-flex col-8 mx-auto justify-content-center flex-column text-center mt-5 mb-3">
         <p style="line-height: 1.7rem">
