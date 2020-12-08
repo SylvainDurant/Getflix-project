@@ -13,8 +13,17 @@ body {
   background:rgba(32, 32, 32, 0.3) !important;
 }
 
+a, a:hover {
+  text-decoration: none;
+}
+
 .text-14 {
 	font-size: 14px;
+}
+
+.size-8 {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
 }
 
 .form-control-sm {

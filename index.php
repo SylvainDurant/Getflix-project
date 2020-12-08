@@ -4,9 +4,10 @@ session_start(); // Start a session
 
 $categories = fetchAllCategory($conn);
 $songs = fetchAllSongs($conn);
-$musicCarousel = fetchLast4Songs($conn);
-//var_dump($songs); 
 
+// $musicCarousel = fetchLast4Songs($conn);
+$musicCarousel = array_slice($songs, -4); // get last 4 songs
+// var_dump($musicCarousel); 
 ?>
 
 <!-- HTML content -->
@@ -26,11 +27,11 @@ $musicCarousel = fetchLast4Songs($conn);
         </ol>
 
         <div class="carousel-inner">
-            <?php foreach($musicCarousel as $key => $song){ ?>
-            <div class="carousel-item <?php echo $key == 0 ? 'active' : ''; ?>">
-                <iframe class="embed-responsive-item w-100 " style="height:500px"
-                    src="<?php echo $song['source'] ?>"></iframe>
-            </div>
+            <?php foreach($musicCarousel as $key => $song) { ?>
+                <div class="carousel-item <?php echo $key == 0 ? 'active' : ''; ?>">
+                    <iframe class="embed-responsive-item w-100 " style="height:500px"
+                        src= "<?php echo $song['source'] ?>"></iframe>
+                </div>
             <?php  } ?>
         </div>
 
@@ -94,7 +95,6 @@ $musicCarousel = fetchLast4Songs($conn);
 </section>
 
 
-
 <section id="musicChoise">
     <div class="text-center">
         <h3><u>Favorite music</u></h3>
@@ -109,28 +109,22 @@ $musicCarousel = fetchLast4Songs($conn);
                 </h5>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="contenaireBlock">
         <div class="item">
             <div class="card" style="width: 18rem;">
-                <p><?php foreach($songs as $songChoise){  ?>" </p>
+                <?php foreach($songs as $songChoise) { ?>
                     <p><?php echo $songChoise['artist_name']?></p>
-                <div class="card-body">
-                    <h5 class="card-title">Parcour de Sébastien</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                        the card's
-                        content.</p>
-                    <a href="https://www.instagram.com/aidin_firouzfar/" class="btn btn-primary" id="button1">Go
-                        somewhere</a>
-                </div>
-                <?php }?>
+
+                    <div class="card-body">
+                        <h5 class="card-title">Parcour de Sébastien</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="https://www.instagram.com/aidin_firouzfar/" class="btn btn-primary" id="button1">Go           somewhere</a>
+                    </div>
+                <?php } ?>
             </div>
         </div>
-        
-        
-
-
     </div>
 </section>
 

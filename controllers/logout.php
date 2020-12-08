@@ -1,10 +1,9 @@
 <?php
 
 include('../database/functions.php');
-
 session_start(); // Start a session
 
-$userId = isset($_SESSION['user']) ? $_SESSION['user']['id'] : null;
+$userId = isset($_SESSION['user']) ? $_SESSION['user']['user_id'] : null;
 
 // update user in the db: is_connected = false
 $updateUser = isset($userId) ? updateUserByConnection($conn, $userId, 0) : false;

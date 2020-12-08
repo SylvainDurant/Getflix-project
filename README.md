@@ -53,6 +53,13 @@ In order to have a good overview and to manage all these functionalities, we wer
 
 - While coding, we tried to add comments in order that everybody understands the meaning of that code 
 
+### Mockup used 
+- For the main page, we've used [this mokeup](http://demo.dawnthemes.com/viem/).  
+- For the video pages, we've used a selfmade (and beautiful) design:  
+[![](https://github.com/SylvainDurant/Getflix-project/blob/main/images/video.png?raw=true)](https://github.com/SylvainDurant/Getflix-project/blob/main/images/video.png?raw=true)
+- The rest of the pages followed the same design as the first two pages.  
+  
+We've used [Bootstrap](https://getbootstrap.com/) for this project.
 ### See Project
 
 *[www.moosic.com](https://github.com/SylvainDurant/Getflix-project)*
