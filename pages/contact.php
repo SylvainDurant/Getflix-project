@@ -13,21 +13,21 @@ session_start(); // Start a session
     <form>
         <div class="form-group">
             <label for="exampleInputEmail1">Your name</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                 placeholder="Enter email">
         </div>
 
 
         <div class="form-group">
             <label for="exampleInputEmail1">Your last name</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                 placeholder="Enter email">
         </div>
 
 
         <div class="form-group">
             <label for="exampleInputEmail1">Your email address</label>
-            <input type="text" class="form-control" id="textInput" aria-describedby="emailHelp"
+            <input type="email" class="form-control" id="textInput" aria-describedby="emailHelp"
                 placeholder="Enter email">
         </div>
 
