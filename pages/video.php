@@ -19,7 +19,7 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
 <?php include('../layouts/master.php'); ?>
 <?php include('../layouts/header.php'); ?>
 
-<div class="container col-12">
+<div class="container col-12 videoBackground">
     <div class="row justify-content-center">
         <div class="col-11 mt-3 shadow-lg mb-5">
             <div class="embed-responsive embed-responsive-16by9 mb-1" style="max-height:500px">
@@ -119,5 +119,3 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
 
 <?php include('../layouts/footer.php'); ?>
 <!-- end HTML content -->
-
-<?php session_unset(); // Close the session ?>
