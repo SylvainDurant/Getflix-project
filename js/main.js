@@ -1,3 +1,9 @@
+// Get the <span> elements that closes the modals
+var closeModalBtns = document.querySelectorAll(".close");
+
+// Get the modal elements
+var modals = document.querySelectorAll(".modal.fade");
+
 // load video pages
 function move(songId,index){
 	if (index){
@@ -6,3 +12,18 @@ function move(songId,index){
 		window.location.replace("./video.php?id="+songId);
 	}
 }
+
+function hideModals() {
+	Array.from(modals).forEach((modal) => {
+		modal.classList.remove("show");
+	  	modal.classList.remove("d-block");
+  	});
+}
+
+Array.from(closeModalBtns).forEach((btn) => {
+    btn.onclick = function() {
+	  	hideModals();
+	}
+});
+
+hideModals();

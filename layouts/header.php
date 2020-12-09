@@ -102,7 +102,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
     </nav>
 
     <!-- Registration form Modal window -->
-    <div id="registrationFormModal" class="modal fade <?php echo (count($errors) > 0) ? 'show d-block' : ''; ?>" role="dialog">
+    <div id="registrationFormModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <!-- Modal content-->
             <div class="modal-content">
@@ -118,7 +118,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                         <div class="d-flex justify-content-between">
                             <div class="form-group flex-fill">
                                 <!-- First name -->
-                                <label class="control-label" for="first_name">First name*</label>
+                                <label class="control-label" for="first_name">First name</label>
                                 <input type="text" name="first_name" value="<?php echo $first_name; ?>" class="form-control <?php echo $first_name_error ? 'border border-danger' : ''; ?>">
                                 <small class="text-danger"><?php echo $first_name_error; ?></small>
                             </div>
@@ -134,7 +134,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                         <div class="d-flex justify-content-between">
                             <div class="form-group flex-fill">
                                 <!-- Pseudo -->
-                                <label class="control-label" for="pseudo">Pseudo</label>
+                                <label class="control-label" for="pseudo">Pseudo*</label>
                                 <input type="text" name="pseudo" value="<?php echo $pseudo; ?>" class="form-control <?php echo $pseudo_error ? 'border border-danger' : ''; ?>">
                                 <small class="text-danger"><?php echo $pseudo_error; ?></small>
                             </div>
@@ -170,7 +170,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                         </div>
                         
                         <div class="form-group col-12 text-right px-3">
-                            <button type="submit" class="btn btn-success" name="registerBtn">Register</button>
+                            <button type="submit" class="btn btn-info" name="registerBtn">Register</button>
                         </div>
                     </form>
                 </div>
@@ -179,7 +179,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
     </div>
 
     <!-- Login form Modal window -->
-    <div id="loginFormModal" class="modal fade <?php echo (count($loginErrors) > 0) ? 'show d-block' : ''; ?>" role="dialog">
+    <div id="loginFormModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
             <!-- Modal content-->
             <div class="modal-content">
@@ -194,13 +194,13 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
                         <div class="form-group">
                             <!-- E-mail -->
-                            <label class="control-label" for="login_email">E-mail</label>
+                            <label class="control-label" for="login_email">E-mail*</label>
                             <input type="email" id="login_email" name="login_email" value="<?php echo $login_email; ?>" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <!-- Password -->
-                            <label class="control-label" for="login_password">Password</label>
+                            <label class="control-label" for="login_password">Password*</label>
                             <input type="password" id="login_password" name="login_password" value="<?php echo $login_password; ?>" class="form-control">
                         </div>
 
@@ -209,7 +209,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                         <?php } ?>
                         
                         <div class="form-group col-12 text-right px-3">
-                            <button type="submit" class="btn btn-success" name="loginBtn">Login</button>
+                            <button type="submit" class="btn btn-info" name="loginBtn">Login</button>
                         </div>
                     </form>
                 </div>
@@ -217,3 +217,22 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
         </div>
     </div>
 </header>
+
+<script>
+    var sessionLogin = <?= json_encode(['loginErrors' => $loginErrors]); ?>;
+    var sessionRegister = <?= json_encode(['registerErrors' => $errors]); ?>;
+    var loginModal = document.getElementById("loginFormModal");
+    var registrationModal = document.getElementById("registrationFormModal");
+
+    if (Object.keys(sessionLogin['loginErrors']).length != 0) {
+        console.log('has errors in login modal');
+        loginModal.classList.add('show');
+        loginModal.classList.add('d-block');
+    }
+
+    if (Object.keys(sessionRegister['registerErrors']).length != 0) {
+        console.log('has errors in register modal');
+        registrationModal.classList.add('show');
+        registrationModal.classList.add('d-block');
+    }
+</script>

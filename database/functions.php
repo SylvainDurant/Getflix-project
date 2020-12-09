@@ -13,7 +13,7 @@ function executeRequest($conn, $request, $fetchMode = 'all') { // $fetchMode = '
 		$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 		$rows = $result ? $stmt->fetch() : null;
 	} elseif ($fetchMode == '') {
-		$rows = $stmt->rowCount() > 0 ? true : false; // for updateUserByConnection
+		$rows = $stmt->rowCount() > 0 ? true : false; // for updateUserByConnection()
 	}
 
 	return $rows;
@@ -51,7 +51,7 @@ function fetchAllCategory($conn) {
 function fetchAllSongsByCategory($conn,$id) {
 	$request = "SELECT * FROM songs WHERE songs.category_id = $id"; 
 
-	return executeRequest($conn, $request);
+	return executeRequest($conn, $request); // 'all'
 }
 
 function fetchAllCommentsByVideo($conn,$id) {
