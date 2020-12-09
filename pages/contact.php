@@ -1,7 +1,24 @@
 <?php
 include('../database/functions.php');
 session_start(); // Start a session
-var_dump($_SESSION); 
+//var_dump($_SESSION['contactErrors']); 
+//var_dump($_SESSION['contact']);
+
+// Handle errors by type
+$contactErrors = isset($_SESSION['contactErrors']) ? $_SESSION['contactErrors'] : [];
+$contact_firstName_error = count($contactErrors) > 0 && isset($contactErrors['firstname']) ? $contactErrors['firstname'] : "";
+$contact_lastName_error = count($contactErrors) > 0 && isset($contactErrors['lastname']) ? $contactErrors['lastname'] : "";
+$contact_email_error = count($contactErrors) > 0 && isset($contactErrors['emailname']) ? $contactErrors['emailname'] : "";
+$contact_message_error = count($contactErrors) > 0 && isset($contactErrors['messagecontact']) ? $contactErrors['messagecontact'] : "";
+
+// Get the input values in order to reinsert them in the form
+$firstnameValue = isset($_SESSION['contact']['firstnamecontact']) ? $_SESSION['contact']['firstnamecontact'] : '';
+$lastnameValue = isset($_SESSION['contact']['lastnamecontact']) ? $_SESSION['contact']['lastnamecontact'] : '';
+$emailValue = isset($_SESSION['contact']['emailname']) ? $_SESSION['contact']['emailname'] : '';
+$messageValue = isset($_SESSION['contact']['message']) ? $_SESSION['contact']['message'] : '';
+
+//$firstnamecontact = isset($_SESSION['firstnamecontact']) ? $_SESSION['firstnamecontact'] : '';
+//$lastnamecontact = isset($_SESSION['firstnamecontact']) ? $_SESSION['firstnamecontact'] : '';
 ?>
 
 <!-- HTML content -->
@@ -9,31 +26,36 @@ var_dump($_SESSION);
 <?php include('../layouts/header.php'); ?>
 <?php include('../layouts/notifications.php'); ?>
 
+
 <section id="content" class="border border-info p-5">
 
     <form action="../controllers/contactUser.php" method="POST">
         <div class="form-group">
-            <label for="firstnamecontact">Your name</label>
-            <input type="text" name="firstnamecontact" class="form-control" aria-describedby="emailHelp">
+            <label for="firstnamecontact">First name</label>
+            <input type="text" name="firstnamecontact" class="form-control" value="<?php echo $firstnameValue; ?>" >
+            <small class="text-danger"><?php echo $contact_firstName_error ; ?></small>
         </div>
 
 
         <div class="form-group">
-            <label for="lastnamecontact">Your last name</label>
-            <input type="text" name="lastnamecontact" class="form-control">
+            <label for="lastnamecontact">Last name</label>
+            <input type="text" name="lastnamecontact" class="form-control" value="<?php echo $lastnameValue; ?>" >
+            <small class="text-danger"><?php echo $contact_lastName_error; ?></small>
         </div>
 
 
         <div class="form-group">
-            <label for="emailcontact">Your email address</label>
-            <input type="email" name="emailcontact" class="form-control">
+            <label for="emailcontact">Email address</label>
+            <input type="email" name="emailcontact" class="form-control" value="<?php echo $emailValue; ?>" >
+            <small class="text-danger"><?php echo $contact_email_error; ?></small>
         </div>
 
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text">Message</span>
             </div>
-            <textarea class="form-control" name="messagecontact" aria-label="With textarea"></textarea>
+            <textarea class="form-control" name="messagecontact" aria-label="With textarea"><?php echo $messageValue; ?>  </textarea>
+            <small class="text-danger"><?php echo $contact_message_error; ?></small>
         </div>
         <div class="form-group text-right p-2">
             <button type="submit" name='buttonContact' class="btn btn-info ">Send</button>
