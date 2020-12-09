@@ -11,7 +11,6 @@ $categories = fetchAllCategory($conn);
 <!-- HTML content -->
 <?php include('../layouts/master.php'); ?>
 <?php include('../layouts/header.php'); ?>
-<?php include('../layouts/notifications.php'); ?>
 
 <section id="result" class="border border-info p-5 text-center">
 

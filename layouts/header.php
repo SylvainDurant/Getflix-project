@@ -1,15 +1,16 @@
 <?php
+// var_dump($_SESSION);
 
 // Get the input values in order to reinsert them in the form
-$login_password = isset($_SESSION['login_password']) ? $_SESSION['login_password'] : '';
-$login_email = isset($_SESSION['login_email']) ? $_SESSION['login_email'] : '';
+$login_password = isset($_SESSION['loginValues']['password']) ? $_SESSION['loginValues']['password'] : '';
+$login_email = isset($_SESSION['loginValues']['email']) ? $_SESSION['loginValues']['email'] : '';
 
-$last_name = isset($_SESSION['last_name']) ? $_SESSION['last_name'] : '';
-$first_name = isset($_SESSION['first_name']) ? $_SESSION['first_name'] : '';
-$pseudo = isset($_SESSION['pseudo']) ? $_SESSION['pseudo'] : '';
-$email = isset($_SESSION['email']) ? $_SESSION['email'] : '';
-$password = isset($_SESSION['password']) ? $_SESSION['password'] : '';
-$password_confirm = isset($_SESSION['password_confirm']) ? $_SESSION['password_confirm'] : '';
+$last_name = isset($_SESSION['registerValues']['last_name']) ? $_SESSION['registerValues']['last_name'] : '';
+$first_name = isset($_SESSION['registerValues']['first_name']) ? $_SESSION['registerValues']['first_name'] : '';
+$pseudo = isset($_SESSION['registerValues']['pseudo']) ? $_SESSION['registerValues']['pseudo'] : '';
+$email = isset($_SESSION['registerValues']['email']) ? $_SESSION['registerValues']['email'] : '';
+$password = isset($_SESSION['registerValues']['password']) ? $_SESSION['registerValues']['password'] : '';
+$password_confirm = isset($_SESSION['registerValues']['password_confirm']) ? $_SESSION['registerValues']['password_confirm'] : '';
 
 $song_title = isset($_SESSION['song_title']) ? $_SESSION['song_title'] : '';
 $song_artist = isset($_SESSION['song_artist']) ? $_SESSION['song_artist'] : '';
@@ -22,21 +23,20 @@ $song_description = isset($_SESSION['song_description']) ? $_SESSION['song_descr
 
 // Handle errors by type
 $loginErrors = isset($_SESSION['loginErrors']) ? $_SESSION['loginErrors'] : [];
-$login_password_error = count($loginErrors) > 0 && isset($loginErrors['login_password']) ? $loginErrors['login_password'] : "";
-$login_email_error = count($loginErrors) > 0 && isset($loginErrors['login_email']) ? $loginErrors['login_email'] : "";
+$login_password_error = count($loginErrors) > 0 && isset($loginErrors['password']) ? $loginErrors['password'] : "";
+$login_email_error = count($loginErrors) > 0 && isset($loginErrors['email']) ? $loginErrors['email'] : "";
 $credentials_error = count($loginErrors) > 0 && isset($loginErrors['credentials']) ? $loginErrors['credentials'] : "";
 
-$errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
-$last_name_error = isset($errors) && isset($errors['last_name']) ? $errors['last_name'] : "";
-$first_name_error = isset($errors) && isset($errors['first_name']) ? $errors['first_name'] : "";
-$pseudo_error = isset($errors) && isset($errors['pseudo']) ? $errors['pseudo'] : "";
-$email_error = isset($errors) && isset($errors['email']) ? $errors['email'] : "";
-$password_error = isset($errors) && isset($errors['password']) ? $errors['password'] : "";
-$password_confirm_error = isset($errors) && isset($errors['password_confirm']) ? $errors['password_confirm'] : "";
+$registerErrors = isset($_SESSION['registerErrors']) ? $_SESSION['registerErrors'] : [];
+$last_name_error = isset($registerErrors) && isset($registerErrors['last_name']) ? $registerErrors['last_name'] : "";
+$first_name_error = isset($registerErrors) && isset($registerErrors['first_name']) ? $registerErrors['first_name'] : "";
+$pseudo_error = isset($registerErrors) && isset($registerErrors['pseudo']) ? $registerErrors['pseudo'] : "";
+$email_error = isset($registerErrors) && isset($registerErrors['email']) ? $registerErrors['email'] : "";
+$password_error = isset($registerErrors) && isset($registerErrors['password']) ? $registerErrors['password'] : "";
+$password_confirm_error = isset($registerErrors) && isset($registerErrors['password_confirm']) ? $registerErrors['password_confirm'] : "";
 
 // Get current user, if connected
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
-// var_dump($_SESSION);
 ?>
 
 <header id="myheader" class="py-1 text-center text-info">
@@ -220,19 +220,26 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
 <script>
     var sessionLogin = <?= json_encode(['loginErrors' => $loginErrors]); ?>;
-    var sessionRegister = <?= json_encode(['registerErrors' => $errors]); ?>;
+    var sessionRegister = <?= json_encode(['registerErrors' => $registerErrors]); ?>;
     var loginModal = document.getElementById("loginFormModal");
     var registrationModal = document.getElementById("registrationFormModal");
 
-    if (Object.keys(sessionLogin['loginErrors']).length != 0) {
+    // console.log("Object.keys(sessionLogin['loginErrors']): "+Object.keys(sessionLogin['loginErrors']).length);
+    // console.log("Object.keys(sessionRegister['registerErrors']): "+Object.keys(sessionRegister['registerErrors']).length);
+
+    if (Object.keys(sessionLogin['loginErrors']).length > 0) {
         console.log('has errors in login modal');
         loginModal.classList.add('show');
         loginModal.classList.add('d-block');
+    } else {
+        //reset login modal
     }
 
     if (Object.keys(sessionRegister['registerErrors']).length != 0) {
         console.log('has errors in register modal');
         registrationModal.classList.add('show');
         registrationModal.classList.add('d-block');
+    } else {
+        //reset register modal
     }
 </script>
