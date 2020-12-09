@@ -29,7 +29,15 @@ function fetchOneSong($conn, $id) {
 	$request = "SELECT * FROM songs
 				LEFT JOIN users
 				ON users.user_id = songs.user_id
-				WHERE songs.id = $id"; 
+				WHERE songs.id = '$id'"; 
+
+	return executeRequest($conn, $request, 'one');
+}
+
+function fetchSongByTitle($conn,$title,$artist) {
+	$request = "SELECT * FROM songs
+				WHERE songs.title = '$title'
+				AND songs.artist_name = '$artist'"; 
 
 	return executeRequest($conn, $request, 'one');
 }
@@ -93,6 +101,24 @@ function createUser($conn, $data) {
 
 	$request = "INSERT INTO users (first_name, last_name, pseudo, email, password, is_connected) 
 				VALUES ('$first_name', '$last_name', '$pseudo', '$email', '$password', true)";
+
+	$stmt = $conn->prepare($request); // prepare the request in a statement
+	$stmt->execute();
+}
+
+function createSong($conn, $data) {
+	$title = $data['title'];
+	$description = $data['description'];
+	$source = $data['source'];
+	$artist_name = $data['artist_name'];
+	$album_name = $data['album_name'];
+	$album_image = $data['album_image'];
+	$released_date = $data['released_date'];
+	$user_id = $data['user_id'];
+	$category_id = $data['category_id'];
+
+	$request = "INSERT INTO songs (`title`, `description`, `source`, `artist_name`, `album_name`, `album_image`, `released_date`, `user_id`, `category_id`) 
+				VALUES ('$title', '$description', '$source', '$artist_name', '$album_name', '$album_image', '$released_date', '$user_id', '$category_id')";
 
 	$stmt = $conn->prepare($request); // prepare the request in a statement
 	$stmt->execute();
