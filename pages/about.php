@@ -1,12 +1,31 @@
 <?php
 include('../database/db.php');
 session_start(); // Start a session
+
+$success_message = isset($_SESSION['success_message']) ? $_SESSION['success_message'] : '';
+$signout_success = isset($_SESSION['signout_success']) ? $_SESSION['signout_success'] : '';
+
+if (!empty($success_message)) {
+    unset($_SESSION['success_message']);
+    unset($_SESSION['registerErrors']);
+    unset($_SESSION['loginErrors']);
+    unset($_SESSION['registerValues']);
+    unset($_SESSION['loginValues']);
+}
+
+if (!empty($signout_success)) {
+    unset($_SESSION['signout_success']);
+    unset($_SESSION['registerErrors']);
+    unset($_SESSION['loginErrors']);
+    unset($_SESSION['registerValues']);
+    unset($_SESSION['loginValues']);
+    unset($_SESSION['user']);
+}
 ?>
 
 <!-- HTML content -->
 <?php include('../layouts/master.php'); ?>
 <?php include('../layouts/header.php'); ?>
-<?php include('../layouts/notifications.php'); ?>
 
 <section id="about" class="container-fluid p-0">
 	<div id="header-about" class="">
@@ -72,3 +91,18 @@ session_start(); // Start a session
 
 <?php include('../layouts/footer.php'); ?>
 <!-- end HTML content -->
+
+<script type="text/javascript">
+	$(function() {
+		var success_message = "<?php echo $success_message; ?>";
+		var signout_success = "<?php echo $signout_success; ?>";
+
+        if (success_message != '') {
+            toastr.info(success_message);
+        }
+
+        if (signout_success != '') {
+            toastr.info(signout_success);
+        }
+	});
+</script>

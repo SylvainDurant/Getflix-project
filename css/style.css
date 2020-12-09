@@ -42,6 +42,13 @@ a, a:hover {
     background-color: #2b2d30!important;
 }
 
+
+/*Style Toastr messages*/
+.toast-top-center,
+.toast-bottom-full-width { 
+    top: 90px;
+} 
+
 /* Style Header */
 #myheader {
     background-color: #1b1b1b;
