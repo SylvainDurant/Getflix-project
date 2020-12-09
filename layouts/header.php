@@ -12,6 +12,15 @@ $email = isset($_SESSION['registerValues']['email']) ? $_SESSION['registerValues
 $password = isset($_SESSION['registerValues']['password']) ? $_SESSION['registerValues']['password'] : '';
 $password_confirm = isset($_SESSION['registerValues']['password_confirm']) ? $_SESSION['registerValues']['password_confirm'] : '';
 
+$song_title = isset($_SESSION['song_title']) ? $_SESSION['song_title'] : '';
+$song_artist = isset($_SESSION['song_artist']) ? $_SESSION['song_artist'] : '';
+$song_category = isset($_SESSION['song_category']) ? $_SESSION['song_category'] : '';
+$song_url = isset($_SESSION['song_url']) ? $_SESSION['song_url'] : '';
+$song_album = isset($_SESSION['song_album']) ? $_SESSION['song_album'] : '';
+$song_date = isset($_SESSION['song_date']) ? $_SESSION['song_date'] : '';
+$song_album_image = isset($_SESSION['song_album_image']) ? $_SESSION['song_album_image'] : '';
+$song_description = isset($_SESSION['song_description']) ? $_SESSION['song_description'] : '';
+
 // Handle errors by type
 $loginErrors = isset($_SESSION['loginErrors']) ? $_SESSION['loginErrors'] : [];
 $login_password_error = count($loginErrors) > 0 && isset($loginErrors['password']) ? $loginErrors['password'] : "";
@@ -61,7 +70,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
         <div class="d-flex justify-content-end col-lg-5">
            <!-- Search form -->
-            <form action="<?php echo $url[3] == 'pages' ? '..' : '.'; ?>/pages/search.php" method="GET" class="form-inline form-sm active-cyan-2 mr-3">
+            <form action="<?php echo $url[3] == 'pages' ? '..' : '.'; ?>/pages/search.php" method="POST" class="form-inline form-sm active-cyan-2 mr-3">
                 <input class="form-control form-control-sm mr-2 w-75" type="text" placeholder="Search" aria-label="Search" name="search" required>
                 <button type="submit" class="btn btn-outline-dark"><i class="fas fa-search text-danger fa-1x" aria-hidden="true"></i></button>
             </form>
