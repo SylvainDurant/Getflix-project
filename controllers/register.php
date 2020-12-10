@@ -3,7 +3,7 @@
 include('../database/functions.php');
 session_start(); // Start a session
 
-$_SESSION['sessionErrors'] = [];
+$_SESSION['registerErrors'] = [];
 $previous_page = '';
 
 if (isset($_POST['registerBtn'])) {
@@ -19,7 +19,7 @@ if (isset($_POST['registerBtn'])) {
 
 	  	// Validation
 	  	if (strlen($first_name) < 2 || strlen($first_name) > 60) {
-		 	$_SESSION['sessionErrors']['first_name'] = "This field must contain between 2 and 60 characters!";
+		 	$_SESSION['registerErrors']['first_name'] = "This field must contain between 2 and 60 characters!";
 	  	}
 	}
 
@@ -29,10 +29,10 @@ if (isset($_POST['registerBtn'])) {
 
 		// Validation
 		if (strlen($last_name) < 2 || strlen($last_name) > 60) {
-		 	$_SESSION['sessionErrors']['last_name'] = "This field must contain between 2 and 60 characters!";
+		 	$_SESSION['registerErrors']['last_name'] = "This field must contain between 2 and 60 characters!";
 		}
 	} else {
-	 	$_SESSION['sessionErrors']['last_name'] = "This field is required!";
+	 	$_SESSION['registerErrors']['last_name'] = "This field is required!";
 	}
 
 	if (!empty($_POST['email'])) {
@@ -41,14 +41,14 @@ if (isset($_POST['registerBtn'])) {
 
 	  	// Validation
 	  	if (false == filter_var($email, FILTER_VALIDATE_EMAIL)) {
-		 	$_SESSION['sessionErrors']['email'] = "Invalid field!";
+		 	$_SESSION['registerErrors']['email'] = "Invalid field!";
 	  	}
 
 	  	if (strlen($email) > 255) {
-		 	$_SESSION['sessionErrors']['email'] = "This field must contain maximum 255 characters!";
+		 	$_SESSION['registerErrors']['email'] = "This field must contain maximum 255 characters!";
 	  	}
 	} else {
-	 	$_SESSION['sessionErrors']['email'] = "This field is required!";
+	 	$_SESSION['registerErrors']['email'] = "This field is required!";
 	}
 	  
 	if (isset($_POST['pseudo'])) {
@@ -57,10 +57,10 @@ if (isset($_POST['registerBtn'])) {
 
 	  	// Validation
 	  	if (strlen($pseudo) < 2 || strlen($pseudo) > 60) {
-		 	$_SESSION['sessionErrors']['pseudo'] = "This field must contain between 2 and 60 characters!";
+		 	$_SESSION['registerErrors']['pseudo'] = "This field must contain between 2 and 60 characters!";
 	  	}
 	} else {
-	 	$_SESSION['sessionErrors']['pseudo'] = "This field is required!";
+	 	$_SESSION['registerErrors']['pseudo'] = "This field is required!";
 	}
 
 	if (!empty($_POST['password'])) {
@@ -69,33 +69,33 @@ if (isset($_POST['registerBtn'])) {
 
 	  	// Validation
 	  	if (strlen($password) < 6 || strlen($password) > 255) {
-		 	$_SESSION['sessionErrors']['password'] = "This field must contain between 6 and 255 characters!";
+		 	$_SESSION['registerErrors']['password'] = "This field must contain between 6 and 255 characters!";
 	  	}
 	} else {
-	 	$_SESSION['sessionErrors']['password'] = "This field is required!";
+	 	$_SESSION['registerErrors']['password'] = "This field is required!";
 	}
 
 	if (!empty($_POST['password_confirm'])) {
 	  	$password_confirm = filter_var($_POST['password_confirm'], FILTER_SANITIZE_STRING); // Sanitization
 	  	$_SESSION['registerValues']['password_confirm'] = $password_confirm;
 	} else {
-	 	$_SESSION['sessionErrors']['password_confirm'] = "This field is required!";
+	 	$_SESSION['registerErrors']['password_confirm'] = "This field is required!";
 	}
 
 	if ($password != $password_confirm) {
-		$_SESSION['sessionErrors']['password'] = "Password and password_confirm doesn't match!";
+		$_SESSION['registerErrors']['password'] = "Password and password_confirm doesn't match!";
 	}
 
   	// check if the user email exists in the db
   	$checkUser = getUserByEmail($conn, $email); // array OR false
 
     if ($checkUser != false) { // if the user email doesn't exists in the db
-    	$_SESSION['sessionErrors']['email'] = "This email already exists! Please try again.";
+    	$_SESSION['registerErrors']['email'] = "This email already exists! Please try again.";
 	}
 	// var_dump($_SESSION); die();
 
 	// Process form data, handling errors & redirections
-	if (count($_SESSION['sessionErrors']) == 0) {
+	if (count($_SESSION['registerErrors']) == 0) {
   		$passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
   		// insert user in the db & connect the user
@@ -121,9 +121,8 @@ if (isset($_POST['registerBtn'])) {
         header('location: '.$previous_page);
 	}
 } else {
-	// the user accesed this page without passing by the form => redirect the user to the previous page
-    header('location: '.$previous_page);
-    exit();
+	// the user accessed this page without passing by the form => redirect the user to the 403 page
+    header('location: ../pages/403.php');
 }
 
 ?>

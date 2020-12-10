@@ -15,9 +15,6 @@ $lastnameValue = isset($_SESSION['contact']['lastnamecontact']) ? $_SESSION['con
 $emailValue = isset($_SESSION['contact']['emailname']) ? $_SESSION['contact']['emailname'] : '';
 $messageValue = isset($_SESSION['contact']['message']) ? $_SESSION['contact']['message'] : '';
 
-//$firstnamecontact = isset($_SESSION['firstnamecontact']) ? $_SESSION['firstnamecontact'] : '';
-//$lastnamecontact = isset($_SESSION['firstnamecontact']) ? $_SESSION['firstnamecontact'] : '';
-
 $success_message = isset($_SESSION['success_message']) ? $_SESSION['success_message'] : '';
 $signout_success = isset($_SESSION['signout_success']) ? $_SESSION['signout_success'] : '';
 
@@ -27,6 +24,8 @@ if (!empty($success_message)) {
     unset($_SESSION['loginErrors']);
     unset($_SESSION['registerValues']);
     unset($_SESSION['loginValues']);
+    unset($_SESSION['contact']);
+    unset($_SESSION['contactErrors']);
 }
 
 if (!empty($signout_success)) {
@@ -35,6 +34,8 @@ if (!empty($signout_success)) {
     unset($_SESSION['loginErrors']);
     unset($_SESSION['registerValues']);
     unset($_SESSION['loginValues']);
+    unset($_SESSION['contact']);
+    unset($_SESSION['contactErrors']);
     unset($_SESSION['user']);
 }
 ?>
@@ -50,7 +51,7 @@ if (!empty($signout_success)) {
     </div>
 
     <div class="col-8 mx-auto">
-        <form action="../controllers/contactUser.php" method="POST">
+        <form action="../controllers/contactUser.php" method="POST" id="contactForm">
             <div class="form-group">
                 <label for="firstnamecontact">First name</label>
                 <input type="text" name="firstnamecontact" class="form-control" value="<?php echo $firstnameValue; ?>" >
@@ -90,15 +91,23 @@ if (!empty($signout_success)) {
 
 <script type="text/javascript">
     $(function() {
-        var success_message = "<?php echo $success_message; ?>";
-        var signout_success = "<?php echo $signout_success; ?>";
 
+        var signout_success = "<?php echo $signout_success; ?>";
+        var success_message = "<?php echo $success_message; ?>";
+
+        function resetForm(formId) {
+            console.log(formId);
+            $("#"+formId+" input[type=text], #"+formId+" textarea").val("");
+        }
+        
         if (success_message != '') {
             toastr.info(success_message);
+            resetForm('contactForm');
         }
 
         if (signout_success != '') {
             toastr.info(signout_success);
+            resetForm('contactForm');
         }
     });
 </script>

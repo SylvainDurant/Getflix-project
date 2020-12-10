@@ -46,18 +46,9 @@ if (isset($_POST['addBtn'])) {
         $song['values']['song_date'] = $date;
     }
 
-    if (!empty($_POST['song_album_image'])) {
+    if (isset($_POST['song_album_image'])) {
         $image = filter_var($_POST['song_album_image'], FILTER_SANITIZE_STRING); // Sanitization
-
-        $check_image = get_headers($image, 1);
-        
-        if (($check_image === false) || strpos($check_image['Content-Type'], 'image/') === false) {
-            $song['values']['song_album_image'] = '../images/Moosic_T2.1.png';
-        } else {
-            $song['values']['song_album_image'] = $image;
-        }          
-    } else {
-        $song['values']['song_album_image'] = '';
+        $song['values']['song_album_image'] = $image;
     }
 
     if (isset($_POST['song_description'])) {
@@ -73,8 +64,6 @@ if (isset($_POST['addBtn'])) {
         $song['errors']['song_exist'] = "This song already exists!";
     }
 
-    // var_dump($song['errors']);
-    // die();
     if (isset($song['errors']) && count($song['errors']) > 0){
         $_SESSION['songErrors'] = $song['errors'];
         // the user is redirect the user to the search page
@@ -84,33 +73,32 @@ if (isset($_POST['addBtn'])) {
 
         // insert user in the db & connect the user
   		$data = [];
-  		$data['title'] = $song['values']['song_title'];
-        $data['description'] = $song['values']['song_description'];
+  		$data['title'] = $title;
+  		$data['description'] = $artist;
   		$data['source'] = $song['values']['song_url'];
-  		$data['artist_name'] = $song['values']['song_artist'];
-        // $data['album_name'] = $song['values']['song_album'];
-        $data['album_name'] = !empty($song['values']['song_album']) ? $song['values']['song_album']:null;
-        // $data['album_image'] = $song['values']['song_album_image'];
-        $data['album_image'] = !empty($song['values']['song_album_image']) ? $song['values']['song_album_image']:null;
-        // $data['released_date'] = $song['values']['song_date'];
-        $data['released_date'] = !empty($song['values']['song_date']) ? $song['values']['song_date']:null;
+  		$data['artist_name'] = $artist;
+        $data['album_name'] = $album;
+        $data['album_image'] = $image;
+        $data['released_date'] = $date;
         $data['user_id'] = $user['user_id'];
         $data['category_id'] = $song['values']['song_category'];
 
-
         createSong($conn, $data);
 
-        // the user is redirect the user to the new video page
         $newSong = fetchSongByTitle($conn,$title,$artist);
-        if ($newSong != false){
+
+        if ($newSong != false) {
+            $_SESSION['success_message'] = "Song successfully added.";
+
+            // the user is redirected to the new video page with success message
             header('location: ../pages/video.php?id='.$newSong['id']);
         }
     }
     // var_dump($data);
 } else {
-    // the user accessed this page without passing by the form => redirect the user to the index page
-    header('location: ../pages/404.php');
-    exit();
+    // the user accessed this page without passing by the form => redirect the user to the 403 page
+    header('location: ../pages/403.php');
+    // exit();
 }
 
 ?>

@@ -12,7 +12,7 @@ if ($updateUser) {
 	$_SESSION['signout_success'] = "You are now disconnected.";
 
 	// Go to homepage after signing out
-	header('location: ../pages/contact.php');
+	header('location: ../pages/about.php');
 
 	// Delete session variables
 	// session_destroy();
