@@ -36,9 +36,9 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
 <?php include('../layouts/master.php'); ?>
 <?php include('../layouts/header.php'); ?>
 
-<div class="container col-12 videoBackground">
-    <div class="row justify-content-center">
-        <div class="col-11 mt-3 shadow-lg mb-5">
+<div class="videoBackground w-100">
+    <div class="bg-opacity row justify-content-center m-0">
+        <div class="col-11 mt-3 mb-5 text-light transparentBackground">
             <div class="embed-responsive embed-responsive-16by9 mb-1" style="max-height:500px">
                 <iframe class="embed-responsive-item" src="<?php echo $video['source']?>"></iframe>
             </div>
@@ -46,16 +46,18 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
                 <div class="col mb-2">
                     <div class="container" style="height:100%;">
                         <div class="row">
-                            <h3><?php echo $video['artist_name'].": ". $video['title']?></h3>
+                            <h1><?php echo $video['artist_name'].": ". $video['title']?></h1>
                         </div>
                         <div class="row">
-                            <div class="container p-0">
-                                <img src="<?php echo $video['album_image']?>" alt="<?php echo $video['artist_name']?>" class="p-1 float-left" style="max-height:100px; width:auto;">
-                                <div class="row">
-                                    <p><?php echo $video['description']?></p>
+                            <div class="d-flex p-0">
+                                <div>
+                                    <img src="<?php echo $video['album_image']?>" alt="<?php echo $video['artist_name']?>" class="p-1 float-left" style="max-height:100px; width:auto;">
                                 </div>
-                                <div class="row align-items-end">
-                                    <p class="text-muted m-0">Uploaded by <a href="http://" class="card-link"><?php echo $video['pseudo']?></a> on <?php echo $video['created_at']?></p>
+
+                                <div class="d-flex flex-column">
+                                    <h4><?php echo "From the album: ".$video['album_name']?></h4>
+                                    <p><?php echo $video['description']?></p>
+                                    <p class="text-muted mb-0 mt-auto">Uploaded by <a href="http://" class="card-link"><?php echo $video['pseudo']?></a> on <?php echo $video['created_at']?></p>
                                 </div>
                             </div>
                         </div>
@@ -83,14 +85,12 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
                 </div>
             </div> 
         </div>
-    </div>
-
-    <div class="row justify-content-center">
+       
         <div class="col-11 mb-5">
             <div class="row justify-content-between">
                 <?php ?>
                 <div class="col-12 col-md-8 p-2">
-                    <h5><u>comments:</u></h5>
+                    <h5 class="text-light"><u>comments:</u></h5>
                     <div class='card mb-3 shadow' style='width: 100%;'>
                         <form action="" method="post" class="form-inline">
                             <!-- CHANGER L'IMAGE POUR CELLE DE L'UTILISATEUR QUI EST LOGGER!!!!!!!! -->
@@ -116,7 +116,7 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
                 </div>
                 
                 <div class="col-md-3 p-2">
-                    <h5><u>recommendations:</u></h5>
+                    <h5 class="text-light"><u>recommendations:</u></h5>
                     <?php foreach ($recommendations as $other) { 
                         // !!!! it's user id not video id :'( !!!!!!!!!
                         if ($other["id"] != $video["id"]){ ?>

@@ -12,6 +12,5 @@ session_start(); // Start a session
     <img src="https://memegenerator.net/img/instances/72679403.jpg" alt="NOPE" style="width: 50%;">
 </div>
 
-
 <?php include('../layouts/footer.php'); ?>
 <!-- end HTML content -->
