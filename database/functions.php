@@ -108,13 +108,12 @@ function createUser($conn, $data) {
 
 function createSong($conn, $data) {
 	$title = $data['title'];
-	$description = !empty($data['description']) ? $data['description']:'no description';
+	$description = !empty($data['description']) ? $data['description']:'No description';
 	$source = $data['source'];
 	$artist_name = $data['artist_name'];
 	$album_name = !empty($data['album_name']) ? $data['album_name']:'Unknown';
 	$album_image = !empty($data['album_image']) ? $data['album_image']:'../images/Moosic_T2.1.png';
 	$released_date =!empty($data['released_date']) ? $data['released_date']:'2020-01-01';
-	// var_dump($released_date);
 	$user_id = $data['user_id'];
 	$category_id = $data['category_id'];
 
