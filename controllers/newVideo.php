@@ -48,7 +48,14 @@ if (isset($_POST['addBtn'])) {
 
     if (isset($_POST['song_album_image'])) {
         $image = filter_var($_POST['song_album_image'], FILTER_SANITIZE_STRING); // Sanitization
-        $song['values']['song_album_image'] = $image;
+
+        $check_image = get_headers($image, 1);
+        
+        if ((get_headers($image, 1) === false) || strpos(get_headers($image, 1)['Content-Type'], 'image/') !== false) {
+            $song['values']['song_album_image'] = $image;
+        } else {
+            $song['values']['song_album_image'] = '../images/Moosic_T2.1.png';
+        }           
     }
 
     if (isset($_POST['song_description'])) {
