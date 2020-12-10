@@ -25,6 +25,10 @@ a, a:hover {
 	font-size: 14px;
 }
 
+.text-15 {
+  font-size: 15px;
+}
+
 .size-8 {
     font-size: 0.9rem;
     letter-spacing: 1px;
@@ -49,7 +53,7 @@ a, a:hover {
 
 /*Style Toastr messages*/
 .toast-top-center,
-.toast-bottom-full-width { 
+.toast-top-full-width { 
     top: 90px;
 } 
 
@@ -90,7 +94,7 @@ a, a:hover {
     background-size: cover; /* Resize the background image to cover the entire container */
 }
 
-#header-about .bg-opacity {
+.bg-opacity {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
@@ -112,7 +116,16 @@ a, a:hover {
 
 #team .profile-img img:hover {
   box-shadow: 0 0.1rem 0.6rem rgba(23, 162, 184, .5) !important;
-  /*box-shadow: 0 0.1rem 1rem rgba(255, 0, 0, .5) !important;*/
+}
+
+/*Style homepage*/
+#editorsChoice {
+    background-image: url("../images/microphone.jpg");
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 400px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
 }
 
 /* ==========================================================================
@@ -122,8 +135,3 @@ a, a:hover {
 div i { /**Selects all <div> elements inside <i> elements**/
   font-size:40px;
 }
-
-/*#buttonFormContact{
- top: 10%;
-}*/
-

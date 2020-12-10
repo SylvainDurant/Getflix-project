@@ -27,38 +27,39 @@ if (!empty($signout_success)) {
 <?php include('../layouts/master.php'); ?>
 <?php include('../layouts/header.php'); ?>
 
-<section id="content" class="border border-info p-5">
+<section id="contact" class="container p-5">
+    <div class="d-flex flex-column justify-content-center col-8 mx-auto">
+        <h3 class="text-info mb-4">Contact us</h3>
 
-    <form action="../controllers/contactUser.php" method="POST">
-        <div class="form-group">
-            <label for="firstnamecontact">Your name</label>
-            <input type="text" name="firstnamecontact" class="form-control" aria-describedby="emailHelp">
-        </div>
-
-
-        <div class="form-group">
-            <label for="lastnamecontact">Your last name</label>
-            <input type="text" name="lastnamecontact" class="form-control">
-        </div>
-
-
-        <div class="form-group">
-            <label for="emailcontact">Your email address</label>
-            <input type="email" name="emailcontact" class="form-control">
-        </div>
-
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Message</span>
+        <form action="../controllers/contactUser.php" method="POST">
+            <div class="form-group">
+                <label for="firstnamecontact">Your name</label>
+                <input type="text" name="firstnamecontact" class="form-control">
             </div>
-            <textarea class="form-control" name="messagecontact" aria-label="With textarea"></textarea>
-        </div>
-        <div class="form-group text-right p-2">
-            <button type="submit" name='buttonContact' class="btn btn-info ">Send</button>
-        </div>
-    </form>
+
+            <div class="form-group">
+                <label for="lastnamecontact">Your last name</label>
+                <input type="text" name="lastnamecontact" class="form-control">
+            </div>
 
 
+            <div class="form-group">
+                <label for="emailcontact">Your email address</label>
+                <input type="email" name="emailcontact" class="form-control">
+            </div>
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Message</span>
+                </div>
+                <textarea class="form-control" name="messagecontact" aria-label="With textarea"></textarea>
+            </div>
+
+            <div class="form-group text-right p-2">
+                <button type="submit" name='buttonContact' class="btn btn-info ">Send</button>
+            </div>
+        </form>
+    </div>
 </section>
 
 <?php include('../layouts/footer.php'); ?>
