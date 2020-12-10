@@ -44,7 +44,7 @@ if (!empty($signout_success)) {
 	</div>
 
     <div id="team" class="container-fluid bg-dark text-center">
-    	<div class="col-6 mx-auto p-5">
+    	<div class="col-lg-6 col-sm-8 mx-auto p-5">
 			<h2 class="mb-3 text-info">The Team</h2>
 	        <hr class="bg-info">
       	</div>

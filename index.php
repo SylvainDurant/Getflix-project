@@ -63,10 +63,13 @@ $lastSongs = fetchLast4Songs($conn);
     </div>
 </section>
 
-<section id="categories" class="p-4 text-center">
-    <h3 class="mt-2"><u>Categories</u></h3>
+<section id="categories" class="p-4 row text-center">
+    <div class="col-lg-5 col-sm-8 mx-auto my-4">
+        <h2 class="mb-3 text-info">Categories</h2>
+        <hr class="bg-info">
+    </div>
 
-    <div id="accordion">
+    <div id="accordion" class="col-12">
         <div class="mt-3">
             <h5 class="mb-0">
                 <a class="text-info text-uppercase text-15 px-3" href="#" data-toggle="collapse" data-target="#navAll" aria-expanded="true" aria-controls="navAll">All</a>
@@ -110,31 +113,34 @@ $lastSongs = fetchLast4Songs($conn);
                         </div>
                     <?php }} ?>
                 </div>
-            </div>    
+            </div>
         <?php } ?>
     </div>
 </section>
 
 <section id="editorsChoice">
-    <div class="bg-opacity p-4">
-        <div class="d-flex justify-content-center mt-3 mb-5">
-            <h3 class="text-info"><u>Editor's choice</u></h3>
+    <div class="bg-opacity2 row text-center p-4">
+        <div class="col-lg-5 col-sm-8 mx-auto my-4">
+            <h2 class="mb-3 text-info">Editor's choice</h2>
+            <hr class="bg-info">
         </div>
 
-        <div class="row justify-content-center mx-5">
-            <?php foreach ($lastSongs as $song) { ?>
-                <div class="col-12 col-sm-6 col-lg-3 my-3">
-                    <div class="mx-2 card shadow mb-5">
-                        <div class="text-truncate">
-                            <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                            <p><?php echo $song['artist_name'].": ". $song['title']?></p>
+        <div class="col-12">
+            <div class="row justify-content-center mx-lg-5 pb-5">
+                <?php foreach ($lastSongs as $song) { ?>
+                    <div class="col-12 col-sm-6 col-lg-3 my-3">
+                        <div class="mx-lg-2 card shadow mb-xs-3">
+                            <div class="text-truncate">
+                                <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                                <p><?php echo $song['artist_name'].": ". $song['title']?></p>
+                            </div>
+                            <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
                         </div>
-                        <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
                     </div>
-                </div>
-            <?php } ?>
+                <?php } ?>
+            </div>
         </div>
     </div>
 </section>
