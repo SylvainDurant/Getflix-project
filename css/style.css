@@ -9,8 +9,16 @@ body {
   font-size: 16px;
 }
 
-/* .videoBackground{
-  background-image: url(../images/);
+.videoBackground{
+  background-image: url(../images/background_img.jpg);
+  background-position-y: center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+
+/* .transparentBackground{
+  background:rgba(255, 255, 255, 0.5);
 } */
 
 .myLink:hover{
@@ -112,10 +120,6 @@ a, a:hover {
 
 .text-nothing-you-can-do {
   font-family: 'Nothing You Could Do', cursive;
-}
-
-#team .profile-img img {
-  /*box-shadow: 0 0.1rem 0.4rem rgba(23, 162, 184, .5) !important;*/
 }
 
 #team .profile-img img:hover {
