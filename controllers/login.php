@@ -15,7 +15,7 @@ if (isset($_POST['loginBtn'])) {
     // Get input values & validate form
     if (isset($_POST['login_email'])) {
         $email = filter_var($_POST['login_email'], FILTER_SANITIZE_EMAIL); // Sanitization
-        $_SESSION['login_email'] = $email;
+        $_SESSION['loginValues']['email'] = $email;
 
         if (false == filter_var($email, FILTER_VALIDATE_EMAIL)) {
            $_SESSION['loginErrors']['login_email'] = "This field is invalid!";
@@ -26,14 +26,17 @@ if (isset($_POST['loginBtn'])) {
         
     if (isset($_POST['login_password'])) {
         $password = filter_var($_POST['login_password'], FILTER_SANITIZE_STRING); // Sanitization
-        $_SESSION['login_password'] = $password;
+        $_SESSION['loginValues']['password'] = $password;
     } else {
-       $_SESSION['loginErrors']['login_password'] = "This field is required!";
+       $_SESSION['loginErrors']['password'] = "This field is required!";
     }
+
+    var_dump(count($_SESSION['loginErrors']));
 
     // Process form data, handling errors & redirections
     if (count($_SESSION['loginErrors']) == 0) {
         $currentUser = getUserByEmail($conn, $email); // array OR false
+        var_dump($currentUser);
 
         // check if the user email exists in the db & if password match
         if ($currentUser != false) {
@@ -42,11 +45,11 @@ if (isset($_POST['loginBtn'])) {
 
                 // update user in the db: is_connected = true
                 $updateUser = updateUserByConnection($conn, $currentUser['user_id'], true); // true or false
-                // var_dump($updateUser); // false
+                var_dump($updateUser); // false
 
                 if ($updateUser) {
                     $_SESSION['user']['is_connected'] = true;
-                    $_SESSION['success'] = "You are now logged in.";
+                    $_SESSION['success_message'] = "You are now logged in.";
 
                     // redirect to the previous page with success message
                     header('location: '.$previous_page);
@@ -70,7 +73,7 @@ if (isset($_POST['loginBtn'])) {
 } else {
     // the user accesed this page without passing by the form => redirect the user to the previous page
     header('location: '.$previous_page);
-    exit();
+    // exit();
 }
 
 ?>

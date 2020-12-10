@@ -1,7 +1,7 @@
-// Get the <span> elements that closes the modals
+// Get all <span> elements that closes the modals
 var closeModalBtns = document.querySelectorAll(".close");
 
-// Get the modal elements
+// Get all modal elements
 var modals = document.querySelectorAll(".modal.fade");
 
 // load video pages
@@ -27,3 +27,16 @@ Array.from(closeModalBtns).forEach((btn) => {
 });
 
 hideModals();
+
+// Set the options for the toastr messages
+toastr.options = {
+	"closeButton": true,
+	"newestOnTop": true,
+	"positionClass": "toast-bottom-full-width",
+	// "positionClass": "toast-top-center",
+	"timeOut": "5000",
+}
+
+$(function() {
+	// toastr.info('Hé, ça marche !'); // message, titre
+});

@@ -9,6 +9,10 @@ body {
   font-size: 16px;
 }
 
+/* .videoBackground{
+  background-image: url(../images/);
+} */
+
 .myLink:hover{
   background:rgba(32, 32, 32, 0.3) !important;
 }
@@ -41,6 +45,13 @@ a, a:hover {
 .bg-dark {
     background-color: #2b2d30!important;
 }
+
+
+/*Style Toastr messages*/
+.toast-top-center,
+.toast-bottom-full-width { 
+    top: 90px;
+} 
 
 /* Style Header */
 #myheader {
@@ -82,7 +93,7 @@ a, a:hover {
 #header-about .bg-opacity {
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
   /*background: rgba(255, 255, 255, 0.3);*/
 }
 
@@ -115,3 +126,4 @@ div i { /**Selects all <div> elements inside <i> elements**/
 /*#buttonFormContact{
  top: 10%;
 }*/
+
