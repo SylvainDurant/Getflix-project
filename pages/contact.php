@@ -43,10 +43,13 @@ if (!empty($signout_success)) {
 <?php include('../layouts/master.php'); ?>
 <?php include('../layouts/header.php'); ?>
 
-<section id="contact" class="container p-5">
-    <div class="d-flex flex-column justify-content-center col-8 mx-auto">
-        <h3 class="text-info mb-4">Contact us</h3>
+<section id="contact" class="container d-flex flex-column justify-content-center p-5">
+    <div class="col-lg-5 col-sm-8 mx-auto text-center mb-4">
+        <h2 class="mb-3 text-info">Contact us</h2>
+        <hr class="bg-info">
+    </div>
 
+    <div class="col-8 mx-auto">
         <form action="../controllers/contactUser.php" method="POST">
             <div class="form-group">
                 <label for="firstnamecontact">First name</label>

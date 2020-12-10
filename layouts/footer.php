@@ -37,11 +37,10 @@
               <a class="text-light size-8" href="https://github.com/SylvainDurant">Sylvain</a> 
             </h6>
           </div>
-
         </div>
 
         <!-- Grid row-->
-        <hr class="bg-secondary" style="margin: 0 15%;">
+        <hr class="bg-secondary mb-5" style="margin: 0 15%;">
 
         <!-- Grid row-->
         <!-- <div class="row d-flex text-center justify-content-center mb-md-0 mb-4"> -->
@@ -64,33 +63,33 @@
 
         <!-- </div> -->
 
-        <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+        <!-- <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;"> -->
 
         <!-- Grid row-->
         <div class="row pb-2 text-center mt-4">
 
           <!-- Grid column -->
-          <div class="col-lg-2 col-sm-2 ">
+          <div class="col-lg-2 col-sm-2 col-4 mb-3">
              <a class="text-dark"><i class="fa fa-github fa-2x"></i></a>
           </div>
 
-          <div class="col-lg-2 col-sm-2">
+          <div class="col-lg-2 col-sm-2 col-4 mb-3">
               <a class="text-dark"><i class="fab fa-css3 fa-2x"></i></a>
           </div>
 
-          <div class="col-lg-2 col-sm-2">
+          <div class="col-lg-2 col-sm-2 col-4 mb-3">
              <a class="text-dark"><i class="fab fa-html5 fa-2x"></i></a>
           </div>
 
-          <div class="col-lg-2 col-sm-2">
+          <div class="col-lg-2 col-sm-2 col-4 mb-3">
              <a class="text-dark"><i class="fab fa-js-square fa-2x"></i></a>
           </div>
 
-          <div class="col-lg-2 col-sm-2">
+          <div class="col-lg-2 col-sm-2 col-4 mb-3">
              <a class="text-dark"><i class="fab fa-php fa-2x"></i></a>
           </div>
         
-          <div class="col-lg-2 col-sm-2">
+          <div class="col-lg-2 col-sm-2 col-4 mb-3">
              <a class="text-dark"><i class="fas fa-database fa-2x"></i></a>
           </div>
 

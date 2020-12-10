@@ -32,7 +32,7 @@ hideModals();
 toastr.options = {
 	"closeButton": true,
 	"newestOnTop": true,
-	"positionClass": "toast-bottom-full-width",
+	"positionClass": "toast-top-full-width",
 	// "positionClass": "toast-top-center",
 	"timeOut": "5000",
 }

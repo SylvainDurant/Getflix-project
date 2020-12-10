@@ -50,7 +50,6 @@ a, a:hover {
     background-color: #2b2d30!important;
 }
 
-
 /*Style Toastr messages*/
 .toast-top-center,
 .toast-top-full-width { 
@@ -98,7 +97,12 @@ a, a:hover {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
-  /*background: rgba(255, 255, 255, 0.3);*/
+}
+
+.bg-opacity2 {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
 }
 
 #header-about h3 span {

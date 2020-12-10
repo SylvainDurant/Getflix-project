@@ -12,7 +12,7 @@ $categories = fetchAllCategory($conn);
 <?php include('../layouts/master.php'); ?>
 <?php include('../layouts/header.php'); ?>
 
-<section id="result" class="border border-info p-5 text-center">
+<section id="result" class="row p-5 text-center">
 
     <?php if (isset($_POST['search'])){
         $search = $_POST['search'];
@@ -35,64 +35,80 @@ $categories = fetchAllCategory($conn);
         if ((count($title_result) >= 1) || (count($artist_result) >= 1)){ 
 
             if (count($title_result) >= 1){?>
-                <h1><u>Title</u></h1>
-                <div class="row p-2 justify-content-center">
-    
-                    <?php foreach ($title_result as $song){ 
-                        $song_name = $song['title'];
-                        $song_name = preg_replace("/($search)/i","<span style='background: rgba(65, 163, 255, 0.7);'>$1</span>",$song_name);
-                        ?>
-                        
-                        <div class="card col-12 col-sm-4 col-lg-2 m-1 shadow ">
-                            <div class='text-truncate'>
-                                <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                <p><?php echo $song_name?></p>
+                <div class="col-lg-5 col-sm-8 mx-auto mb-4">
+                    <h2 class="mb-3 text-info">Song title</h2>
+                    <hr class="bg-info">
+                </div>
+
+                <div class="col-12 mb-5">
+                    <div class="row p-2 justify-content-center">
+        
+                        <?php foreach ($title_result as $song){ 
+                            $song_name = $song['title'];
+                            $song_name = preg_replace("/($search)/i","<span class='bg-info'>$1</span>",$song_name);
+                            ?>
+                            
+                            <div class="card col-12 col-sm-4 col-lg-2 m-1 shadow ">
+                                <div class='text-truncate'>
+                                    <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <p><?php echo $song_name?></p>
+                                </div>
+                                <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>)"></div>
                             </div>
-                            <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>)"></div>
-                        </div>
-    
-                    <?php } ?>
-    
+        
+                        <?php } ?>
+        
+                    </div>
                 </div>
             <?php }
     
             if (count($artist_result) >= 1){?>
-                <h1><u>Artist</u></h1>
-                <div class="row p-2 justify-content-center">
-    
-                    <?php foreach ($artist_result as $song){ 
-                        $artist_name = $song['artist_name'];
-                        $artist_name = preg_replace("/($search)/i","<span style='background: rgba(65, 163, 255, 0.7);'>$1</span>",$artist_name);
-                        ?>
-    
-                        <div class="card col-12 col-sm-4 col-lg-2 m-1 shadow ">
-                            <div class='text-truncate'>
-                                <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                <p><?php echo $artist_name.": ". $song['title']?></p>
+                <div class="col-lg-5 col-sm-8 mx-auto mb-4">
+                    <h2 class="mb-3 text-info">Artist</h2>
+                    <hr class="bg-info">
+                </div>
+
+                <div class="col-12">
+                    <div class="row p-2 justify-content-center">
+        
+                        <?php foreach ($artist_result as $song){ 
+                            $artist_name = $song['artist_name'];
+                            $artist_name = preg_replace("/($search)/i","<span class='bg-info'>$1</span>",$artist_name);
+                            ?>
+        
+                            <div class="card col-12 col-sm-4 col-lg-2 m-1 shadow ">
+                                <div class='text-truncate'>
+                                    <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <p><?php echo $artist_name.": ". $song['title']?></p>
+                                </div>
+                                <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>)"></div>
                             </div>
-                            <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>)"></div>
-                        </div>
+        
+                        <?php } ?>
     
-                    <?php } ?>
-    
+                    </div>
                 </div>
             <?php }
             
         } else { ?>
     
-            <h3>Video not found !</h3>
-            <img src="https://media4.giphy.com/media/6uGhT1O4sxpi8/giphy.gif?cid=ecf05e4745ed5d329a1ce979278cb6762c70355283a5dcc6&rid=giphy.gif" alt="404NotFound">
+            <div class="col-12">
+                <h3>Video not found !</h3>
+                <img src="https://media4.giphy.com/media/6uGhT1O4sxpi8/giphy.gif?cid=ecf05e4745ed5d329a1ce979278cb6762c70355283a5dcc6&rid=giphy.gif" alt="404NotFound">
+            </div>
         
         <?php } ?>
     
         <?php if ($user && $user['is_connected']) { ?> <!-- if connected -->
-    
-            <p class="mt-5">Didn't find what you were looking for?</p>
-            <a href="" data-toggle="modal" data-target="#addVideoFormModal">Add a video!</a>
-    
+            <div class="col-12">
+                <p class="mt-5">Didn't find what you were looking for?</p>
+                <a href="" data-toggle="modal" class="btn btn-secondary" data-target="#addVideoFormModal">Add a video!</a>
+            </div>
         <?php } 
     } else { ?>
-        <img src="https://memegenerator.net/img/instances/51059800.jpg" alt="WTF">
+        <div class="col-12">
+            <img src="https://memegenerator.net/img/instances/51059800.jpg" alt="WTF">
+        </div>
     <?php } ?>
 </section>
 
@@ -178,7 +194,7 @@ $categories = fetchAllCategory($conn);
                     <?php } ?>
                     
                     <div class="form-group col-12 text-right px-3">
-                        <button type="submit" class="btn btn-success" name="addBtn">Add</button>
+                        <button type="submit" class="btn btn-info" name="addBtn">Add</button>
                     </div>
                 </form>
             </div>
