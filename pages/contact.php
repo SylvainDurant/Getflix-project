@@ -1,8 +1,6 @@
 <?php
 include('../database/functions.php');
 session_start(); // Start a session
-//var_dump($_SESSION['contactErrors']); 
-//var_dump($_SESSION['contact']);
 
 // Handle errors by type
 $contactErrors = isset($_SESSION['contactErrors']) ? $_SESSION['contactErrors'] : [];
@@ -45,43 +43,43 @@ if (!empty($signout_success)) {
 <?php include('../layouts/master.php'); ?>
 <?php include('../layouts/header.php'); ?>
 
+<section id="contact" class="container p-5">
+    <div class="d-flex flex-column justify-content-center col-8 mx-auto">
+        <h3 class="text-info mb-4">Contact us</h3>
 
-<section id="content" class="border border-info p-5">
-
-    <form action="../controllers/contactUser.php" method="POST">
-        <div class="form-group">
-            <label for="firstnamecontact">First name</label>
-            <input type="text" name="firstnamecontact" class="form-control" value="<?php echo $firstnameValue; ?>" >
-            <small class="text-danger"><?php echo $contact_firstName_error ; ?></small>
-        </div>
-
-
-        <div class="form-group">
-            <label for="lastnamecontact">Last name</label>
-            <input type="text" name="lastnamecontact" class="form-control" value="<?php echo $lastnameValue; ?>" >
-            <small class="text-danger"><?php echo $contact_lastName_error; ?></small>
-        </div>
-
-
-        <div class="form-group">
-            <label for="emailcontact">Email address</label>
-            <input type="email" name="emailcontact" class="form-control" value="<?php echo $emailValue; ?>" >
-            <small class="text-danger"><?php echo $contact_email_error; ?></small>
-        </div>
-
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Message</span>
+        <form action="../controllers/contactUser.php" method="POST">
+            <div class="form-group">
+                <label for="firstnamecontact">First name</label>
+                <input type="text" name="firstnamecontact" class="form-control" value="<?php echo $firstnameValue; ?>" >
+                <small class="text-danger"><?php echo $contact_firstName_error ; ?></small>
             </div>
-            <textarea class="form-control" name="messagecontact" aria-label="With textarea"><?php echo $messageValue; ?>  </textarea>
-            <small class="text-danger"><?php echo $contact_message_error; ?></small>
-        </div>
-        <div class="form-group text-right p-2">
-            <button type="submit" name='buttonContact' class="btn btn-info ">Send</button>
-        </div>
-    </form>
 
+            <div class="form-group">
+                <label for="lastnamecontact">Last name</label>
+                <input type="text" name="lastnamecontact" class="form-control" value="<?php echo $lastnameValue; ?>" >
+                <small class="text-danger"><?php echo $contact_lastName_error; ?></small>
+            </div>
 
+            <div class="form-group">
+                <label for="emailcontact">Email address</label>
+                <input type="email" name="emailcontact" class="form-control" value="<?php echo $emailValue; ?>" >
+                <small class="text-danger"><?php echo $contact_email_error; ?></small>
+            </div>
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Message</span>
+                </div>
+
+                <textarea class="form-control" name="messagecontact" aria-label="With textarea"><?php echo $messageValue; ?>  </textarea>
+                <small class="text-danger"><?php echo $contact_message_error; ?></small>
+            </div>
+
+            <div class="form-group text-right p-2">
+                <button type="submit" name='buttonContact' class="btn btn-info ">Send</button>
+            </div>
+        </form>
+    </div>
 </section>
 
 <?php include('../layouts/footer.php'); ?>

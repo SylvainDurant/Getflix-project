@@ -34,9 +34,7 @@ $lastSongs = fetchLast4Songs($conn);
 <?php include('./layouts/master.php'); ?>
 <?php include('./layouts/header.php'); ?>
 
-<section id="content" class="bg-dark p-5">
-    <h3>The movies</h3>
-
+<section id="carousel" class="bg-dark p-5">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -65,75 +63,87 @@ $lastSongs = fetchLast4Songs($conn);
     </div>
 </section>
 
-<section id="categories">
-    <div class="text-center">
-        <h3><u>Categories</u></h3>
-        <div id="accordion">
-            <div class="card-header">
-                <h5 class="mb-0">
-                        <a class="btn btn-link" data-toggle="collapse" data-target="#navAll" aria-expanded="true" aria-controls="navAll">All</a>
+<section id="categories" class="p-4 text-center">
+    <h3 class="mt-2"><u>Categories</u></h3>
+
+    <div id="accordion">
+        <div class="mt-3">
+            <h5 class="mb-0">
+                <a class="text-info text-uppercase text-15 px-3" href="#" data-toggle="collapse" data-target="#navAll" aria-expanded="true" aria-controls="navAll">All</a>
+                <a class="disabled">|</a>
+
+                <?php foreach ($categories as $key => $category) { ?>
+                    <a class="text-info text-uppercase text-15 px-3" href="#" data-toggle="collapse" data-target="#nav<?php echo $category["name"]?>" aria-expanded="true" aria-controls="nav<?php echo $category["name"]?>"><?php echo $category["name"]?></a>
+
+                    <?php if ($key != count($categories)-1) { ?>
                         <a class="disabled">|</a>
-                    <?php foreach ($categories as $key => $category) { ?>
-                        <a class="btn btn-link" data-toggle="collapse" data-target="#nav<?php echo $category["name"]?>" aria-expanded="true" aria-controls="nav<?php echo $category["name"]?>"><?php echo $category["name"]?></a>
-                        <?php if ($key != count($categories)-1){ ?>
-                        <a class="disabled">|</a>
-                    <?php }} ?>
-                </h5>
+                    <?php } ?>
+                <?php } ?>
+            </h5>
+        </div>
+
+        <div id="navAll" class="collapse show my-5" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="row p-2 justify-content-center">
+                <?php foreach ($songs as $song) { ?>
+                    <div class="card col-12 col-sm-4 col-lg-2 m-1 shadow">
+                        <div class="text-truncate">
+                            <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <p><?php echo $song['artist_name'].": ". $song['title']?></p>
+                        </div>
+                        <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
+                    </div>
+                <?php } ?>
             </div>
-            <div id="navAll" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+        </div>  
+
+        <?php foreach ($categories as $category) { ?>
+            <div id="nav<?php echo $category["name"]?>" class="collapse my-5" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="row p-2 justify-content-center">
-                    <?php foreach ($songs as $song) { ?>
-                        <div class="card col-12 col-sm-4 col-lg-2 m-1 shadow">
-                            <div class="text-truncate">
+                    <?php foreach ($songs as $song) { 
+                        if ($song["category_id"] === $category["id"]){ ?>
+                        <div class="card col-12 col-sm-4 col-lg-2 m-1 shadow ">
+                            <div class='text-truncate'>
                                 <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 <p><?php echo $song['artist_name'].": ". $song['title']?></p>
                             </div>
                             <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
                         </div>
-                    <?php } ?>
+                    <?php }} ?>
                 </div>
-            </div>   
-            <?php foreach ($categories as $category) { ?>
-                <div id="nav<?php echo $category["name"]?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="row p-2 justify-content-center">
-                        <?php foreach ($songs as $song) { 
-                            if ($song["category_id"] === $category["id"]){ ?>
-                            <div class="card col-12 col-sm-4 col-lg-2 m-1 shadow ">
-                                <div class='text-truncate'>
-                                    <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                    <p><?php echo $song['artist_name'].": ". $song['title']?></p>
-                                </div>
-                                <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
-                            </div>
-                        <?php }} ?>
+            </div>    
+        <?php } ?>
+    </div>
+</section>
+
+<section id="editorsChoice">
+    <div class="bg-opacity p-4">
+        <div class="d-flex justify-content-center mt-3 mb-5">
+            <h3 class="text-info"><u>Editor's choice</u></h3>
+        </div>
+
+        <div class="row justify-content-center mx-5">
+            <?php foreach ($lastSongs as $song) { ?>
+                <div class="col-12 col-sm-6 col-lg-3 my-3">
+                    <div class="mx-2 card shadow mb-5">
+                        <div class="text-truncate">
+                            <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                            <p><?php echo $song['artist_name'].": ". $song['title']?></p>
+                        </div>
+                        <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
                     </div>
-                </div>    
+                </div>
             <?php } ?>
         </div>
     </div>
 </section>
 
-<section id="editorsChoice" class="border border-danger">
-    <div class="d-flex justify-content-center">
-        <h3><u>Editor's choice</u></h3>
-    </div>
-    <div class="row p-2  justify-content-center">
-        <?php foreach ($lastSongs as $song) { ?>
-        <div class="col-12 col-lg-3">
-            <div class="mx-2 card shadow px-3">
-                <div class="text-truncate">
-                    <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                    <p><?php echo $song['artist_name'].": ". $song['title']?></p>
-                </div>
-                <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
-            </div>
-        </div>
-        <?php } ?>
+<section id="newsletter" class="bg-secondary p-5">
+    <div class="d-flex justify-content-center w-75 mx-auto">
+        <h3 class="text">NEWSletter section</h3>
     </div>
 </section>
-
 
 <!-- <section id="musicChoise">
     <div class="text-center">
