@@ -2,6 +2,7 @@
 include('../database/functions.php');
 session_start(); // Start a session
 
+
 $success_message = isset($_SESSION['success_message']) ? $_SESSION['success_message'] : '';
 $signout_success = isset($_SESSION['signout_success']) ? $_SESSION['signout_success'] : '';
 
@@ -27,11 +28,11 @@ if (isset($_GET["id"])){
     $page = $_GET["id"];
 }
 
+$user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 $video = fetchOneSong($conn,$page);
 $comments = fetchAllCommentsByVideo($conn,$page);
 $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
 ?>
-
 <!-- HTML content -->
 <?php include('../layouts/master.php'); ?>
 <?php include('../layouts/header.php'); ?>
@@ -93,11 +94,10 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
                     <h5 class="text-light"><u>comments:</u></h5>
                     <div class='card mb-3 shadow' style='width: 100%;'>
                         <form action="" method="post" class="form-inline">
-                            <!-- CHANGER L'IMAGE POUR CELLE DE L'UTILISATEUR QUI EST LOGGER!!!!!!!! -->
-                            <img src="<?php echo $video['photo']?>" class="rounded-circle m-1" alt="<?php echo $video['pseudo']?>" style="height:50px; width:50px; float:left;">
+                            <img src=" <?php echo isset($user) ? $user['photo']:'../images/Unknown_user.png'?> " class="rounded-circle m-1" alt="<?php echo isset($user) ? $user['pseudo']:'Unregistered user' ?>" style="height:50px; width:50px; float:left;">
                             <div class="col">
-                            <textarea type="text" class="form-control mr-sm-2" id="inlineFormInputName2" rows="1" placeholder="Add a comment" style="width:75%;"></textarea>
-                            <input class="btn btn-info" type="submit" value="Send">
+                            <textarea type="text" class="form-control mr-sm-2" id="inlineFormInputName2" rows="1" placeholder="<?php echo isset($user) ? 'Add a comment':'you must be logged in to post a comment'?>" style="width:75%;" <?php echo isset($user) ? '':'disabled data-bs-toggle="tooltip" data-bs-placement="bottom" title="you must be logged in to post a comment"'?>></textarea>
+                            <input class="btn btn-info" type="submit" value="Send" <?php echo isset($user) ? '':'disabled data-bs-toggle="tooltip" data-bs-placement="bottom" title="you must be logged in to post a comment"'?>>
                             </div>
                         </form>        
                     </div>

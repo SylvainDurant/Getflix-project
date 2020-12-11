@@ -109,7 +109,7 @@ if (isset($_POST['addBtn'])) {
     // var_dump($data);
 } else {
     // the user accessed this page without passing by the form => redirect the user to the index page
-    header('location: ../pages/404.php');
+    header('location: ../pages/403.php');
     exit();
 }
 
