@@ -37,7 +37,7 @@ if (!empty($signout_success)) {
 
 		    <div class="mt-5">
 		    	<a class="" href="https://github.com/SylvainDurant/Getflix-project">
-		    		<i class="fa fa-github text-info fa-3x"></i>
+		    		<i class="fa fa-github text-info fa-3x pb-4"></i>
 		    	</a>
 		    </div>
 	    </div>
@@ -74,7 +74,7 @@ if (!empty($signout_success)) {
 				</a>
 
 				<h3 class="text-danger text-nothing-you-can-do">Sylvain D.</h3>
-				<p class="font-weight-light mb-0">"Every cloud has a silver lining..."</p>
+				<p class="font-weight-light mb-0">"if metal is the devil's work, then Satan has good musical taste!"</p>
 			</div>
 
 			<div class="col-lg-3 col-sm-6 px-5 mb-5">

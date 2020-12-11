@@ -23,6 +23,7 @@
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="https://yarnpkg.com/en/package/normalize.css">
     <link rel="stylesheet" type="text/css" href="<?php echo $root; ?>/css/style.css">
+    
 </head>
 
 <body>

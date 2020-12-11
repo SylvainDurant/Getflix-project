@@ -97,12 +97,10 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
 
             <div class='card mb-3 shadow' style='width: 100%;'>
                 <form action="" method="post" class="form-inline">
-                    <!-- CHANGER L'IMAGE POUR CELLE DE L'UTILISATEUR QUI EST LOGGER!!!!!!!! -->
-                    <img src="<?php echo $video['photo']?>" class="rounded-circle m-1" alt="<?php echo $video['pseudo']?>" style="height:50px; width:50px; float:left;">
-
-                    <div class="col p-2">
-                        <textarea type="text" class="form-control mr-sm-4" id="inlineFormInputName2" rows="3" placeholder="Add a comment" style="width:75%;"></textarea>
-                        <input class="btn btn-info" type="submit" value="Send">
+                    <img src=" <?php echo isset($user) ? $user['photo']:'../images/Unknown_user.png'?> " class="rounded-circle m-1" alt="<?php echo isset($user) ? $user['pseudo']:'Unregistered user' ?>" style="height:50px; width:50px; float:left;">
+                    <div class="col">
+                    <textarea type="text" class="form-control mr-sm-2" id="inlineFormInputName2" rows="1" placeholder="<?php echo isset($user) ? 'Add a comment':'you must be logged in to post a comment'?>" style="width:75%;" <?php echo isset($user) ? '':'disabled data-bs-toggle="tooltip" data-bs-placement="bottom" title="you must be logged in to post a comment"'?>></textarea>
+                    <input class="btn btn-info" type="submit" value="Send" <?php echo isset($user) ? '':'disabled data-bs-toggle="tooltip" data-bs-placement="bottom" title="you must be logged in to post a comment"'?>>
                     </div>
                 </form>        
             </div>
