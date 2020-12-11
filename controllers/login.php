@@ -71,9 +71,8 @@ if (isset($_POST['loginBtn'])) {
         header('location: '.$previous_page);
     }
 } else {
-    // the user accesed this page without passing by the form => redirect the user to the previous page
-    header('location: '.$previous_page);
-    // exit();
+    // the user accessed this page without passing by the form => redirect the user to the 403 page
+    header('location: ../pages/403.php');
 }
 
 ?>

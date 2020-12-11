@@ -15,9 +15,6 @@ $lastnameValue = isset($_SESSION['contact']['lastnamecontact']) ? $_SESSION['con
 $emailValue = isset($_SESSION['contact']['emailname']) ? $_SESSION['contact']['emailname'] : '';
 $messageValue = isset($_SESSION['contact']['message']) ? $_SESSION['contact']['message'] : '';
 
-//$firstnamecontact = isset($_SESSION['firstnamecontact']) ? $_SESSION['firstnamecontact'] : '';
-//$lastnamecontact = isset($_SESSION['firstnamecontact']) ? $_SESSION['firstnamecontact'] : '';
-
 $success_message = isset($_SESSION['success_message']) ? $_SESSION['success_message'] : '';
 $signout_success = isset($_SESSION['signout_success']) ? $_SESSION['signout_success'] : '';
 
@@ -27,6 +24,8 @@ if (!empty($success_message)) {
     unset($_SESSION['loginErrors']);
     unset($_SESSION['registerValues']);
     unset($_SESSION['loginValues']);
+    unset($_SESSION['contact']);
+    unset($_SESSION['contactErrors']);
 }
 
 if (!empty($signout_success)) {
@@ -35,6 +34,8 @@ if (!empty($signout_success)) {
     unset($_SESSION['loginErrors']);
     unset($_SESSION['registerValues']);
     unset($_SESSION['loginValues']);
+    unset($_SESSION['contact']);
+    unset($_SESSION['contactErrors']);
     unset($_SESSION['user']);
 }
 ?>
@@ -43,11 +44,14 @@ if (!empty($signout_success)) {
 <?php include('../layouts/master.php'); ?>
 <?php include('../layouts/header.php'); ?>
 
-<section id="contact" class="container p-5">
-    <div class="d-flex flex-column justify-content-center col-8 mx-auto">
-        <h3 class="text-info mb-4">Contact us</h3>
+<section id="contact" class="container d-flex flex-column justify-content-center p-5">
+    <div class="col-lg-5 col-sm-8 mx-auto text-center mb-4">
+        <h2 class="mb-3 text-info">Contact us</h2>
+        <hr class="bg-info">
+    </div>
 
-        <form action="../controllers/contactUser.php" method="POST">
+    <div class="col-8 mx-auto">
+        <form action="../controllers/contactUser.php" method="POST" id="contactForm">
             <div class="form-group">
                 <label for="firstnamecontact">First name</label>
                 <input type="text" name="firstnamecontact" class="form-control" value="<?php echo $firstnameValue; ?>" >
@@ -87,15 +91,23 @@ if (!empty($signout_success)) {
 
 <script type="text/javascript">
     $(function() {
-        var success_message = "<?php echo $success_message; ?>";
-        var signout_success = "<?php echo $signout_success; ?>";
 
+        var signout_success = "<?php echo $signout_success; ?>";
+        var success_message = "<?php echo $success_message; ?>";
+
+        function resetForm(formId) {
+            console.log(formId);
+            $("#"+formId+" input[type=text], #"+formId+" textarea").val("");
+        }
+        
         if (success_message != '') {
             toastr.info(success_message);
+            resetForm('contactForm');
         }
 
         if (signout_success != '') {
             toastr.info(signout_success);
+            resetForm('contactForm');
         }
     });
 </script>

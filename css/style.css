@@ -9,16 +9,8 @@ body {
   font-size: 16px;
 }
 
-.videoBackground{
+/* .videoBackground{
   background-image: url(../images/background_img.jpg);
-  background-position-y: center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  background-attachment:fixed;
-}
-
-/* .transparentBackground{
-  background:rgba(255, 255, 255, 0.5);
 } */
 
 .myLink:hover{
@@ -57,7 +49,6 @@ a, a:hover {
 .bg-dark {
     background-color: #2b2d30!important;
 }
-
 
 /*Style Toastr messages*/
 .toast-top-center,
@@ -105,7 +96,12 @@ a, a:hover {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
-  /*background: rgba(255, 255, 255, 0.3);*/
+}
+
+.bg-opacity2 {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
 }
 
 #header-about h3 span {
@@ -115,6 +111,10 @@ a, a:hover {
 
 .text-nothing-you-can-do {
   font-family: 'Nothing You Could Do', cursive;
+}
+
+#team .profile-img img {
+  /*box-shadow: 0 0.1rem 0.4rem rgba(23, 162, 184, .5) !important;*/
 }
 
 #team .profile-img img:hover {
