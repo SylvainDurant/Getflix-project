@@ -1,4 +1,4 @@
-    <!-- Footer -->
+<!-- Footer -->
     <footer class="text-light bg-info">
 
       <!-- Footer Links -->

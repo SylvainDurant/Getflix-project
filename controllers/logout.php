@@ -1,6 +1,5 @@
 <?php
-
-include('../database/functions.php');
+include('../helpers/functions.php');
 session_start(); // Start a session
 
 $userId = isset($_SESSION['user']) ? $_SESSION['user']['user_id'] : null;

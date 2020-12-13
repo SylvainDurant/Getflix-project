@@ -1,6 +1,7 @@
 <?php
-include('../database/functions.php');
-session_start(); // Start a session
+include('../helpers/functions.php');
+include('../helpers/variables.php');
+include('../helpers/session_messages.php');
 ?>
 
 <!-- HTML content -->

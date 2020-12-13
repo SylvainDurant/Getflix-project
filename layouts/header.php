@@ -1,5 +1,4 @@
 <?php
-// var_dump($_SESSION);
 
 // Get the input values in order to reinsert them in the form
 $login_password = isset($_SESSION['loginValues']['password']) ? $_SESSION['loginValues']['password'] : '';
@@ -42,9 +41,9 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 <header id="myheader" class="py-1 text-center text-info">
     <!-- Navbar -->
 	<nav class="navbar navbar-expand-md navbar-dark">
-        <div class="d-flex justify-content-center col-lg-1">
+        <div class="d-flex justify-content-center col-lg-1 col-2">
             <a class="navbar-brand text-info p-0 m-0" href="<?php echo $root; ?>/index.php">
-                <img src="<?php echo $root; ?>/images/Moosic_T2.1.png" class="w-75"></a>
+                <img src="<?php echo $root; ?>/images/Moosic_T2.1.png" class="img-fluid px-lg-2"></a>
             </a>
         </div>
 
@@ -68,7 +67,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
             </ul>
         </div>
 
-        <div class="d-flex justify-content-end col-lg-5">
+        <div class="d-flex justify-content-end col-lg-5 col">
            <!-- Search form -->
             <form action="<?php echo $url[3] == 'pages' ? '..' : '.'; ?>/pages/search.php" method="POST" class="form-inline form-sm active-cyan-2 mr-3">
                 <input class="form-control form-control-sm mr-2 w-75" type="text" placeholder="Search" aria-label="Search" name="search" required>
