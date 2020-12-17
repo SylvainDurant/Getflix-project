@@ -21,10 +21,10 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
     <div class="bg-opacity row justify-content-center m-0">
         <!-- <div class="col-11 mt-3 mb-5 text-light transparentBackground"> -->
         <div class="container col-11 mx-auto mt-4">
+
+            <!--///// video section \\\\\-->
             <div class="row justify-content-center">
                 <div class="col-11 mt-3 mb-3 text-light">
-
-                
                     <div class="embed-responsive embed-responsive-16by9 mb-1" style="max-height:500px">
                         <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo $video['source']?>"></iframe>
                     </div>
@@ -72,6 +72,8 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
             </div>
 
             <div class="row justify-content-between px-5 mb-5">
+
+                <!--///// comments section \\\\\-->
                 <div class="col-12 col-md-8 pl-0 pr-5">
                     <div class="container px-0 my-5">
                         <h3 class="mb-3 text-info">Comments</h3>
@@ -79,11 +81,12 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
                     </div>
 
                     <div class='card mb-3 shadow' style='width: 100%;'>
-                        <form action="" method="post" class="form-inline">
+                        <form action="<?php echo $root; ?>/controllers/newComment.php" method="post" class="form-inline">
                             <img src=" <?php echo isset($user) ? $user['photo']:'../images/Unknown_user.png'?> " class="rounded-circle m-1" alt="<?php echo isset($user) ? $user['pseudo']:'Unregistered user' ?>" style="height:50px; width:50px; float:left;">
                             <div class="col">
-                            <textarea type="text" class="form-control mr-sm-2" id="inlineFormInputName2" rows="1" placeholder="<?php echo isset($user) ? 'Add a comment':'you must be logged in to post a comment'?>" style="width:75%;" <?php echo isset($user) ? '':'disabled data-bs-toggle="tooltip" data-bs-placement="bottom" title="you must be logged in to post a comment"'?>></textarea>
-                            <input class="btn btn-info" type="submit" value="Send" <?php echo isset($user) ? '':'disabled data-bs-toggle="tooltip" data-bs-placement="bottom" title="you must be logged in to post a comment"'?>>
+                                <textarea id="comment" name="comment" type="text" class="form-control mr-sm-2" id="inlineFormInputName2" rows="1" placeholder="<?php echo isset($user) ? 'Add a comment':'you must be logged in to post a comment'?>" style="width:75%;" <?php echo isset($user) ? '':'disabled data-bs-toggle="tooltip" data-bs-placement="bottom" title="you must be logged in to post a comment"'?>></textarea>
+                                <input type="hidden" name="song_id" value="<?php echo $video['id'] ?>">
+                                <input id="addComment" name="addComment" class="btn btn-info" type="submit" value="Send" <?php echo isset($user) ? '':'disabled data-bs-toggle="tooltip" data-bs-placement="bottom" title="you must be logged in to post a comment"'?>>
                             </div>
                         </form>        
                     </div>
@@ -102,7 +105,8 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
                         </div>
                     <?php } ?>
                 </div>
-                        
+                
+                <!--///// recommendations section \\\\\-->
                 <div class="col-12 col-md-4 pl-0">
                     <div class="container px-0 my-5">
                         <h3 class="mb-3 text-info">Recommendations</h3>
@@ -110,7 +114,6 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
                     </div>
 
                     <?php foreach ($recommendations as $other) { 
-                        // !!!! it's user id not video id :'( !!!!!!!!!
                         if ($other["id"] != $video["id"]) { ?>
                             <div class="card col-4 col-md-12 mb-3 shadow float-left">
                                 <div class='text-truncate'>
