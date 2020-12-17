@@ -1,26 +1,7 @@
 <?php
-include('./database/functions.php');
-session_start(); // Start a session
-
-$success_message = isset($_SESSION['success_message']) ? $_SESSION['success_message'] : '';
-$signout_success = isset($_SESSION['signout_success']) ? $_SESSION['signout_success'] : '';
-
-if (!empty($success_message)) {
-    unset($_SESSION['success_message']);
-    unset($_SESSION['registerErrors']);
-    unset($_SESSION['loginErrors']);
-    unset($_SESSION['registerValues']);
-    unset($_SESSION['loginValues']);
-}
-
-if (!empty($signout_success)) {
-    unset($_SESSION['signout_success']);
-    unset($_SESSION['registerErrors']);
-    unset($_SESSION['loginErrors']);
-    unset($_SESSION['registerValues']);
-    unset($_SESSION['loginValues']);
-    unset($_SESSION['user']);
-}
+include('./helpers/variables.php');
+include('./helpers/functions.php');
+include('./helpers/session_messages.php');
 
 $categories = fetchAllCategory($conn);
 $songs = fetchAllSongs($conn);
@@ -119,7 +100,7 @@ $lastSongs = fetchLast4Songs($conn);
 </section>
 
 <section id="editorsChoice">
-    <div class="bg-opacity2 row text-center p-4">
+    <div class="bg-opacity2 row text-center p-4 m-0">
         <div class="col-lg-5 col-sm-8 mx-auto my-4">
             <h2 class="mb-3 text-info">Editor's choice</h2>
             <hr class="bg-info">

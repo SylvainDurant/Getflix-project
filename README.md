@@ -33,9 +33,9 @@ Get inspired by Netflix, Amazon Prime Video and other Popcorn Time, Stremio... T
 
 Infinity free
 
-### *How we did it*
+### How we did it
 
-Our project is about streaming music video.
+Our project is about streaming music video clips.
 After analizing the project requirements and deadlines, we decided to make a list of all the functionalities.
 In order to have a good overview and to manage all these functionalities, we were agree that using Trello is the best choice. 
 
@@ -49,17 +49,10 @@ In order to have a good overview and to manage all these functionalities, we wer
 
 - Then, we created the database in PhpMyAdmin platform
 
-[![](https://github.com/SylvainDurant/Getflix-project/blob/main/images/DbCapture.png?raw=true)](https://github.com/SylvainDurant/Getflix-project/blob/main/images/DbCapture.png?raw=true)
+(database capture in PhpMyAdmin)
 
 - While coding, we tried to add comments in order that everybody understands the meaning of that code 
 
-### Mockup used 
-- For the main page, we've used [this mockup](http://demo.dawnthemes.com/viem/).  
-- For the video pages, we've used a selfmade (and beautiful) design:  
-[![](https://github.com/SylvainDurant/Getflix-project/blob/main/images/video.png?raw=true)](https://github.com/SylvainDurant/Getflix-project/blob/main/images/video.png?raw=true)
-- The rest of the pages followed the same design as the first two pages.  
-  
-We've used [Bootstrap](https://getbootstrap.com/) for this project.
 ### See Project
 
 *[www.moosic.com](https://github.com/SylvainDurant/Getflix-project)*

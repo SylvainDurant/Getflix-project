@@ -108,8 +108,12 @@ a, a:hover {
   background: rgba(0, 0, 0, 0.6);
 }
 
-#header-about h3 span {
+h3 span {
   font-family: 'Nothing You Could Do', cursive;
+  font-size: 42px;
+}
+
+#header-about h3 span {
   font-size: 70px;
 }
 
@@ -117,8 +121,8 @@ a, a:hover {
   font-family: 'Nothing You Could Do', cursive;
 }
 
-#team .profile-img img {
-  /*box-shadow: 0 0.1rem 0.4rem rgba(23, 162, 184, .5) !important;*/
+#profile img:hover {
+    box-shadow: 0 0.1rem 0.6rem rgba(23, 162, 184, .5) !important;
 }
 
 #team .profile-img img:hover {
@@ -129,11 +133,20 @@ a, a:hover {
 #editorsChoice {
     background-image: url("../images/microphone.jpg");
     background-color: #cccccc; /* Used if the image is unavailable */
-    height: 400px; /* You must set a specified height */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
 }
+
+/*Style video page*/
+/*.videoBackground {
+    background-image: url("../images/background_img.jpg");
+    background-color: #cccccc; /* Used if the image is unavailable */
+    /*background-position: center; /* Center the image */*/
+    /*background-repeat: no-repeat; /* Do not repeat the image */*/
+    /*background-size: cover;  Resize the background image to cover the entire container */
+}*/
+
 
 /* ==========================================================================
    Footer

@@ -1,0 +1,8 @@
+# Ignore Mac system files
+.DS_store
+
+# Ignore synthese file
+synthese.txt
+
+# Ignore database folder
+database

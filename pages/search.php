@@ -1,6 +1,7 @@
 <?php
-include('../database/functions.php');
-session_start(); // Start a session
+include('../helpers/variables.php');
+include('../helpers/functions.php');
+include('../helpers/session_messages.php');
 
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 $songs = fetchAllSongs($conn);
@@ -43,7 +44,7 @@ $categories = fetchAllCategory($conn);
                 <div class="col-12 mb-5">
                     <div class="row p-2 justify-content-center">
         
-                        <?php foreach ($title_result as $song){ 
+                        <?php foreach ($title_result as $song) { 
                             $song_name = $song['title'];
                             $song_name = preg_replace("/($search)/i","<span class='bg-info'>$1</span>",$song_name);
                             ?>

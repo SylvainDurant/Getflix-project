@@ -1,6 +1,7 @@
 <?php 
-include('../database/functions.php');
+include('../helpers/functions.php');
 session_start(); // Start a session
+
 //var_dump($_POST); 
 //die(); 
 $messageSucces = "";
@@ -31,7 +32,7 @@ if(isset($_POST['buttonContact'])){
     }
     
     if(empty($_POST['emailcontact'])){
-        $_SESSION['contactErrors']["emailname"] = "The field email address is empty!"; 
+        $_SESSION['contactErrors']["emailcontact"] = "The field email address is empty!"; 
     }else{
         $emailcontact = filter_var($_POST['emailcontact'], FILTER_SANITIZE_EMAIL); // Sanitization
         $_SESSION['contact']['emailcontact'] = $emailcontact ;

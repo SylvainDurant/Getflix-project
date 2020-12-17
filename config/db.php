@@ -1,16 +1,11 @@
 <?php
+
 // MySQL DB connection details
 $host = 'localhost';
 $user = 'root';
 $password = '';
 $database = 'moosic_db';
-
-$path = $_SERVER['REQUEST_URI'];
-$url = explode('/', $path);
-$root = $url[3] == 'pages' ? '..' : '.';
-$pages_root = $url[3] == 'pages' ? '.' : './pages';
-$page_title = ($url[3] == 'pages' && isset($url[4])) ? substr($url[4], 0, strpos($url[4], '.')) : 'Moosic';
-$current_page = ($url[3] == 'pages' && isset($url[4])) ? "../".$url[3]."/".$url[4] : '../index.php';
+$conn = null;
 
 //Custom PDO options
 $options = array (
@@ -25,4 +20,5 @@ try {
 } catch (PDOException $e) {
 	die("Connection failed: " . $e->getMessage());
 }
+
 ?>

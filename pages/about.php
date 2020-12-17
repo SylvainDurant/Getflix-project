@@ -1,26 +1,6 @@
 <?php
-include('../database/db.php');
-session_start(); // Start a session
-
-$success_message = isset($_SESSION['success_message']) ? $_SESSION['success_message'] : '';
-$signout_success = isset($_SESSION['signout_success']) ? $_SESSION['signout_success'] : '';
-
-if (!empty($success_message)) {
-    unset($_SESSION['success_message']);
-    unset($_SESSION['registerErrors']);
-    unset($_SESSION['loginErrors']);
-    unset($_SESSION['registerValues']);
-    unset($_SESSION['loginValues']);
-}
-
-if (!empty($signout_success)) {
-    unset($_SESSION['signout_success']);
-    unset($_SESSION['registerErrors']);
-    unset($_SESSION['loginErrors']);
-    unset($_SESSION['registerValues']);
-    unset($_SESSION['loginValues']);
-    unset($_SESSION['user']);
-}
+include('../helpers/variables.php');
+include('../helpers/session_messages.php');
 ?>
 
 <!-- HTML content -->
@@ -30,7 +10,7 @@ if (!empty($signout_success)) {
 <section id="about" class="container-fluid p-0">
 	<div id="header-about" class="">
 		<div class="bg-opacity text-center p-md-5">
-		    <h3 class="display-4 text-light mt-5">About <span class="text-danger">Moosic</span></h3>
+		    <h3 class="display-4 text-light pt-5">About <span class="text-danger">Moosic</span></h3>
 
 		    <p class="lead text-light col-8 mx-auto">We are Moosic, an enthusiatic team of 4 web developers. We all started a couple of months ago to create websites and we have decided together to bring that knowledge to you.</p>
 		    <p class="lead text-light col-8 mx-auto">Our team project is a music video platform. We developed this website using tho following technologies: HTML, CSS, JavaScript, PHP and MySql.</p>

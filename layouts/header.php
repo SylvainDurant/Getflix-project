@@ -1,5 +1,4 @@
 <?php
-// var_dump($_SESSION);
 
 // Get the input values in order to reinsert them in the form
 $login_password = isset($_SESSION['loginValues']['password']) ? $_SESSION['loginValues']['password'] : '';
@@ -12,14 +11,14 @@ $email = isset($_SESSION['registerValues']['email']) ? $_SESSION['registerValues
 $password = isset($_SESSION['registerValues']['password']) ? $_SESSION['registerValues']['password'] : '';
 $password_confirm = isset($_SESSION['registerValues']['password_confirm']) ? $_SESSION['registerValues']['password_confirm'] : '';
 
-$song_title = isset($_SESSION['song_title']) ? $_SESSION['song_title'] : '';
+/*$song_title = isset($_SESSION['song_title']) ? $_SESSION['song_title'] : '';
 $song_artist = isset($_SESSION['song_artist']) ? $_SESSION['song_artist'] : '';
 $song_category = isset($_SESSION['song_category']) ? $_SESSION['song_category'] : '';
 $song_url = isset($_SESSION['song_url']) ? $_SESSION['song_url'] : '';
 $song_album = isset($_SESSION['song_album']) ? $_SESSION['song_album'] : '';
 $song_date = isset($_SESSION['song_date']) ? $_SESSION['song_date'] : '';
 $song_album_image = isset($_SESSION['song_album_image']) ? $_SESSION['song_album_image'] : '';
-$song_description = isset($_SESSION['song_description']) ? $_SESSION['song_description'] : '';
+$song_description = isset($_SESSION['song_description']) ? $_SESSION['song_description'] : '';*/
 
 // Handle errors by type
 $loginErrors = isset($_SESSION['loginErrors']) ? $_SESSION['loginErrors'] : [];
@@ -42,9 +41,9 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 <header id="myheader" class="py-1 text-center text-info">
     <!-- Navbar -->
 	<nav class="navbar navbar-expand-md navbar-dark">
-        <div class="d-flex justify-content-center col-lg-1">
+        <div class="d-flex justify-content-center col-lg-1 col-2">
             <a class="navbar-brand text-info p-0 m-0" href="<?php echo $root; ?>/index.php">
-                <img src="<?php echo $root; ?>/images/Moosic_T2.1.png" class="w-75"></a>
+                <img src="<?php echo $root; ?>/images/Moosic_T2.1.png" class="img-fluid px-lg-2"></a>
             </a>
         </div>
 
@@ -68,7 +67,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
             </ul>
         </div>
 
-        <div class="d-flex justify-content-end col-lg-5">
+        <div class="d-flex justify-content-end col-lg-5 col">
            <!-- Search form -->
             <form action="<?php echo $url[3] == 'pages' ? '..' : '.'; ?>/pages/search.php" method="POST" class="form-inline form-sm active-cyan-2 mr-3">
                 <input class="form-control form-control-sm mr-2 w-75" type="text" placeholder="Search" aria-label="Search" name="search" required>
@@ -78,7 +77,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
             <?php if ($user && $user['is_connected']) { ?> <!-- if connected -->
 
                 <div class="mr-3 pt-1">
-                    <a class="text-light text-14" href="">Hello <span class=""><?php echo $user['pseudo']; ?></span>!</a>
+                    <a class="text-light text-14" href="">Hello <span class="text-capitalize"><?php echo $user['pseudo']; ?></span>!</a>
                 </div>
 
                 <div class="pt-1">
@@ -219,27 +218,22 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 </header>
 
 <script>
-    var sessionLogin = <?= json_encode(['loginErrors' => $loginErrors]); ?>;
-    var sessionRegister = <?= json_encode(['registerErrors' => $registerErrors]); ?>;
+    /*var sessionLogin = "<?php echo count($loginErrors); ?>";
+    var sessionRegister = "<?php echo count($registerErrors); ?>";
     var loginModal = document.getElementById("loginFormModal");
     var registrationModal = document.getElementById("registrationFormModal");
+    // console.log("sessionLogin: "+sessionLogin);
+    // console.log("sessionRegister: "+sessionRegister);
 
-    // console.log("Object.keys(sessionLogin['loginErrors']): "+Object.keys(sessionLogin['loginErrors']).length);
-    // console.log("Object.keys(sessionRegister['registerErrors']): "+Object.keys(sessionRegister['registerErrors']).length);
-
-    if (Object.keys(sessionLogin['loginErrors']).length > 0) {
-        console.log('has errors in login modal');
+    if (sessionLogin > 0) {
+        console.log('has errors in login modal'+sessionLogin);
         loginModal.classList.add('show');
         loginModal.classList.add('d-block');
-    } else {
-        //reset login modal
-    }
+    } 
 
-    if (Object.keys(sessionRegister['registerErrors']).length != 0) {
-        console.log('has errors in register modal');
+    if (sessionRegister > 0) {
+        console.log('has errors in register modal'+sessionRegister);
         registrationModal.classList.add('show');
         registrationModal.classList.add('d-block');
-    } else {
-        //reset register modal
-    }
+    }*/
 </script>

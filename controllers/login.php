@@ -1,12 +1,15 @@
 <?php
-
-include('../database/functions.php');
+include('../helpers/functions.php');
 session_start(); // Start a session
 
 $_SESSION['loginErrors'] = [];
 $previous_page = '';
 
 if (isset($_POST['loginBtn'])) {
+    // when click to login => clear register form
+    unset($_SESSION['registerErrors']);
+    unset($_SESSION['registerValues']);
+
     // Get current page value
     if (isset($_POST['current_page'])) {
         $previous_page = $_POST['current_page'];
@@ -31,12 +34,12 @@ if (isset($_POST['loginBtn'])) {
        $_SESSION['loginErrors']['password'] = "This field is required!";
     }
 
-    var_dump(count($_SESSION['loginErrors']));
+    // var_dump(count($_SESSION['loginErrors']));
 
     // Process form data, handling errors & redirections
     if (count($_SESSION['loginErrors']) == 0) {
         $currentUser = getUserByEmail($conn, $email); // array OR false
-        var_dump($currentUser);
+        // var_dump($currentUser);
 
         // check if the user email exists in the db & if password match
         if ($currentUser != false) {
