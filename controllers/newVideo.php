@@ -31,7 +31,7 @@ if (isset($_POST['addBtn'])) {
     if (isset($_POST['song_url'])) {
         $url = filter_var($_POST['song_url'], FILTER_SANITIZE_STRING); // Sanitization
         preg_match('~=(.*?)&~', $url, $output); // Take the part of the url we need (between "=" and "&")
-        $song['values']['song_url'] = "https://www.youtube.com/embed/$output[1]"; // Change the Url to embed (https://www.youtube.com/embed/...)
+        $song['values']['song_url'] = $output[1]; 
     } else {
        $song['errors']['song_url'] = "This field is required!";
     }
@@ -74,7 +74,7 @@ if (isset($_POST['addBtn'])) {
         // insert user in the db & connect the user
   		$data = [];
   		$data['title'] = $title;
-  		$data['description'] = $artist;
+  		$data['description'] = $description;
   		$data['source'] = $song['values']['song_url'];
   		$data['artist_name'] = $artist;
         $data['album_name'] = $album;

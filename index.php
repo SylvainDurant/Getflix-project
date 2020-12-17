@@ -46,8 +46,8 @@ $lastSongs = fetchLast4Songs($conn);
         <div class="carousel-inner">
             <?php foreach($musicCarousel as $key => $song) { ?>
                 <div class="carousel-item <?php echo $key == 0 ? 'active' : ''; ?>">
-                    <iframe class="embed-responsive-item w-100 " style="height:500px"
-                        src= "<?php echo $song['source'] ?>"></iframe>
+                    <img class="embed-responsive-item w-100 " style="height:500px" style="object-fit: cover;" src="https://img.youtube.com/vi/<?php echo $song['source']?>/hqdefault.jpg"></img>
+                    <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
                 </div>
             <?php  } ?>
         </div>
@@ -90,7 +90,7 @@ $lastSongs = fetchLast4Songs($conn);
                 <?php foreach ($songs as $song) { ?>
                     <div class="card col-12 col-sm-4 col-lg-2 m-1 shadow">
                         <div class="text-truncate">
-                            <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <img width="100%" height="100" style="object-fit: cover;" src="https://img.youtube.com/vi/<?php echo $song['source']?>/mqdefault.jpg"></img>
                             <p><?php echo $song['artist_name'].": ". $song['title']?></p>
                         </div>
                         <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
@@ -106,7 +106,7 @@ $lastSongs = fetchLast4Songs($conn);
                         if ($song["category_id"] === $category["id"]){ ?>
                         <div class="card col-12 col-sm-4 col-lg-2 m-1 shadow ">
                             <div class='text-truncate'>
-                                <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <img width="100%" height="100" style="object-fit: cover;" src="https://img.youtube.com/vi/<?php echo $song['source']?>/mqdefault.jpg"></img>
                                 <p><?php echo $song['artist_name'].": ". $song['title']?></p>
                             </div>
                             <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
@@ -131,9 +131,7 @@ $lastSongs = fetchLast4Songs($conn);
                     <div class="col-12 col-sm-6 col-lg-3 my-3">
                         <div class="mx-lg-2 card shadow mb-xs-3">
                             <div class="text-truncate">
-                                <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
+                                <img width="100%" height="100" style="object-fit: cover;" src="https://img.youtube.com/vi/<?php echo $song['source']?>/mqdefault.jpg"></img>
                                 <p><?php echo $song['artist_name'].": ". $song['title']?></p>
                             </div>
                             <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
