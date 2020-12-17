@@ -9,9 +9,13 @@ body {
   font-size: 16px;
 }
 
-/* .videoBackground{
+.videoBackground{
   background-image: url(../images/background_img.jpg);
-} */
+  background-position-y: center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
 
 .myLink:hover{
   background:rgba(32, 32, 32, 0.3) !important;
