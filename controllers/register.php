@@ -6,6 +6,10 @@ $_SESSION['registerErrors'] = [];
 $previous_page = '';
 
 if (isset($_POST['registerBtn'])) {
+	// when click to register => clear login form
+	unset($_SESSION['loginErrors']);
+	unset($_SESSION['loginValues']);
+
 	// Get current page value
     if (isset($_POST['current_page'])) {
         $previous_page = $_POST['current_page'];

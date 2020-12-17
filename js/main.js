@@ -26,7 +26,7 @@ Array.from(closeModalBtns).forEach((btn) => {
 	}
 });
 
-hideModals();
+// hideModals();
 
 // Set the options for the toastr messages
 toastr.options = {
