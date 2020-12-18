@@ -24,10 +24,10 @@ $lastSongs = fetchLast4Songs($conn);
             <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
         </ol>
 
-        <div class="carousel-inner">
+        <div id="carousel-inner" class="carousel-inner">
             <?php foreach($musicCarousel as $key => $song) { ?>
-                <div class="carousel-item <?php echo $key == 0 ? 'active' : ''; ?>">
-                    <img class="embed-responsive-item w-100 " style="height:500px" style="object-fit: cover;" src="https://img.youtube.com/vi/<?php echo $song['source']?>/hqdefault.jpg"></img>
+                <div style="height:500px" class="carousel-item <?php echo $key == 0 ? 'active' : ''; ?>">
+                    <img class="w-100" src="https://img.youtube.com/vi/<?php echo $song['source']?>/hqdefault.jpg"></img>
                     <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
                 </div>
             <?php  } ?>

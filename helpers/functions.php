@@ -133,4 +133,24 @@ function updateUserByConnection($conn, $id, $is_connected) {
 	return executeRequest($conn, $request, '');
 }
 
+function fetchComment($conn,$text,$user_id) {
+	$request = "SELECT * FROM comments
+				WHERE comments.text = '$text'
+				AND comments.user_id = '$user_id'"; 
+
+	return executeRequest($conn, $request, 'one');
+}
+
+function createComment($conn, $data) {
+    $text = $data['text'];
+    $user_id = $data['user_id'];
+    $song_id = $data['song_id'];
+
+	$request = "INSERT INTO comments (`text`, `user_id`, `song_id`) 
+				VALUES ('$text', '$user_id', '$song_id')";
+
+	$stmt = $conn->prepare($request); // prepare the request in a statement
+	$stmt->execute();
+}
+
 ?>

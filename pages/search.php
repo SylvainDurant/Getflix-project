@@ -51,7 +51,7 @@ $categories = fetchAllCategory($conn);
                             
                             <div class="card col-12 col-sm-4 col-lg-2 m-1 shadow ">
                                 <div class='text-truncate'>
-                                    <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <img width="100%" height="100" src="https://img.youtube.com/vi/<?php echo $song['source']?>/mqdefault.jpg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></img>
                                     <p><?php echo $song_name?></p>
                                 </div>
                                 <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>)"></div>
@@ -79,7 +79,7 @@ $categories = fetchAllCategory($conn);
         
                             <div class="card col-12 col-sm-4 col-lg-2 m-1 shadow ">
                                 <div class='text-truncate'>
-                                    <iframe width="100%" height="100" src="<?php echo $song['source']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <img width="100%" height="100" src="https://img.youtube.com/vi/<?php echo $song['source']?>/mqdefault.jpg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></img>
                                     <p><?php echo $artist_name.": ". $song['title']?></p>
                                 </div>
                                 <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>)"></div>
