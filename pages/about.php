@@ -9,6 +9,7 @@ include('../helpers/session_messages.php');
 
 <section id="about" class="container-fluid p-0">
 	<div id="header-about" class="">
+		<h2 class="warning">chiar nimic ???? nu se poate!</h2>
 		<h2 class="warning">cloning again in wamp www becode!!!!</h2>
 		<div class="bg-opacity text-center p-md-5">
 		    <h3 class="display-4 text-light pt-5">About <span class="text-danger">Moosic</span></h3>
