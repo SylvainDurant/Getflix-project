@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $page_title; ?></title>
+    <link rel="icon" type="text/css" href="<?php echo $root; ?>/images/Moosic_T2.1.png">
 
     <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/2d566fa444.js" crossorigin="anonymous"></script>
