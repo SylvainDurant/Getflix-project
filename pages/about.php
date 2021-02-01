@@ -12,11 +12,11 @@ include('../helpers/session_messages.php');
 		<div class="bg-opacity text-center p-md-5">
 		    <h3 class="display-4 text-light pt-5">About <span class="text-danger">Moosic</span></h3>
 
-		    <p class="lead text-light col-8 mx-auto">We are Moosic, an enthusiatic team of 4 web developers. We all started a couple of months ago to create websites and we have decided together to bring that knowledge to you.</p>
+		    <p class="lead text-light col-8 mx-auto">We are Moosic, an enthusiatic team of 3 web developers. We all started a couple of months ago to create websites and we have decided together to bring that knowledge to you.</p>
 		    <p class="lead text-light col-8 mx-auto">Our team project is a music video platform. We developed this website using tho following technologies: HTML, CSS, JavaScript, PHP and MySql.</p>
 
 		    <div class="mt-5">
-		    	<a class="" href="https://github.com/SylvainDurant/Getflix-project">
+		    	<a class="" href="https://github.com/SylvainDurant/Moosic">
 		    		<i class="fa fa-github text-info fa-3x pb-4"></i>
 		    	</a>
 		    </div>

@@ -66,6 +66,15 @@ function fetchAllCommentsByVideo($conn,$id) {
 	return executeRequest($conn, $request);
 }
 
+function fetchAllCommentsByUser($conn,$id) {
+	$request = "SELECT * FROM comments
+				LEFT JOIN users
+				ON users.user_id = comments.user_id
+				WHERE comments.user_id = $id"; 
+
+	return executeRequest($conn, $request);
+}
+
 function fetchLast4Songs($conn) {
 	$request = "SELECT * FROM songs LIMIT 4";  
 	
@@ -91,6 +100,12 @@ function fetchAllUsers($conn) {
 
 function getUserByEmail($conn, $email) {
 	$request = "SELECT * FROM users WHERE email = '$email'";
+
+	return executeRequest($conn, $request, 'one');
+}
+
+function getUserByPseudo($conn, $pseudo) {
+	$request = "SELECT * FROM users WHERE pseudo = '$pseudo'";
 
 	return executeRequest($conn, $request, 'one');
 }

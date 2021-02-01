@@ -77,7 +77,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
             <?php if ($user && $user['is_connected']) { ?> <!-- if connected -->
 
                 <div class="mr-3 pt-1">
-                    <a class="text-light text-14" href="">Hello <span class="text-capitalize"><?php echo $user['pseudo']; ?></span>!</a>
+                    <a class="text-light text-14" href="<?php echo $url[3] == 'pages' ? '.' : './pages'; ?>/profile.php?pseudo=<?php echo $user['pseudo']?>">Hello <span class="text-capitalize"><?php echo $user['pseudo']; ?></span>!</a>
                 </div>
 
                 <div class="pt-1">

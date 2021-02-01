@@ -67,7 +67,7 @@
 
       <!-- Copyright -->
       <div class="text-14 text-center py-3">© 2020 Copyright:
-        <a href="https://github.com/SylvainDurant/Getflix-project" class="text-dark font-weight-bold"> Moosic github</a>
+        <a href="https://github.com/SylvainDurant/Moosic" class="text-dark font-weight-bold"> Moosic github</a>
       </div> 
       <!-- Copyright -->
 

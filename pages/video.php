@@ -44,7 +44,7 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
                                         <div class="d-flex flex-column">
                                             <h4><?php echo "From the album: ".$video['album_name']?></h4>
                                             <p><?php echo $video['description']?></p>
-                                            <p class="text-muted mb-0 mt-auto">Uploaded by <a href="http://" class="card-link"><?php echo $video['pseudo']?></a> on <?php echo $video['created_at']?></p>
+                                            <p class="text-muted mb-0 mt-auto">Uploaded by <a href="./profile.php?pseudo=<?php echo $video['pseudo']?>" class="card-link"><?php echo $video['pseudo']?></a> on <?php echo $video['created_at']?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -94,10 +94,10 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
                     <?php foreach ($comments as $value) { ?>
                         <div class='card mb-3 shadow' style='width: 100%;'>
                             <div class='row no-gutters'>
-                                <a href=""><img src="<?php echo $value['photo']?>" class='rounded-circle m-1' alt="<?php echo $value['pseudo']?>" style="height:50px; width:50px; float:left;"></a>
+                                <a href="./profile.php?pseudo=<?php echo $value['pseudo']?>"><img src="<?php echo $value['photo']?>" class='rounded-circle m-1' alt="<?php echo $value['pseudo']?>" style="height:50px; width:50px; float:left;"></a>
                                 
                                 <div class="p-2 col-11">
-                                    <a href="" class="card-title font-weight-bold"><?php echo $value['pseudo']?></a>
+                                    <a href="./profile.php?pseudo=<?php echo $value['pseudo']?>" class="card-title font-weight-bold"><?php echo $value['pseudo']?></a>
                                     <?php if ($value['user_id'] === $user['user_id']){ ?>
                                         <a href="" class="card-title float-right"><i class="fas fa-trash-alt"></i></a>
                                         <a class="card-title float-right px-2" onclick="modify(<?php echo $value['id'] ?>)"><i class="fas fa-edit"></i></a>

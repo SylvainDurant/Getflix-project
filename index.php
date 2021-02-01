@@ -26,8 +26,9 @@ $lastSongs = fetchLast4Songs($conn);
 
         <div id="carousel-inner" class="carousel-inner">
             <?php foreach($musicCarousel as $key => $song) { ?>
-                <div style="height:500px" class="carousel-item <?php echo $key == 0 ? 'active' : ''; ?>">
-                    <img class="w-100" src="https://img.youtube.com/vi/<?php echo $song['source']?>/hqdefault.jpg"></img>
+                <div class="carousel-item <?php echo $key == 0 ? 'active' : ''; ?>">
+                    <img style="height:500px" class="w-100" src="https://img.youtube.com/vi/<?php echo $song['source']?>/hqdefault.jpg"></img>
+                    <p class="text-light"><?php echo $song['artist_name']?>: <?php echo $song['title']?></p>
                     <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
                 </div>
             <?php  } ?>
