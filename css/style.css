@@ -33,6 +33,10 @@ a, a:hover {
   font-size: 15px;
 }
 
+.text-18 {
+  font-size: 18px;
+}
+
 .size-8 {
     font-size: 0.9rem;
     letter-spacing: 1px;
@@ -129,7 +133,7 @@ h3 span {
   box-shadow: 0 0.1rem 0.6rem rgba(23, 162, 184, .5) !important;
 }
 
-/*Style homepage*/
+/* Style homepage */
 #editorsChoice {
     background-image: url("../images/microphone.jpg");
     background-color: #cccccc; /* Used if the image is unavailable */
@@ -138,14 +142,47 @@ h3 span {
     background-size: cover; /* Resize the background image to cover the entire container */
 }
 
-/*Style video page*/
+/* Style profile page */
+#profile {
+    background-image: url("../images/microphone.jpg");
+    background-color: #cccccc; /* Used if the image is unavailable */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #17a2b8;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: #ddd !important;
+  background-color: #9fa3a452;
+  border-color: #17a2b8 #17a2b8;
+  border-bottom-color: #353333;
+}
+
+.nav-tabs .nav-link:hover {
+    background-color: #c4c4c4;
+    border: none;
+}
+
+.bg-darkgreen {
+  background-color: #042c30;
+}
+
+.bg-trans {
+  background-color: #9fa3a452;
+}
+
+/* Style video page */
 /*.videoBackground {
     background-image: url("../images/background_img.jpg");
     background-color: #cccccc; /* Used if the image is unavailable */
     /*background-position: center; /* Center the image */*/
     /*background-repeat: no-repeat; /* Do not repeat the image */*/
     /*background-size: cover;  Resize the background image to cover the entire container */
-}*/
+/* } */
 
 
 /* ==========================================================================

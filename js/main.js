@@ -40,3 +40,25 @@ toastr.options = {
 $(function() {
 	// toastr.info('Hé, ça marche !'); // message, titre
 });
+
+function modify(comment_id) {
+	let id = comment_id;
+	document.getElementById("comment"+id).innerHTML = document.getElementById(id).innerHTML;
+
+	if (document.getElementById(id).hidden === false){
+		document.getElementById(id).hidden = true;
+		document.getElementById("modify"+id).hidden = false;
+	} else {
+		document.getElementById(id).hidden = false;
+		document.getElementById("modify"+id).hidden = true;
+	}
+}
+
+function confirmModify(comment_id) {
+	let id = comment_id;
+	let new_comment = document.getElementById("comment"+id).innerHTML;
+
+	document.getElementById(id).innerHTML = new_comment;
+	document.getElementById(id).hidden = false;
+	document.getElementById("modify"+id).hidden = true;
+}
