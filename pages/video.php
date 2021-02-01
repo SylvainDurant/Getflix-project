@@ -44,7 +44,7 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
                                         <div class="d-flex flex-column">
                                             <h4><?php echo "From the album: ".$video['album_name']?></h4>
                                             <p><?php echo $video['description']?></p>
-                                            <p class="text-muted mb-0 mt-auto">Uploaded by <a href="http://" class="card-link"><?php echo $video['pseudo']?></a> on <?php echo $video['created_at']?></p>
+                                            <p class="text-muted mb-0 mt-auto">Uploaded by <a href="./profile.php?pseudo=<?php echo $video['pseudo']?>" class="card-link"><?php echo $video['pseudo']?></a> on <?php echo $video['created_at']?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -94,11 +94,21 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
                     <?php foreach ($comments as $value) { ?>
                         <div class='card mb-3 shadow' style='width: 100%;'>
                             <div class='row no-gutters'>
-                                <a href="http://"><img src="<?php echo $value['photo']?>" class='rounded-circle m-1' alt="<?php echo $value['pseudo']?>" style="height:50px; width:50px; float:left;"></a>
+                                <a href="./profile.php?pseudo=<?php echo $value['pseudo']?>"><img src="<?php echo $value['photo']?>" class='rounded-circle m-1' alt="<?php echo $value['pseudo']?>" style="height:50px; width:50px; float:left;"></a>
                                 
-                                <div class="p-2">
-                                    <a href="http://" class="card-link"><h5 class='card-title'><?php echo $value['pseudo']?></h5></a>
-                                    <p class='card-text'><?php echo $value['text']?></p>
+                                <div class="p-2 col-11">
+                                    <a href="./profile.php?pseudo=<?php echo $value['pseudo']?>" class="card-title font-weight-bold"><?php echo $value['pseudo']?></a>
+                                    <?php if ($value['user_id'] === $user['user_id']){ ?>
+                                        <a href="" class="card-title float-right"><i class="fas fa-trash-alt"></i></a>
+                                        <a class="card-title float-right px-2" onclick="modify(<?php echo $value['id'] ?>)"><i class="fas fa-edit"></i></a>
+                                    <?php } ?>
+
+                                    <p id="<?php echo $value['id'] ?>" class='card-text'><?php echo $value['text']?></p>
+                                    <div id="modify<?php echo $value['id'] ?>" hidden>
+                                        <textarea id="comment<?php echo $value['id'] ?>" name="comment<?php echo $value['id'] ?>" type="text" class="form-control mr-sm-2" rows="1" style="width:75%;"></textarea>
+                                        <input class="btn btn-info" type="button" value="Cancel" onclick="modify(<?php echo $value['id'] ?>)">
+                                        <input id="modifyComment" name="modifyComment" class="btn btn-info" type="submit" value="Save changes" onclick="confirmModify(<?php echo $value['id'] ?>)">
+                                    </div>
                                     <p class='card-text'><small class='text-muted'><?php echo $value['created_at']?></small></p>
                                 </div>
                             </div>
