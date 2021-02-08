@@ -26,7 +26,7 @@ a, a:hover {
 }
 
 .text-14 {
-	font-size: 14px;
+  font-size: 14px;
 }
 
 .text-15 {
@@ -51,7 +51,7 @@ a, a:hover {
 }
 
 .text-orange {
-	color: #e97817;
+  color: #e97817;
 }
 
 .bg-dark {
@@ -173,20 +173,80 @@ h3 span {
   background-color: #9fa3a452;
 }
 
-/* Style video page */
-/*.videoBackground {
-    background-image: url("../images/background_img.jpg");
-    background-color: #cccccc; /* Used if the image is unavailable */
-    /*background-position: center; /* Center the image */*/
-    /*background-repeat: no-repeat; /* Do not repeat the image */*/
-    /*background-size: cover;  Resize the background image to cover the entire container */
-/* } */
+/* Style carousel */
+.carousel-inner {
+    height: 15%;
+    height: 450px;
+}
 
+.carousel-inner img {
+    margin-top:-20%;
+    margin-bottom: -10%;
+}
+
+.carousel-caption {
+    /*bottom: 38vh;*/
+    bottom: 31%;
+    left: 0;
+}
+
+/* Footer */
+div i { /** Selects all <div> elements inside <i> elements **/
+  font-size: 40px;
+}
 
 /* ==========================================================================
-   Footer
+   Responsive
    ========================================================================== */
 
-div i { /**Selects all <div> elements inside <i> elements**/
-  font-size:40px;
+/*@media (min-width: 1201px) and (max-width: 1520) {
+  .carousel-inner {
+      height: 450px;
+  } 
+
+  .carousel-caption {
+      bottom: 14%;
+  }
+}*/
+
+@media (min-width: 1521px) {
+  .carousel-caption {
+      bottom: 33%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .carousel-inner {
+      /*height: 400px;*/
+      height: 20%;
+  } 
+
+  .carousel-caption {
+      bottom: -5%;
+  }
+}
+
+/* Small devices */
+@media (max-width: 768px) {
+  .carousel-caption {
+      bottom: -6%;
+      font-size: 12px;
+  }
+
+  #header-about p {
+      font-size: 12px;
+  }
+}
+
+/*Extra Small devices */
+@media (max-width: 480px) {
+  .carousel-caption {
+      bottom: -11%;
+  }
+}
+
+@media (max-width: 350px) {
+  .carousel-caption {
+      bottom: -13%;
+  }
 }
