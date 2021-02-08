@@ -38,12 +38,12 @@ $password_confirm_error = isset($registerErrors) && isset($registerErrors['passw
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 ?>
 
-<header id="myheader" class="py-1 text-center text-info">
+<header id="myheader" class="text-center text-info">
     <!-- Navbar -->
-	<nav class="navbar navbar-expand-md navbar-dark">
-        <div class="d-flex justify-content-center col-lg-1 col-2">
+    <nav class="navbar navbar-expand-md navbar-dark">
+        <div class="d-flex justify-content-center col-md-1 col-2">
             <a class="navbar-brand text-info p-0 m-0" href="<?php echo $root; ?>/index.php">
-                <img src="<?php echo $root; ?>/images/Moosic_T2.1.png" class="img-fluid px-lg-2"></a>
+                <img src="<?php echo $root; ?>/images/Moosic_T2.1.png" class="img-fluid px-lg-2 w-lg-50 w-sm-75"></a>
             </a>
         </div>
 
@@ -51,11 +51,11 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="navbar-collapse collapse col-lg-6" id="navbarColorLight">
+        <div class="navbar-collapse collapse col-lg-4 col-md-4" id="navbarColorLight">
             <ul class="navbar-nav">
                 <li class="nav-item active">
                     <a class="nav-link text-info" href="<?php echo $root; ?>/index.php" data-abc="true">Home <span class="sr-only">(current)</span></a>
-                </li> <!-- active becomes white -->
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link text-info" href="<?php echo $pages_root; ?>/about.php">About</a>
@@ -67,9 +67,9 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
             </ul>
         </div>
 
-        <div class="d-flex justify-content-end col-lg-5 col">
+        <div class="d-flex justify-content-end col-lg-7 col-xs-12">
            <!-- Search form -->
-            <form action="<?php echo $url[3] == 'pages' ? '..' : '.'; ?>/pages/search.php" method="POST" class="form-inline form-sm active-cyan-2 mr-3">
+            <form action="<?php echo $root; ?>/pages/search.php" method="POST" class="form-inline form-sm active-cyan-2 mr-3 w-lg-50 d-flex col-sm-8">
                 <input class="form-control form-control-sm mr-2 w-75" type="text" placeholder="Search" aria-label="Search" name="search" required>
                 <button type="submit" class="btn btn-outline-dark"><i class="fas fa-search text-danger fa-1x" aria-hidden="true"></i></button>
             </form>
@@ -77,23 +77,23 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
             <?php if ($user && $user['is_connected']) { ?> <!-- if connected -->
 
                 <div class="mr-3 pt-1">
-                    <a class="text-light text-14" href="<?php echo $url[3] == 'pages' ? '.' : './pages'; ?>/profile.php?pseudo=<?php echo $user['pseudo']?>">Hello <span class="text-capitalize"><?php echo $user['pseudo']; ?></span>!</a>
+                    <a class="text-light text-14" href="<?php echo $pages_root; ?>/profile.php?pseudo=<?php echo $user['pseudo']?>">Hello <span class="text-capitalize"><?php echo $user['pseudo']; ?></span>!</a>
                 </div>
 
                 <div class="pt-1">
-                    <a class="text-info text-14" href="<?php echo $root; ?>/controllers/logout.php"><i class="fa fa-sign-in fa-1x" aria-hidden="true"></i>&nbsp; Sign out</a>
+                    <a class="text-info text-14" href="<?php echo $root; ?>/controllers/logout.php"><i class="fa fa-sign-in fa-1x" aria-hidden="true"></i>&nbsp; <span class="d-lg-inline-block d-none">Sign out</span></a>
                 </div>
 
             <?php } else { ?> <!-- if not connected -->
 
                 <div class="mr-3 pt-1">
                     <!-- Trigger/Open The Login Modal -->
-                    <a class="text-info text-14" href="" data-toggle="modal" data-target="#loginFormModal"><i class="fa fa-user fa-1x" aria-hidden="true"></i>&nbsp; Sign in</a>
+                    <a class="text-info text-14" href="" data-toggle="modal" data-target="#loginFormModal"><i class="fa fa-user fa-1x" aria-hidden="true"></i>&nbsp; <span class="d-lg-inline-block d-none">Sign in</span></a>
                 </div>
 
                 <div class="pt-1">
                     <!-- Trigger/Open The Registration Modal -->
-                    <a class="text-white-50 text-14" href="" data-toggle="modal" data-target="#registrationFormModal"><i class="fa fa-user-plus fa-1x" aria-hidden="true"></i>&nbsp; Sign up</a>
+                    <a class="text-white-50 text-14" href="" data-toggle="modal" data-target="#registrationFormModal"><i class="fa fa-user-plus fa-1x" aria-hidden="true"></i>&nbsp; <span class="d-lg-inline-block d-none">Sign up</span></a>
                 </div>
 
             <?php } ?>
@@ -216,24 +216,3 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
         </div>
     </div>
 </header>
-
-<script>
-    /*var sessionLogin = "<?php echo count($loginErrors); ?>";
-    var sessionRegister = "<?php echo count($registerErrors); ?>";
-    var loginModal = document.getElementById("loginFormModal");
-    var registrationModal = document.getElementById("registrationFormModal");
-    // console.log("sessionLogin: "+sessionLogin);
-    // console.log("sessionRegister: "+sessionRegister);
-
-    if (sessionLogin > 0) {
-        console.log('has errors in login modal'+sessionLogin);
-        loginModal.classList.add('show');
-        loginModal.classList.add('d-block');
-    } 
-
-    if (sessionRegister > 0) {
-        console.log('has errors in register modal'+sessionRegister);
-        registrationModal.classList.add('show');
-        registrationModal.classList.add('d-block');
-    }*/
-</script>
