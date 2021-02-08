@@ -1,7 +1,7 @@
 <?php
+
 $url = explode('/', $_SERVER['REQUEST_URI']); // full url path
-// var_dump($url);
-$root = $url[3] == 'pages' || $url[3] == 'controllers' ? '..' : '.';
+$root = $url[1] == 'pages' || $url[1] == 'controllers' ? '..' : '.';
 include($root.'/config/db.php');
 
 function executeRequest($conn, $request, $fetchMode = 'all') { // $fetchMode = 'all', 'one' or ''

@@ -1,6 +1,6 @@
 <?php
-include('../helpers/functions.php');
 include('../helpers/variables.php');
+include('../helpers/functions.php');
 include('../helpers/session_messages.php');
 ?>
 
