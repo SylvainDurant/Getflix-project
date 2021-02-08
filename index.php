@@ -15,7 +15,39 @@ $lastSongs = fetchLast4Songs($conn);
 <?php include('./layouts/master.php'); ?>
 <?php include('./layouts/header.php'); ?>
 
-<section id="carousel" class="bg-dark p-5">
+<section id="carousel" class="bg-dark">
+    <div id="carouselHomepage" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselHomepage" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselHomepage" data-slide-to="1"></li>
+            <li data-target="#carouselHomepage" data-slide-to="2"></li>
+            <li data-target="#carouselHomepage" data-slide-to="3"></li>
+        </ol>
+
+        <div id="carousel-inner" class="carousel-inner">
+            <?php foreach($musicCarousel as $key => $song) { ?>
+                <div class="carousel-item <?php echo $key == 0 ? 'active' : ''; ?>">
+                    <img class="w-100" src="https://img.youtube.com/vi/<?php echo $song['source']?>/hqdefault.jpg"></img>
+
+                    <div class="carousel-caption text-left w-100 bg-dark p-0">
+                        <p class="text-light p-2 pt-4 song-title"><?php echo $song['artist_name']?>: <?php echo $song['title']?></p>
+                    </div>
+
+                    <div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
+                </div>
+            <?php  } ?>
+        </div>
+
+        <a class="carousel-control-prev" href="#carouselHomepage" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#carouselHomepage" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+    </div>
+</section>
+
+<!-- <section id="carousel" class="bg-dark p-5">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -43,7 +75,7 @@ $lastSongs = fetchLast4Songs($conn);
             <span class="sr-only">Next</span>
         </a>
     </div>
-</section>
+</section> -->
 
 <section id="categories" class="p-4 row text-center">
     <div class="col-lg-5 col-sm-8 mx-auto my-4">
@@ -130,39 +162,6 @@ $lastSongs = fetchLast4Songs($conn);
         <h3 class="text">NEWSletter section</h3>
     </div>
 </section>
-
-<!-- <section id="musicChoise">
-    <div class="text-center">
-        <h3><u>Favorite music</u></h3>
-        <div id="accordion">
-            <div class="card-header">
-                <h5 class="mb-0">
-                    <div class="row p-2 justify-content-center">
-                        <?php foreach($songs as $songChoise){ ?>
-                        <iframe class="embed-responsive-item w-100 " src="<?php echo $songChoise['source'] ?>"></iframe>
-                        <?php } ?>
-                    </div>
-                </h5>
-            </div>
-        </div>
-    </div> 
-
-    <div class="contenaireBlock">
-        <div class="item">
-            <div class="card" style="width: 18rem;">
-                <?php foreach($songs as $songChoise) { ?>
-                    <p><?php echo $songChoise['artist_name']?></p>
-
-                    <div class="card-body">
-                        <h5 class="card-title">Parcour de Sébastien</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="https://www.instagram.com/aidin_firouzfar/" class="btn btn-primary" id="button1">Go           somewhere</a>
-                    </div>
-                <?php } ?>
-            </div>
-        </div>
-    </div>
-</section> -->
 
 <?php include('./layouts/footer.php'); ?>
 <!-- end HTML content -->
