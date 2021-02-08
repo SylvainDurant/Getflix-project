@@ -2,6 +2,8 @@
 include('../helpers/functions.php');
 session_start(); // Start a session
 
+var_dump('in loggin controller');
+
 $_SESSION['loginErrors'] = [];
 $previous_page = '';
 

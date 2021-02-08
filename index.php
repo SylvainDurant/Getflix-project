@@ -131,39 +131,6 @@ $lastSongs = fetchLast4Songs($conn);
     </div>
 </section>
 
-<!-- <section id="musicChoise">
-    <div class="text-center">
-        <h3><u>Favorite music</u></h3>
-        <div id="accordion">
-            <div class="card-header">
-                <h5 class="mb-0">
-                    <div class="row p-2 justify-content-center">
-                        <?php foreach($songs as $songChoise){ ?>
-                        <iframe class="embed-responsive-item w-100 " src="<?php echo $songChoise['source'] ?>"></iframe>
-                        <?php } ?>
-                    </div>
-                </h5>
-            </div>
-        </div>
-    </div> 
-
-    <div class="contenaireBlock">
-        <div class="item">
-            <div class="card" style="width: 18rem;">
-                <?php foreach($songs as $songChoise) { ?>
-                    <p><?php echo $songChoise['artist_name']?></p>
-
-                    <div class="card-body">
-                        <h5 class="card-title">Parcour de Sébastien</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="https://www.instagram.com/aidin_firouzfar/" class="btn btn-primary" id="button1">Go           somewhere</a>
-                    </div>
-                <?php } ?>
-            </div>
-        </div>
-    </div>
-</section> -->
-
 <?php include('./layouts/footer.php'); ?>
 <!-- end HTML content -->
 

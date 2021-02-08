@@ -57,6 +57,18 @@ function fetchAllSongsByCategory($conn,$id) {
 	return executeRequest($conn, $request); // 'all'
 }
 
+function fetchAllSongsByUser($conn,$id) {
+	$request = "SELECT * FROM songs WHERE songs.user_id = $id"; 
+
+	return executeRequest($conn, $request); // 'all'
+}
+
+function fetchCategoryByID($conn,$id) {
+	$request = "SELECT * FROM categories WHERE categories.id = $id"; 
+
+	return executeRequest($conn, $request, 'one');
+}
+
 function fetchAllCommentsByVideo($conn,$id) {
 	$request = "SELECT * FROM comments
 				LEFT JOIN users

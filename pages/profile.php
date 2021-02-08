@@ -24,8 +24,8 @@ $profile_password_confirm_error = isset($registerErrors) && isset($registerError
 if (isset($_GET["pseudo"])){
 	$profile = getUserByPseudo($conn,$_GET["pseudo"]);
 	$profileComments = fetchAllCommentsByUser($conn,$profile['user_id']);
+	$videos = fetchAllSongsByUser($conn,$profile['user_id']);
 }
-
 ?>
 
 <!-- HTML content -->
@@ -71,7 +71,7 @@ if (isset($_GET["pseudo"])){
 		        </nav>
 		    
 		        <!-- Tab panes -->
-		        <div class="tab-content bg-trans py-4 px-5 rounded-bottom">
+		        <div class="tab-content bg-trans py-4 px-3 rounded-bottom">
 
 					<?php if ($profile['user_id'] === $user['user_id']){ ?>  
 						<div class="tab-pane fade show active" id="nav-personal" role="tabpanel" aria-labelledby="nav-personal-tab">
@@ -195,7 +195,20 @@ if (isset($_GET["pseudo"])){
 		            </div>
 
 		            <div class="tab-pane fade" id="nav-songs" role="tabpanel" aria-labelledby="nav-songs-tab">
-		            	User's songs
+						<div class="row justify-content-center">
+							<?php foreach ($videos as $song) { ?>
+								<div class="card col-12 col-sm-3 m-1 shadow">
+									<div class="text-truncate text-dark">
+										<img width="100%" height="100" style="object-fit: cover;" src="https://img.youtube.com/vi/<?php echo $song['source']?>/mqdefault.jpg"></img>
+										<p class='mb-0'><?php echo $song['artist_name'].": "?></p>
+										<p class='mb-0'><?php echo $song['title']?></p>
+										<?php $category = fetchCategoryByID($conn,$song['category_id']);?>
+										<p>Category: <?php echo $category['name']?></p>
+									</div>
+									<div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
+								</div>
+							<?php } ?>
+						</div>
 		            </div>
 		        </div>
 
@@ -203,6 +216,7 @@ if (isset($_GET["pseudo"])){
         	</div>
         </div>
     </div>
+
 </section>
 
 <?php include('../layouts/footer.php'); ?>
