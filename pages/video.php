@@ -4,7 +4,8 @@ include('../helpers/functions.php');
 include('../helpers/session_messages.php');
 
 $page = 1;
-if (isset($_GET["id"])){
+
+if (isset($_GET["id"])) {
     $page = $_GET["id"];
 }
 
@@ -44,7 +45,7 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
                                         <div class="d-flex flex-column">
                                             <h4><?php echo "From the album: ".$video['album_name']?></h4>
                                             <p><?php echo $video['description']?></p>
-                                            <p class="text-muted mb-0 mt-auto">Uploaded by <a href="./profile.php?pseudo=<?php echo $video['pseudo']?>" class="card-link"><?php echo $video['pseudo']?></a> on <?php echo $video['created_at']?></p>
+                                            <p class="text-muted mb-0 mt-auto">Uploaded by <a href="./profile.php?pseudo=<?php echo $video['pseudo']?>" class="text-info"><?php echo $video['pseudo']?></a> on <?php echo $video['created_at']?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -82,7 +83,8 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
 
                     <div class='card mb-3 shadow' style='width: 100%;'>
                         <form action="<?php echo $root; ?>/controllers/newComment.php" method="post" class="form-inline">
-                            <img src=" <?php echo isset($user) ? $user['photo']:'../images/Unknown_user.png'?> " class="rounded-circle m-1" alt="<?php echo isset($user) ? $user['pseudo']:'Unregistered user' ?>" style="height:50px; width:50px; float:left;">
+                            <img src="<?php echo isset($user) && $user['photo'] ? $user['photo'] : $root.'/images/Unknown_user.png'; ?>" class="rounded-circle m-1" alt="<?php echo isset($user) ? $user['pseudo'] : 'Unregistered user' ?>" style="height:50px; width:50px; float:left;">
+
                             <div class="col">
                                 <textarea id="comment" name="comment" type="text" class="form-control mr-sm-2" id="inlineFormInputName2" rows="1" placeholder="<?php echo isset($user) ? 'Add a comment':'you must be logged in to post a comment'?>" style="width:75%;" <?php echo isset($user) ? '':'disabled data-bs-toggle="tooltip" data-bs-placement="bottom" title="you must be logged in to post a comment"'?>></textarea>
                                 <input type="hidden" name="song_id" value="<?php echo $video['id'] ?>">
@@ -94,21 +96,26 @@ $recommendations = fetchAllSongsByCategory($conn,$video["category_id"]);
                     <?php foreach ($comments as $value) { ?>
                         <div class='card mb-3 shadow' style='width: 100%;'>
                             <div class='row no-gutters'>
-                                <a href="./profile.php?pseudo=<?php echo $value['pseudo']?>"><img src="<?php echo $value['photo']?>" class='rounded-circle m-1' alt="<?php echo $value['pseudo']?>" style="height:50px; width:50px; float:left;"></a>
+                                <a href="./profile.php?pseudo=<?php echo $value['pseudo']?>">
+                                    <img src="<?php echo isset($value['photo']) ? $value['photo'] : $root.'/images/Unknown_user.png'; ?>" class='rounded-circle m-1' alt="<?php echo $value['pseudo']?>" style="height:50px; width:50px; float:left;">
+                                </a>
                                 
                                 <div class="p-2 col-11">
                                     <a href="./profile.php?pseudo=<?php echo $value['pseudo']?>" class="card-title font-weight-bold"><?php echo $value['pseudo']?></a>
-                                    <?php if ($value['user_id'] === $user['user_id']){ ?>
-                                        <a href="" class="card-title float-right"><i class="fas fa-trash-alt"></i></a>
-                                        <a class="card-title float-right px-2" onclick="modify(<?php echo $value['id'] ?>)"><i class="fas fa-edit"></i></a>
+
+                                    <?php if ($value['user_id'] === $user['user_id']) { ?>
+                                        <a href="" class="card-title float-right"><i class="fas fa-trash-alt fa-1x text-danger"></i></a>
+                                        <a class="card-title float-right px-2" onclick="modify(<?php echo $value['id'] ?>)"><i class="fas fa-edit fa-1x text-info"></i></a>
                                     <?php } ?>
 
                                     <p id="<?php echo $value['id'] ?>" class='card-text'><?php echo $value['text']?></p>
+
                                     <div id="modify<?php echo $value['id'] ?>" hidden>
                                         <textarea id="comment<?php echo $value['id'] ?>" name="comment<?php echo $value['id'] ?>" type="text" class="form-control mr-sm-2" rows="1" style="width:75%;"></textarea>
                                         <input class="btn btn-info" type="button" value="Cancel" onclick="modify(<?php echo $value['id'] ?>)">
                                         <input id="modifyComment" name="modifyComment" class="btn btn-info" type="submit" value="Save changes" onclick="confirmModify(<?php echo $value['id'] ?>)">
                                     </div>
+
                                     <p class='card-text'><small class='text-muted'><?php echo $value['created_at']?></small></p>
                                 </div>
                             </div>

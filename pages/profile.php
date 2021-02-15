@@ -3,13 +3,25 @@ include('../helpers/variables.php');
 include('../helpers/functions.php');
 include('../helpers/session_messages.php');
 
+$profile = null;
+
+// get the profile of the user
+if (isset($_GET["pseudo"])) {
+	$profile = getUserByPseudo($conn, $_GET["pseudo"]);
+	$profileComments = fetchAllCommentsByUser($conn, $profile['user_id']);
+	$profileVideos = fetchAllSongsByUser($conn,$profile['user_id']);
+}
+
 // Get the input values in order to reinsert them in the form
-$profile_last_name = isset($_SESSION['registerValues']['last_name']) ? $_SESSION['registerValues']['last_name'] : '';
-$profile_first_name = isset($_SESSION['registerValues']['first_name']) ? $_SESSION['registerValues']['first_name'] : '';
-$profile_pseudo = isset($_SESSION['registerValues']['pseudo']) ? $_SESSION['registerValues']['pseudo'] : '';
-$profile_email = isset($_SESSION['registerValues']['email']) ? $_SESSION['registerValues']['email'] : '';
-$profile_password = isset($_SESSION['registerValues']['password']) ? $_SESSION['registerValues']['password'] : '';
-$profile_password_confirm = isset($_SESSION['registerValues']['password_confirm']) ? $_SESSION['registerValues']['password_confirm'] : '';
+$profile_last_name = isset($profile) && isset($profile['last_name']) ? $profile['last_name'] : '';
+$profile_first_name = isset($profile) && isset($profile['first_name']) ? $profile['first_name'] : '';
+$profile_pseudo = isset($profile) && isset($profile['pseudo']) ? $profile['pseudo'] : '';
+$profile_email = isset($profile) && isset($profile['email']) ? $profile['email'] : '';
+$profile_birthday = isset($profile) && isset($profile['birthday']) ? $profile['birthday'] : '';
+$profile_description = isset($profile) && isset($profile['description']) ? $profile['description'] : '';
+
+$profile_password = isset($profile['password']) ? $profile['password'] : '';
+$profile_password_confirm = isset($profile['password_confirm']) ? $profile['password_confirm'] : '';
 
 // Handle errors
 $profile_registerErrors = isset($_SESSION['registerErrors']) ? $_SESSION['registerErrors'] : [];
@@ -19,13 +31,7 @@ $profile_pseudo_error = isset($registerErrors) && isset($registerErrors['pseudo'
 $profile_email_error = isset($registerErrors) && isset($registerErrors['email']) ? $registerErrors['email'] : "";
 $profile_password_error = isset($registerErrors) && isset($registerErrors['password']) ? $registerErrors['password'] : "";
 $profile_password_confirm_error = isset($registerErrors) && isset($registerErrors['password_confirm']) ? $registerErrors['password_confirm'] : "";
-
-// get the profile of the user
-if (isset($_GET["pseudo"])){
-	$profile = getUserByPseudo($conn,$_GET["pseudo"]);
-	$profileComments = fetchAllCommentsByUser($conn,$profile['user_id']);
-	$videos = fetchAllSongsByUser($conn,$profile['user_id']);
-}
+$profile_description_error = '';
 ?>
 
 <!-- HTML content -->
@@ -40,7 +46,7 @@ if (isset($_GET["pseudo"])){
 				<div class="text-center">
 					<h3><span class="text-danger text-capitalize"><?php echo $profile['pseudo']?></span></h3>
 				</div>
-	  			<img alt="<?php echo $profile['pseudo']?>" class="img-fluid w-100 rounded-circle border border-info" src="<?php echo $profile['photo']?>">
+	  			<img alt="<?php echo $profile['pseudo']?>" class="img-fluid w-100 rounded-circle border border-info" src="<?php echo $profile['photo'] ? $profile['photo'] : '../images/avatar_cat.png'; ?>">
 		        
 				<?php if ($profile['user_id'] === $user['user_id']) { ?>
 					<h6 class="mt-3 text-info text-14">Upload a different photo...</h6>
@@ -71,12 +77,9 @@ if (isset($_GET["pseudo"])){
 		        </nav>
 		    
 		        <!-- Tab panes -->
-		        <div class="tab-content bg-trans py-4 px-3 rounded-bottom">
-
+		        <div class="tab-content bg-trans py-4 px-5 rounded-bottom">
 					<?php if ($profile['user_id'] === $user['user_id']){ ?>  
 						<div class="tab-pane fade show active" id="nav-personal" role="tabpanel" aria-labelledby="nav-personal-tab">
-							<!-- <h3 class="mb-3 text-info">Personal informations</h3>
-							<hr class="bg-info w-50 ml-0"> -->
 
 							<form class="pt-3" action="##" method="post" id="profileForm">
 								<div class="d-flex justify-content-between">
@@ -115,7 +118,7 @@ if (isset($_GET["pseudo"])){
 										<label class="form-label" for="profile_birthday">Birthday</label>
 
 										<div class='input-group date' id='datepicker'>
-											<input type='text' class="form-control" placeholder="Choose date"/>
+											<input type='text' class="form-control" value="<?php echo $profile_birthday; ?>" placeholder="Choose date"/>
 
 											<span class="input-group-addon">
 												<span class="glyphicon glyphicon-calendar"></span>
@@ -127,8 +130,8 @@ if (isset($_GET["pseudo"])){
 								<!-- Description -->
 								<div class="form-group">
 									<label class="control-label" for="profile_description">Description</label>
-									<textarea name="profile_description" class="form-control <?php echo $profile_email_error ? 'border border-danger' : ''; ?>" rows="5"><?php echo $profile_email; ?></textarea>
-									<small class="text-danger"><?php echo $profile_email_error; ?></small>
+									<textarea name="profile_description" class="form-control <?php echo $profile_description_error ? 'border border-danger' : ''; ?>" rows="5"><?php echo $profile_description; ?></textarea>
+									<small class="text-danger"><?php echo $profile_description_error; ?></small>
 								</div>
 
 								<div class="form-group col-12 text-right px-3">
@@ -138,8 +141,6 @@ if (isset($_GET["pseudo"])){
 						</div>
 
 						<div class="tab-pane fade" id="nav-changePassword" role="tabpanel" aria-labelledby="nav-changePassword-tab">
-							<!-- <h3 class="mb-3 text-info">Changing password</h3>
-							<hr class="bg-info w-50 ml-0"> -->
 
 							<form method="POST" action="#" class="pt-3">
 								<div class="d-flex justify-content-between">
@@ -196,7 +197,7 @@ if (isset($_GET["pseudo"])){
 
 		            <div class="tab-pane fade" id="nav-songs" role="tabpanel" aria-labelledby="nav-songs-tab">
 						<div class="row justify-content-center">
-							<?php foreach ($videos as $song) { ?>
+							<?php foreach ($profileVideos as $song) { ?>
 								<div class="card col-12 col-sm-3 m-1 shadow">
 									<div class="text-truncate text-dark">
 										<img width="100%" height="100" style="object-fit: cover;" src="https://img.youtube.com/vi/<?php echo $song['source']?>/mqdefault.jpg"></img>
@@ -210,9 +211,7 @@ if (isset($_GET["pseudo"])){
 							<?php } ?>
 						</div>
 		            </div>
-		        </div>
-
-    			
+		        </div>    			
         	</div>
         </div>
     </div>

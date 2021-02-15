@@ -1,7 +1,7 @@
 <?php
+
 $url = explode('/', $_SERVER['REQUEST_URI']); // full url path
-// var_dump($url);
-$root = $url[3] == 'pages' || $url[3] == 'controllers' ? '..' : '.';
+$root = $url[1] == 'pages' || $url[1] == 'controllers' ? '..' : '.';
 include($root.'/config/db.php');
 
 function executeRequest($conn, $request, $fetchMode = 'all') { // $fetchMode = 'all', 'one' or ''
@@ -116,6 +116,12 @@ function getUserByEmail($conn, $email) {
 	return executeRequest($conn, $request, 'one');
 }
 
+function getUserByToken($conn, $token) {
+	$request = "SELECT * FROM users WHERE reset_token = '$token'";
+
+	return executeRequest($conn, $request, 'one');
+}
+
 function getUserByPseudo($conn, $pseudo) {
 	$request = "SELECT * FROM users WHERE pseudo = '$pseudo'";
 
@@ -156,6 +162,23 @@ function createSong($conn, $data) {
 
 function updateUserByConnection($conn, $id, $is_connected) {
 	$request = "UPDATE users SET `is_connected` = $is_connected WHERE `user_id` = $id";
+
+	return executeRequest($conn, $request, '');
+}
+
+function updateUserToken($conn, $id, $token, $tokenExpire) {
+	$request = "UPDATE users SET `reset_token` = '$token',
+							`token_expire` = '$tokenExpire'
+							WHERE `user_id` = '$id'";
+
+	return executeRequest($conn, $request, '');
+}
+
+function updateUserPassword($conn, $id, $password) {
+	$request = "UPDATE users SET `reset_token` = '',
+							`token_expire` = 0,
+							`password` = '$password'
+							WHERE `user_id` = '$id'";
 
 	return executeRequest($conn, $request, '');
 }
