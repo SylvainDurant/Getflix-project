@@ -206,7 +206,7 @@ $profile_description_error = '';
 										<?php $category = fetchCategoryByID($conn,$song['category_id']);?>
 										<p>Category: <?php echo $category['name']?></p>
 									</div>
-									<div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>,true)"></div>
+									<div class="card-img-overlay myLink" onclick="move(<?php echo $song['id']?>)"></div>
 								</div>
 							<?php } ?>
 						</div>

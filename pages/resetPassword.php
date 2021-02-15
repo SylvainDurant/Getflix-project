@@ -1,6 +1,8 @@
 <?php
+include('../helpers/functions.php');
 include('../helpers/variables.php');
 include('../helpers/session_messages.php');
+
 
 // Handle errors by type
 $forgotErrors = isset($_SESSION['forgotErrors']) ? $_SESSION['forgotErrors'] : [];
