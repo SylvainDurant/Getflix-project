@@ -44,7 +44,7 @@ if (isset($_POST['forgotBtn'])) {
                 'http://moosic.great-site.net/pages/resetPage.php?token='.$token.' \n\n'.
                 'If you did not request a password reset, please ignore this email. This link is only valid for the next 30 minutes.\n\n'.
                 'Thank you and stay tune!';
-            // mail($email,$subject,$message,$from);
+            mail($email,$subject,$message,$from);
             echo $message;
 
             $_SESSION['success_message'] = "A password reset link has been sent to your email address.";
