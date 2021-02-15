@@ -57,6 +57,18 @@ function fetchAllSongsByCategory($conn,$id) {
 	return executeRequest($conn, $request); // 'all'
 }
 
+function fetchAllSongsByUser($conn,$id) {
+	$request = "SELECT * FROM songs WHERE songs.user_id = $id"; 
+
+	return executeRequest($conn, $request); // 'all'
+}
+
+function fetchCategoryByID($conn,$id) {
+	$request = "SELECT * FROM categories WHERE categories.id = $id"; 
+
+	return executeRequest($conn, $request, 'one');
+}
+
 function fetchAllCommentsByVideo($conn,$id) {
 	$request = "SELECT * FROM comments
 				LEFT JOIN users
@@ -104,6 +116,12 @@ function getUserByEmail($conn, $email) {
 	return executeRequest($conn, $request, 'one');
 }
 
+function getUserByToken($conn, $token) {
+	$request = "SELECT * FROM users WHERE reset_token = '$token'";
+
+	return executeRequest($conn, $request, 'one');
+}
+
 function getUserByPseudo($conn, $pseudo) {
 	$request = "SELECT * FROM users WHERE pseudo = '$pseudo'";
 
@@ -144,6 +162,23 @@ function createSong($conn, $data) {
 
 function updateUserByConnection($conn, $id, $is_connected) {
 	$request = "UPDATE users SET `is_connected` = $is_connected WHERE `user_id` = $id";
+
+	return executeRequest($conn, $request, '');
+}
+
+function updateUserToken($conn, $id, $token, $tokenExpire) {
+	$request = "UPDATE users SET `reset_token` = '$token',
+							`token_expire` = '$tokenExpire'
+							WHERE `user_id` = '$id'";
+
+	return executeRequest($conn, $request, '');
+}
+
+function updateUserPassword($conn, $id, $password) {
+	$request = "UPDATE users SET `reset_token` = '',
+							`token_expire` = 0,
+							`password` = '$password'
+							WHERE `user_id` = '$id'";
 
 	return executeRequest($conn, $request, '');
 }

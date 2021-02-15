@@ -208,6 +208,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                         <?php } ?>
                         
                         <div class="form-group col-12 text-right px-3">
+                            <a href="<?php echo $pages_root; ?>/resetPassword" class="mr-5">forgot password?</a>
                             <button type="submit" class="btn btn-info" name="loginBtn">Login</button>
                         </div>
                     </form>

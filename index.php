@@ -6,9 +6,7 @@ include('./helpers/session_messages.php');
 $categories = fetchAllCategory($conn);
 $songs = fetchAllSongs($conn);
 
-$musicCarousel = fetchLast4Songs($conn);
 $lastSongs = fetchLast4Songs($conn);
-//$musicCarousel = array_slice($songs, -4); // get last 4 songs
 ?>
 
 <!-- HTML content -->
@@ -25,7 +23,7 @@ $lastSongs = fetchLast4Songs($conn);
         </ol>
 
         <div id="carousel-inner" class="carousel-inner">
-            <?php foreach($musicCarousel as $key => $song) { ?>
+            <?php foreach($lastSongs as $key => $song) { ?>
                 <div class="carousel-item <?php echo $key == 0 ? 'active' : ''; ?>">
                     <img class="w-100" src="https://img.youtube.com/vi/<?php echo $song['source']?>/hqdefault.jpg"></img>
 
@@ -57,7 +55,7 @@ $lastSongs = fetchLast4Songs($conn);
         </ol>
 
         <div id="carousel-inner" class="carousel-inner">
-            <?php foreach($musicCarousel as $key => $song) { ?>
+            <?php foreach($lastSongs as $key => $song) { ?>
                 <div class="carousel-item <?php echo $key == 0 ? 'active' : ''; ?>">
                     <img style="height:500px" class="w-100" src="https://img.youtube.com/vi/<?php echo $song['source']?>/hqdefault.jpg"></img>
                     <p class="text-light"><?php echo $song['artist_name']?>: <?php echo $song['title']?></p>
