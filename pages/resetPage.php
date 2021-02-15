@@ -3,6 +3,7 @@ include('../helpers/variables.php');
 include('../helpers/functions.php');
 include('../helpers/session_messages.php');
 
+
 // Handle errors by type
 $resetErrors = isset($_SESSION['resetErrors']) ? $_SESSION['resetErrors'] : '';
 

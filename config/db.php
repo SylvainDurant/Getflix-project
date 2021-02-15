@@ -1,14 +1,14 @@
 <?php
 
 // MySQL DB connection details
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$database = 'moosic_db';
-// $host = 'sql100.epizy.com';
-// $user = 'epiz_27828505';
-// $password = 'K3iZBjGpnW';
-// $database = 'epiz_27828505_Moosic_db';
+// $host = 'localhost';
+// $user = 'root';
+// $password = '';
+// $database = 'moosic_db';
+$host = 'sql100.epizy.com';
+$user = 'epiz_27828505';
+$password = 'K3iZBjGpnW';
+$database = 'epiz_27828505_Moosic_db';
 $conn = null;
 
 //Custom PDO options

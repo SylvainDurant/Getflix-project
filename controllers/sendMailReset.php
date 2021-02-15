@@ -24,13 +24,13 @@ if (isset($_POST['forgotBtn'])) {
 
         // check if the user email exists in the db
         if ($currentUser != false) {
-            var_dump($currentUser);
-            var_dump($email);
+            // var_dump($currentUser);
+            // var_dump($email);
 
             $token = bin2hex(random_bytes(78));
             $tokenExpire = time() + 1800; // 30 minutes
-            var_dump($token);
-            var_dump($tokenExpire);
+            // var_dump($token);
+            // var_dump($tokenExpire);
 
             ///// Give Token to the User /////
             updateUserToken($conn, $currentUser['user_id'], $token, $tokenExpire);
@@ -45,7 +45,6 @@ if (isset($_POST['forgotBtn'])) {
                 'If you did not request a password reset, please ignore this email. This link is only valid for the next 30 minutes.\n\n'.
                 'Thank you and stay tune!';
             mail($email,$subject,$message,$from);
-            echo $message;
 
             $_SESSION['success_message'] = "A password reset link has been sent to your email address.";
             // redirect to the previous page with success message
