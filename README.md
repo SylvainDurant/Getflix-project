@@ -55,7 +55,7 @@ In order to have a good overview and to manage all these functionalities, we wer
 
 ### See Project
 
-*[www.moosic.com](https://github.com/SylvainDurant/Getflix-project)*
+*[moosic.great-site.net](http://moosic.great-site.net/)*
 
 ### Team members
 
