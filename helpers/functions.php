@@ -170,7 +170,6 @@ function updateUserToken($conn, $id, $token, $tokenExpire) {
 	$request = "UPDATE users SET `reset_token` = '$token',
 							`token_expire` = '$tokenExpire'
 							WHERE `user_id` = '$id'";
-
 	return executeRequest($conn, $request, '');
 }
 
@@ -179,7 +178,6 @@ function updateUserPassword($conn, $id, $password) {
 							`token_expire` = 0,
 							`password` = '$password'
 							WHERE `user_id` = '$id'";
-
 	return executeRequest($conn, $request, '');
 }
 

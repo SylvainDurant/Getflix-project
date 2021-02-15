@@ -33,17 +33,19 @@ if (isset($_POST['forgotBtn'])) {
             // var_dump($tokenExpire);
 
             ///// Give Token to the User /////
+            var_dump('before update');
             updateUserToken($conn, $currentUser['user_id'], $token, $tokenExpire);
+            var_dump('after update');
 
             ///// SEND MAIL /////
 
             $from = 'thedisturbedone@hotmail.be';
             $subject = "Password Reset";
-            $message = 'Hello '.$currentUser['first_name'].',\n\n'.
-                'You recently requested to reset your password for your Moosic account. Click the link below to reset it.\n'.
-                'http://moosic.great-site.net/pages/resetPage.php?token='.$token.' \n\n'.
-                'If you did not request a password reset, please ignore this email. This link is only valid for the next 30 minutes.\n\n'.
-                'Thank you and stay tune!';
+            $message = "Hello ".$currentUser["first_name"].",\n\n".
+                "You recently requested to reset your password for your Moosic account. Click the link below to reset it.\n".
+                "http://moosic.great-site.net/pages/resetPage.php?token=".$token." \n\n".
+                "If you did not request a password reset, please ignore this email. This link is only valid for the next 30 minutes.\n\n".
+                "Thank you and stay tune!";
             mail($email,$subject,$message,$from);
 
             $_SESSION['success_message'] = "A password reset link has been sent to your email address.";
